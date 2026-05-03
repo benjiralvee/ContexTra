@@ -1,0 +1,12 @@
+---
+sourceLocationPrefix: /private/tmp/anon/repos/NataliaDeriuzhova_generate_cloud_payments_cryptogram
+baselineLinesOfCode: 21
+unicodeNewlines: false
+columnKind: utf32
+primaryLanguage: python
+creationMetadata:
+  cliVersion: 2.23.3
+  creationTime: 2026-05-03T03:23:16.316847Z
+overlayBaseDatabase: false
+overlayDatabase: false
+finalised: true

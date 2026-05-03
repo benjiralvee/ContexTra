@@ -1,0 +1,21 @@
+id,repo_name,filename,line_number,column_number,issue_text,code,severity,confidence,cwe,found_by_count,all_sources,source,tool_issue_id,tool_test_name,combined_tool_ids,is_duplicate
+1886,sahilchadha1991_cryptoExamples,sahilchadha1991_cryptoExamples/assym.py,9,0,DSA key sizes below 2048 bits are considered breakable. ,"8 
+9 private_key1 = dsa.generate_private_key(key_size=1024,
+10                                         backend=default_backend())
+11",MEDIUM,HIGH,,2,bandit|semgrep,bandit,B505,weak_cryptographic_key,bandit:B505|semgrep:python.cryptography.security.insufficient-dsa-key-size.insufficient-dsa-key-size,True
+837,Muthupandi1306_cryptopy,Muthupandi1306_cryptopy/MRT.py,27,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"26     def __millerTest(self,d,n):
+27         a = 2 + random.randint(1, n - 4)
+28         x = self.power(a, d, n)",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+838,Muthupandi1306_cryptopy,Muthupandi1306_cryptopy/MRT.py,59,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"58     def generate_random_prime(self):
+59         value=random.randint(math.pow(10,3), math.pow(10,6))
+60         iteration=20",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1720,DM20911_cryptographyCipherCBC_OFB_CFB_ECB,DM20911_cryptographyCipherCBC_OFB_CFB_ECB/cryptographyCipherCBC_OFB_CFB_ECB.py,15,0,Use of insecure cipher mode cryptography.hazmat.primitives.ciphers.modes.ECB.,"14 cipherCFB = Cipher(algorithms.AES(key), modes.CFB(iv), backend=backend)
+15 cipherECB = Cipher(algorithms.AES(key), modes.ECB(), backend=backend)
+16",MEDIUM,HIGH,,2,bandit|dlint,bandit,B305,blacklist,bandit:B305|dlint:DUO134,True
+1977,NataliaDeriuzhova_generate_cloud_payments_cryptogram,NataliaDeriuzhova_generate_cloud_payments_cryptogram/generate_cloud_payments_cryptogram/generate_cloud_payments_cryptogram.py,4,1,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133|dlint:DUO133,False
+953,adrijanik_junction-mobilepay,adrijanik_junction-mobilepay/get_contacts.py,17,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"16     for i in range(0,n):
+17         type_of = random.choice([0,1])
+18         contact = contacts[random.choice(contacts.keys())]",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+840,Muthupandi1306_cryptopy,Muthupandi1306_cryptopy/publickey.py,33,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"32         pin=(p-1)*(q-1)
+33         e=random.randint(1,pin)
+34         while self.__gcd(e,pin)!=1:",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|bandit:B311|dlint:DUO102|dlint:DUO102,True

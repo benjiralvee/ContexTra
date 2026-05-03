@@ -1,0 +1,697 @@
+id,repo_name,filename,line_number,column_number,issue_text,code,severity,confidence,cwe,found_by_count,all_sources,source,tool_issue_id,tool_test_name,combined_tool_ids,is_duplicate
+842,NavonHobby75_Stripe-PaymentProcessors-MerchantAPI-Django,NavonHobby75_Stripe-PaymentProcessors-MerchantAPI-Django/example/app/utils.py,6,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"5     rstr = string.ascii_lowercase + string.digits
+6     return ''.join(random.sample(rstr, word_len))",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1159,ivansarno_EllipticCurvesLibrary,ivansarno_EllipticCurvesLibrary/tests/parametric_tests.py,62,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"61     public = private.public_key
+62     message = random.randint(1, 2**32)
+63     cipher = public.encrypt(message, generator)",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1371,openlabs_payment-gateway-beanstream,openlabs_payment-gateway-beanstream/tests/test_transaction.py,467,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"466                     'gateway': self.beanstream_gateway.id,
+467                     'amount': random.randint(6, 10),
+468                 }])",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+110,elessarelfstone_tcomapi,elessarelfstone_tcomapi/tcomapi/kgd/api.py,95,0,"Call to requests with verify=False disabling SSL certificate checks, security issue.","94 
+95         r = requests.post(url, request, headers=self.headers, verify=False, timeout=self._timeout)
+96",HIGH,HIGH,,3,bandit|dlint|semgrep,bandit,B501,request_with_no_cert_validation,bandit:B501|semgrep:python.requests.security.disabled-cert-validation.disabled-cert-validation|dlint:DUO123,True
+3564,acriptis_django_simple_payment_system,acriptis_django_simple_payment_system/wallets/models.py,28,0,"This code uses a 224-bit hash function, which is deprecated or disallowed in some security policies. Consider updating to a stronger hash function such as SHA-384 or higher to ensure compliance and security.","        #generates secret hash for wallet to alias it in secret link
+        user_code = ""%s %s %s"" % (self.owner.name, self.owner.city , self.owner.country)
+        user_hash = hashlib.sha224(user_code.encode('utf8')).hexdigest()
+        return user_hash
+
+",MEDIUM,HIGH,CWE-327: Use of a Broken or Risky Cryptographic Algorithm,1,semgrep,semgrep,python.lang.security.audit.sha224-hash.sha224-hash,,semgrep:python.lang.security.audit.sha224-hash.sha224-hash,False
+3264,wadobo_congressus,wadobo_congressus/congressus/dashboard/views.py,13,1,"insecure use of ""random"" module, prefer ""random.SystemRandom""",,HIGH,,,1,dlint,dlint,DUO102,,dlint:DUO102,False
+1710,willmurnane_store,willmurnane_store/apps/whoosh/util/cache.py,196,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"195                     for i in xrange(maxsize // 10 or 1):
+196                         n = random.randint(0, len(keys) - 1)
+197                         k = keys.pop(n)",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3439,seyijava_PaymentProcessorAPIGateway,seyijava_PaymentProcessorAPIGateway/src/utils/CreditCardGenerator.py,75,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"74 
+75     generator = Random()
+76     generator.seed()        # Seed from current time",LOW,HIGH,,1,bandit,bandit,B311,blacklist,bandit:B311,False
+2427,bandoche_PyPinkSign,bandoche_PyPinkSign/pypinksign/pypinksign.py,544,0,Use of insecure cipher cryptography.hazmat.primitives.ciphers.algorithms.SEED. Replace with a known secure cipher such as AES.,"543     backend = default_backend()
+544     cipher = Cipher(algorithms.SEED(key), modes.CBC(iv), backend=backend)
+545     decryptor = cipher.decryptor()",HIGH,HIGH,,1,bandit,bandit,B304,blacklist,bandit:B304,False
+1061,fbenke_BeamPay,fbenke_BeamPay/transaction/utils.py,6,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"5 def generate_reference_number():
+6     return str(random.randint(10000, 999999))
+7",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3970,OpenMined_PySyft,OpenMined_PySyft/packages/syft/src/syft/client/registry.py,539,0,"Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",,INFO,HIGH,,1,semgrep,semgrep,python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http,request-with-http,semgrep:python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http,False
+3235,seyijava_PaymentProcessorAPIGateway,seyijava_PaymentProcessorAPIGateway/src/utils/CreditCardGenerator.py,7,1,"insecure use of ""random"" module, prefer ""random.SystemRandom""",,HIGH,,,1,dlint,dlint,DUO102,,dlint:DUO102,False
+3971,OpenMined_PySyft,OpenMined_PySyft/packages/syft/src/syft/util/util.py,1059,0,"Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",,INFO,MEDIUM,,1,semgrep,semgrep,python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http,request-with-http,semgrep:python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http,False
+3785,johnchuks_ravepay-python-sdk,johnchuks_ravepay-python-sdk/ravepaypysdk/utils/encryption.py,29,0,"Detected DES cipher or Triple DES algorithm which is considered insecure. This algorithm is not cryptographically secure and can be reversed easily. Use a secure symmetric cipher from the cryptodome package instead. Use secure stream ciphers such as ChaCha20, XChaCha20 and Salsa20, or a block cipher such as AES with a block size of 128 bits. When using a block cipher, use a modern mode of operation that also provides authentication, such as GCM.","    to_add = len(plain_text) % block_size
+    pad_diff = block_size - to_add
+    cipher = DES3.new(encrypted_key, DES3.MODE_ECB)
+    plain_text = ""{}{}"".format(plain_text, """".join(chr(pad_diff) * pad_diff))
+    encrypted = base64.b64encode(cipher.encrypt(plain_text))
+",MEDIUM,HIGH,CWE-327: Use of a Broken or Risky Cryptographic Algorithm,1,semgrep,semgrep,python.pycryptodome.security.insecure-cipher-algorithm-des.insecure-cipher-algorithm-des,,semgrep:python.pycryptodome.security.insecure-cipher-algorithm-des.insecure-cipher-algorithm-des,False
+3268,xymy_xycrypto,xymy_xycrypto/src/xycrypto/ciphers/Cryptography/_lib.py,17,12,"insecure ""cryptography"" attribute use",,HIGH,,,1,dlint,dlint,DUO134,,dlint:DUO134,False
+3661,eruina_laffka,eruina_laffka/app/routes.py,149,0,"This code uses a 224-bit hash function, which is deprecated or disallowed in some security policies. Consider updating to a stronger hash function such as SHA-384 or higher to ensure compliance and security.","    if 'adminkey' not in session:
+        abort(404)
+    elif (session['adminkey']!=hashlib.sha224(configuration.Configuration.secret_key.encode('utf-8')).hexdigest()):
+        abort(404)
+    data = request.form
+",MEDIUM,HIGH,CWE-327: Use of a Broken or Risky Cryptographic Algorithm,1,semgrep,semgrep,python.lang.security.audit.sha224-hash.sha224-hash,,semgrep:python.lang.security.audit.sha224-hash.sha224-hash,False
+1940,Gubbi_trackr,Gubbi_trackr/src/service/prng.py,2,1,"insecure use of ""random"" module, prefer ""random.SystemRandom""",,HIGH,,,1,dlint,dlint,DUO102,,dlint:DUO102,False
+1162,ivansarno_EllipticCurvesLibrary,ivansarno_EllipticCurvesLibrary/tests/utility_test.py,28,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"27     while t == 0:
+28         t = random.randint(0, 30)
+29     return (inverse(t, 31) * t) % 31 == 1",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1655,ti-technology_django_miniprogram_api,ti-technology_django_miniprogram_api/miniprogram_api/wechat_process.py,73,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"72     def ranstr(self, num):
+73         salt = ''.join(random.sample(string.ascii_letters + string.digits, num))
+74",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1529,raiden-network_raiden,raiden-network_raiden/raiden/tests/utils/factories.py,198,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"197 def make_withdraw_amount() -> WithdrawAmount:
+198     return WithdrawAmount(random.randint(0, UINT256_MAX))
+199",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1390,physics-sec_Linear-Cryptanalysis,physics-sec_Linear-Cryptanalysis/Python3/break-easy1.py,66,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"65     # this will be different with another cipher
+66     key = random.getrandbits(18)
+67     key = (key << 18) | key",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3424,onyb_littlebit,onyb_littlebit/python/tests/cryptography/test_secp256k1.py,123,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"122         (1, 2),
+123         (randint(0, 2 ** 256), randint(0, 2 ** 255)),
+124         (randint(0, 2 ** 256), randint(0, 2 ** 255)),",LOW,HIGH,,1,bandit,bandit,B311,blacklist,bandit:B311|bandit:B311|bandit:B311|bandit:B311,False
+2129,ashutosh1206_Crypton,ashutosh1206_Crypton/Block-Cipher/Attack-CBC-Bit-Flipping/Challenges/CNVService/AES_CNV_COOKIE.py,58,0,Use of weak MD5 hash for security. Consider usedforsecurity=False,"57             plain_text += plain_block
+58             h = md5(block).digest()
+59         return unpad(plain_text)",HIGH,HIGH,,1,bandit,bandit,B324,hashlib,bandit:B324,False
+1370,openlabs_payment-gateway-beanstream,openlabs_payment-gateway-beanstream/tests/test_transaction.py,444,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"443                     'gateway': self.beanstream_gateway.id,
+444                     'amount': random.randint(1, 5),
+445                 }])",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3445,tezos-reward-distributor-organization_tezos-reward-distributor,tezos-reward-distributor-organization_tezos-reward-distributor/src/util/wait_random.py,7,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"6 def wait_random(block_time):
+7     slp_tm = randint(block_time // 2, block_time)
+8     main_logger.debug(""Wait for {} seconds before trying again"".format(slp_tm))",LOW,HIGH,,1,bandit,bandit,B311,blacklist,bandit:B311,False
+3380,emesik_mamona,emesik_mamona/test-project/sales/tests.py,32,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"31 		i = 1
+32 		while i <= randint(1,10):
+33 			self.o3.item_set.create(",LOW,HIGH,,1,bandit,bandit,B311,blacklist,bandit:B311,False
+3563,Whompithian_css527-project3,Whompithian_css527-project3/algo.py,380,0,"Detected DES cipher or Triple DES algorithm which is considered insecure. This algorithm is not cryptographically secure and can be reversed easily. Use a secure symmetric cipher from the cryptodome package instead. Use secure stream ciphers such as ChaCha20, XChaCha20 and Salsa20, or a block cipher such as AES with a block size of 128 bits. When using a block cipher, use a modern mode of operation that also provides authentication, such as GCM.","    # result with each new operation
+    algo_run = ['DES3']
+    cipher = DES3.new(key, DES3.MODE_CBC, iv8)
+    enctext = cipher.encrypt(message)
+    enc_run = ['encrypt']
+",MEDIUM,HIGH,CWE-327: Use of a Broken or Risky Cryptographic Algorithm,1,semgrep,semgrep,python.pycryptodome.security.insecure-cipher-algorithm-des.insecure-cipher-algorithm-des,,semgrep:python.pycryptodome.security.insecure-cipher-algorithm-des.insecure-cipher-algorithm-des,False
+47,achow101_payment-proto-interface,achow101_payment-proto-interface/paymentrequest.py,279,0,"Call to requests with verify=False disabling SSL certificate checks, security issue.","278             try:
+279                 r = requests.post(payurl.geturl(), data=pm, headers=ACK_HEADERS, verify=False)
+280             except Exception as e:",HIGH,HIGH,,3,bandit|dlint|semgrep,bandit,B501,request_with_no_cert_validation,bandit:B501|semgrep:python.requests.security.disabled-cert-validation.disabled-cert-validation|dlint:DUO123,True
+1926,DavidDual_Conector-Odoo-Sequra-Payment,DavidDual_Conector-Odoo-Sequra-Payment/payment_sequra/models/sequra.py,51,0,"Call to requests with verify=False disabling SSL certificate checks, security issue.","50                 auth=(self.sequra_user, self.sequra_pass),
+51                 verify=False,
+52                 data=data,
+53                 headers=headers
+54             )
+55 
+56     sequra_user = fields.Char('Sequra User')
+57     sequra_pass = fields.Char('Sequra Password')
+58     sequra_merchant = fields.Char('Sequra Merchant')",HIGH,HIGH,,1,bandit,bandit,B501,request_with_no_cert_validation,bandit:B501,False
+1595,shan18_Kart,shan18_Kart/src/kart/utils.py,25,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"24 def unique_key_generator(instance):
+25     size = random.randint(30, 45)
+26     new_key = random_string_generator(size=size)",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3237,shiva-ra_PaymentService,shiva-ra_PaymentService/app/payment_gateways.py,1,1,"insecure use of ""random"" module, prefer ""random.SystemRandom""",,HIGH,,,1,dlint,dlint,DUO102,,dlint:DUO102,False
+3269,yazidbouallagui_cyptobox,yazidbouallagui_cyptobox/asymetric.py,4,1,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133,False
+3155,raiden-network_raiden,raiden-network_raiden/raiden/transfer/token_network.py,282,30,"insecure use of ""random"" module, prefer ""random.SystemRandom""",,HIGH,,,1,dlint,dlint,DUO102,,dlint:DUO102,False
+341,CavidRzayev_payment-az,CavidRzayev_payment-az/payment/azericard.py,66,0,Use of weak MD5 hash for security. Consider usedforsecurity=False,"65         irand = random.randint(1, 10000000)
+66         nonce = substr(hashlib.md5(str(irand).encode('utf-8')).hexdigest(), 0, 16)
+67         oper_time = gmdate(""%Y%m%d%H%I%S"")",HIGH,HIGH,,2,bandit|dlint,bandit,B324,hashlib,bandit:B324|dlint:DUO130,True
+749,AustinAkerley_crypto,AustinAkerley_crypto/crypto/src/mod_sqrt.py,37,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"36         e = s
+37         z = random.randint(1,modulus-1)
+38         while legendre_symbol(z, modulus) != -1: # z is a non-quadratic residue",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1676,ubergrape_django-abo,ubergrape_django-abo/abo/factories.py,19,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"18     name = factory.LazyAttribute(lambda o: ""{} {}{}"".format(
+19         random.choice(['Simple', 'Almost Free', 'Wow so', 'Lean', 'Product']),
+20         random.choice(['Premium', 'Pro', 'Plus', 'Extended', 'Enterprise']),",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|bandit:B311|dlint:DUO102|dlint:DUO102,True
+1945,HRodriguez_svelib,HRodriguez_svelib/PloneVoteCryptoLib/plonevotecryptolib/Threshold/ThresholdDecryptionCombinator.py,43,1,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133,False
+3664,eruina_laffka,eruina_laffka/app/routes.py,189,0,"This code uses a 224-bit hash function, which is deprecated or disallowed in some security policies. Consider updating to a stronger hash function such as SHA-384 or higher to ensure compliance and security.","    if 'adminkey' not in session:
+        abort(404)
+    elif (session['adminkey']!=hashlib.sha224(configuration.Configuration.secret_key.encode('utf-8')).hexdigest()):
+        abort(404)
+    database=Database()
+",MEDIUM,HIGH,CWE-327: Use of a Broken or Risky Cryptographic Algorithm,1,semgrep,semgrep,python.lang.security.audit.sha224-hash.sha224-hash,,semgrep:python.lang.security.audit.sha224-hash.sha224-hash,False
+3299,DrMartiner_django-yandex-kassa,DrMartiner_django-yandex-kassa/yandex_kassa/tests/base_test.py,16,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"15         params = dict(name=self.random,
+16                       price=randint(1, 9))
+17         params.update(**kwargs)",LOW,HIGH,,1,bandit,bandit,B311,blacklist,bandit:B311,False
+325,mgrabovsky_cryptoverif-py-lib,mgrabovsky_cryptoverif-py-lib/wlskout/crypto.py,123,0,"Use of insecure MD2, MD4, MD5, or SHA1 hash function.","122             padding.MGF1(hashes.SHA1()),
+123             hashes.SHA1(),
+124             None))",MEDIUM,HIGH,,3,bandit|dlint|semgrep,bandit,B303,blacklist,bandit:B303|semgrep:python.cryptography.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1|dlint:DUO134,True
+191,matthiask_django-mooch,matthiask_django-mooch/mooch/postfinance.py,71,0,Use of weak SHA1 hash for security. Consider usedforsecurity=False,"70 
+71         postfinance[""SHASign""] = sha1(
+72             (
+73                 """".join(
+74                     (
+75                         postfinance[""orderID""],
+76                         postfinance[""amount""],
+77                         postfinance[""currency""],
+78                         postfinance[""PSPID""],
+79                         self.sha1_in,
+80                     )
+81                 )
+82             ).encode(""utf-8"")
+83         ).hexdigest()
+84",HIGH,HIGH,,3,bandit|dlint|semgrep,bandit,B324,hashlib,bandit:B324|semgrep:python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1|dlint:DUO130,True
+1723,JUNICHIFUJIO_CryptoTests,JUNICHIFUJIO_CryptoTests/FinalMain.py,839,0,"Use of insecure MD2, MD4, MD5, or SHA1 hash function.","838             for x in range(n_hashes):
+839                 h = Crypto.Hash.MD5.new()
+840                 h.update(message_byte_array)",MEDIUM,HIGH,,2,bandit|semgrep,bandit,B303,blacklist,bandit:B303|semgrep:python.pycryptodome.security.insecure-hash-algorithm-md5.insecure-hash-algorithm-md5,True
+1492,raiden-network_raiden,raiden-network_raiden/raiden/tests/unit/transfer/mediated_transfer/test_mediatorstate.py,1132,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"1131     block_number = BlockNumber(1)
+1132     pseudo_random_generator = random.Random()
+1133",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1403,pyGuru123_Decrypto,pyGuru123_Decrypto/decrypto/src/rsa_cipher.py,22,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"21         while RSACipher.gcd(e, totient) != 1:
+22             e = random.randint(2, totient - 1)
+23",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3654,edwardpopoola_flutterwave-python,edwardpopoola_flutterwave-python/flutterwave/utils.py,93,0,"Detected DES cipher or Triple DES algorithm which is considered insecure. This algorithm is not cryptographically secure and can be reversed easily. Use a secure symmetric cipher from the cryptodome package instead. Use secure stream ciphers such as ChaCha20, XChaCha20 and Salsa20, or a block cipher such as AES with a block size of 128 bits. When using a block cipher, use a modern mode of operation that also provides authentication, such as GCM.","        md5Key = ""{}{}"".format(md5Key, md5Key[0:8])
+
+        cipher = DES3.new(md5Key, DES3.MODE_ECB)
+
+        decrypted = cipher.decrypt(base64.b64decode(ciphertext))
+",MEDIUM,HIGH,CWE-327: Use of a Broken or Risky Cryptographic Algorithm,1,semgrep,semgrep,python.pycryptodome.security.insecure-cipher-algorithm-des.insecure-cipher-algorithm-des,,semgrep:python.pycryptodome.security.insecure-cipher-algorithm-des.insecure-cipher-algorithm-des,False
+2980,knovichikhin_pyemv,knovichikhin_pyemv/pyemv/mac.py,97,0,Use of insecure cipher cryptography.hazmat.primitives.ciphers.algorithms.TripleDES. Replace with a known secure cipher such as AES.,"96     cipher2 = _Cipher(
+97         _algorithms.TripleDES(key2), _modes.CBC(data), backend=_default_backend()
+98     )",HIGH,HIGH,,1,bandit,bandit,B304,blacklist,bandit:B304,False
+864,OptimalPayments_Python_SDK,OptimalPayments_Python_SDK/src/sample_application/RandomTokenGenerator.py,22,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"21     def generateToken(self):
+22         token = ''.join(random.choice(string.ascii_lowercase + string.digits) for x in range(16))  # @UnusedVariable
+23         return (token)",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1939,Gubbi_trackr,Gubbi_trackr/lib/oauth2client/crypt.py,141,3,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133|dlint:DUO133,False
+1249,laerteallan_challange,laerteallan_challange/challenge/models/boleto.py,37,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"36         numbers = ""0123456789""
+37         return """".join(random.choice(numbers) for character in range(48))
+38",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1634,teamsempo_SempoBlockchain,teamsempo_SempoBlockchain/app/server/utils/mock_data.py,109,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"108 
+109     phone = '+1' + ''.join([str(random.randint(0,10)) for i in range(0, 10)])
+110",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+772,ChanMo_django-payment-cn,ChanMo_django-payment-cn/payment/douyin.py,37,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"36 
+37         return ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(length))
+38",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1516,raiden-network_raiden,raiden-network_raiden/raiden/tests/unit/transfer/mediated_transfer/test_targetstate.py,532,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"531     balance_proof_state_change = ReceiveUnlock(
+532         message_identifier=random.randint(0, UINT64_MAX),
+533         secret=UNIT_SECRET,",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+2439,boppreh_simplecrypto,boppreh_simplecrypto/simplecrypto/key.py,4,1,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133|dlint:DUO133,False
+3442,shiva-ra_PaymentService,shiva-ra_PaymentService/app/payment_gateways.py,30,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"29     def successful(self):
+30         return choices([True, False], [self.p_success, 1 - self.p_success])[0]
+31",LOW,HIGH,,1,bandit,bandit,B311,blacklist,bandit:B311,False
+1373,openlabs_payment-gateway-beanstream,openlabs_payment-gateway-beanstream/tests/test_transaction.py,514,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"513                     'gateway': self.beanstream_gateway.id,
+514                     'amount': random.randint(6, 10),
+515                     'state': 'in-progress',",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1932,Ereddon_stellite-card-server,Ereddon_stellite-card-server/stelliteCardServer.py,12,1,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133|dlint:DUO133|dlint:DUO133,False
+1499,raiden-network_raiden,raiden-network_raiden/raiden/tests/unit/transfer/mediated_transfer/test_mediatorstate.py,1741,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"1740     expiration = 30
+1741     pseudo_random_generator = random.Random()
+1742",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+829,Lonero-Team_Decentralized-Internet,Lonero-Team_Decentralized-Internet/clusterpost/bigchaindb/tests/conftest.py,312,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"311                 [([user_pk], 1)],
+312                 metadata={'msg': random.random()},
+313             ).sign([alice.private_key])",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1201,jpvitan_rsa-jpv,jpvitan_rsa-jpv/marsa/compute.py,361,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"360 def rabin_miller(p: int) -> bool:
+361     a = random.randint(1, p - 1)
+362     s = 0",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3263,vericant_wechat_pay,vericant_wechat_pay/wechat_pay_v3/sign_manager.py,10,1,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133|dlint:DUO133,False
+1594,shan18_Kart,shan18_Kart/src/kart/utils.py,21,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"20 def random_string_generator(size=10, chars=string.ascii_lowercase + string.digits):
+21     return ''.join(random.choice(chars) for _ in range(size))
+22",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3093,raiden-network_raiden,raiden-network_raiden/raiden/network/transport/matrix/transport.py,8,1,"insecure use of ""random"" module, prefer ""random.SystemRandom""",,HIGH,,,1,dlint,dlint,DUO102,,dlint:DUO102,False
+1458,raiden-network_raiden,raiden-network_raiden/raiden/tests/unit/test_tokennetwork.py,431,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"430 
+431     pseudo_random_generator = random.Random()
+432",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3972,codenerix_django-codenerix-payments,codenerix_django-codenerix-payments/codenerix_payments/models.py,671,0,"Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",,INFO,HIGH,,1,semgrep,semgrep,python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http,request-with-http,semgrep:python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http,False
+1550,rijkstofberg_paymentintegrations,rijkstofberg_paymentintegrations/paymentintegrations/tests/test_setTransaction.py,29,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"28             demo_mode = 'true',
+29             merchant_ref = random.randrange(1,10+1),
+30             notification_url = 'http://www.example.com/notify',",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3880,timgabets_pynblock,timgabets_pynblock/pynblock/tools.py,141,0,"Detected DES cipher or Triple DES algorithm which is considered insecure. This algorithm is not cryptographically secure and can be reversed easily. Use a secure symmetric cipher from the cryptodome package instead. Use secure stream ciphers such as ChaCha20, XChaCha20 and Salsa20, or a block cipher such as AES with a block size of 128 bits. When using a block cipher, use a modern mode of operation that also provides authentication, such as GCM.","    tsp = exp_date + service_code + b'000000000'
+    des_cipher = DES.new(B2raw(CVK[:16]))
+    des3_cipher = DES3.new(B2raw(CVK), DES3.MODE_ECB)
+        
+    block1 = xor(raw2B(des_cipher.encrypt(B2raw(account_number))), tsp)
+",MEDIUM,HIGH,CWE-327: Use of a Broken or Risky Cryptographic Algorithm,1,semgrep,semgrep,python.pycryptodome.security.insecure-cipher-algorithm-des.insecure-cipher-algorithm-des,,semgrep:python.pycryptodome.security.insecure-cipher-algorithm-des.insecure-cipher-algorithm-des,False
+3105,raiden-network_raiden,raiden-network_raiden/raiden/transfer/channel.py,1942,30,"insecure use of ""random"" module, prefer ""random.SystemRandom""",,HIGH,,,1,dlint,dlint,DUO102,,dlint:DUO102,False
+780,Czechbol_mathcrypto,Czechbol_mathcrypto/mathcrypto/cryptography/primes.py,19,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"18         while not cls.is_probable_prime_fermat(prime):
+19             prime = random.getrandbits(bit_length)
+20         return prime",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+145,intelligenia_django-virtual-pos,intelligenia_django-virtual-pos/djangovirtualpos/models.py,3520,0,Use of weak SHA1 hash for security. Consider usedforsecurity=False,"3519 
+3520         firma1 = hashlib.sha1(signature1).hexdigest()
+3521         dlprint(u""FIRMA1 datos: {0}"".format(signature1))",HIGH,HIGH,,3,bandit|dlint|semgrep,bandit,B324,hashlib,bandit:B324|semgrep:python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1|dlint:DUO130,True
+3259,trbs_rfc3161ng,trbs_rfc3161ng/rfc3161ng/api.py,194,9,"insecure ""cryptography"" attribute use",,HIGH,,,1,dlint,dlint,DUO134,,dlint:DUO134,False
+225,openlabs_payment-gateway-beanstream,openlabs_payment-gateway-beanstream/beanstream_api.py,98,0,Use of weak SHA1 hash for security. Consider usedforsecurity=False,"97         if self.hash_key:
+98             hashobj = hashlib.sha1()
+99             hashobj.update(data + self.hash_key)",HIGH,HIGH,,3,bandit|dlint|semgrep,bandit,B324,hashlib,bandit:B324|semgrep:python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1|dlint:DUO130,True
+3160,raiden-network_raiden,raiden-network_raiden/tools/debugging/matrix/check_federation_status.py,95,5,"insecure use of ""random"" module, prefer ""random.SystemRandom""",,HIGH,,,1,dlint,dlint,DUO102,,dlint:DUO102,False
+1077,fsiwi-hka_coffeesale,fsiwi-hka_coffeesale/screensaverWindow.py,72,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"71         offset = 25
+72         self.ui.frame.setGeometry(random.randint(0-offset, self.width() - self.ui.frame.width()+offset), random.randint(0-offset, self.height() - self.ui.frame.height()+offset), self.ui.frame.width(), self.ui.frame.height()) 
+73",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|bandit:B311|dlint:DUO102|dlint:DUO102,True
+3297,Doug-Richardson_Combined-Cryptography-,Doug-Richardson_Combined-Cryptography-/Cryptogrophy_Combined_Richardson.py,222,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"221     def MakeEncrypt(p,q):
+222         x = q*rand.randint(7,50)+rand.randint(1,1000)#some number about the size of q
+223         k = 0#k is a flag, it is 1 when we found a number that is relativly prime to the encryption key AND the decryption key",LOW,HIGH,,1,bandit,bandit,B311,blacklist,bandit:B311|bandit:B311,False
+1711,zookon_odoo12_payment,zookon_odoo12_payment/website_payment_weixin/models/util.py,51,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"50     chars = string.ascii_uppercase + string.digits
+51     return ''.join(random.choice(chars) for _ in range(32))
+52",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3279,AntonKueltz_fastecdsa,AntonKueltz_fastecdsa/tests/test_prime_field_curve_math.py,223,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"222         S = Point(subgroup[1][0], subgroup[1][1], curve=W25519)
+223         m = randint(1, S.curve.q - 1)
+224",LOW,HIGH,,1,bandit,bandit,B311,blacklist,bandit:B311,False
+791,HRodriguez_svelib,HRodriguez_svelib/PloneVoteCryptoLib/plonevotecryptolib/Threshold/Polynomial.py,129,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"128 		for i in range(0, degree + 1):
+129 			coeff =  random.randint(1, modulus - 1)
+130 			coefficients.append(coeff)",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3183,ronf_asyncssh,ronf_asyncssh/asyncssh/crypto/misc.py,44,30,"insecure ""cryptography"" attribute use",,HIGH,,,1,dlint,dlint,DUO134,,dlint:DUO134|dlint:DUO134,False
+704,shan18_Kart,shan18_Kart/src/marketing/utils.py,34,0,Use of weak MD5 hash for security. Consider usedforsecurity=False,"33     member_email = check_email(member_email).lower().encode()
+34     m = hashlib.md5(member_email)
+35     return m.hexdigest()",HIGH,HIGH,,2,bandit|dlint,bandit,B324,hashlib,bandit:B324|dlint:DUO130,True
+267,ronf_asyncssh,ronf_asyncssh/asyncssh/config.py,576,0,Use of weak SHA1 hash for security. Consider usedforsecurity=False,"575         conn_info = ''.join((local_host, host, port, user))
+576         conn_hash = sha1(conn_info.encode('utf-8')).hexdigest()
+577",HIGH,HIGH,,3,bandit|dlint|semgrep,bandit,B324,hashlib,bandit:B324|semgrep:python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1|dlint:DUO130,True
+899,SFTtech_abrechnung,SFTtech_abrechnung/tools/generate_dummy_data.py,78,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"77         )
+78         shares = random.choices(account_ids, k=n_involved)
+79         clearing_shares = {k: 1.0 for k in shares}",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+2047,SYSchel_SberbankPaymentOrder,SYSchel_SberbankPaymentOrder/sber.py,29,1,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133,False
+1355,openlabs_payment-gateway-authorize-net,openlabs_payment-gateway-authorize-net/tests/test_transaction.py,368,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"367                     'gateway': self.auth_net_gateway.id,
+368                     'amount': random.randint(6, 10),
+369                 }])",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3023,monero-ecosystem_monero-python,monero-ecosystem_monero-python/tests/test_transaction.py,189,13,"insecure use of ""random"" module, prefer ""random.SystemRandom""",,HIGH,,,1,dlint,dlint,DUO102,,dlint:DUO102,False
+914,SergeyBel_cryptofield,SergeyBel_cryptofield/cryptofield/ffield/genericmatrix.py,787,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"786           m[r,colToKill] = 0.0
+787       b = [random.random() for x in range(s)]
+788       x = m.Solve(b)",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1886,sahilchadha1991_cryptoExamples,sahilchadha1991_cryptoExamples/assym.py,9,0,DSA key sizes below 2048 bits are considered breakable. ,"8 
+9 private_key1 = dsa.generate_private_key(key_size=1024,
+10                                         backend=default_backend())
+11",MEDIUM,HIGH,,2,bandit|semgrep,bandit,B505,weak_cryptographic_key,bandit:B505|semgrep:python.cryptography.security.insufficient-dsa-key-size.insufficient-dsa-key-size,True
+1350,openlabs_payment-gateway-authorize-net,openlabs_payment-gateway-authorize-net/tests/test_transaction.py,210,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"209             expiry_month='04',
+210             expiry_year=str(random.randint(2016, 2020)),
+211             csc=str(random.randint(100, 555)),",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|bandit:B311|dlint:DUO102|dlint:DUO102,True
+3310,HarryR_solcrypto,HarryR_solcrypto/pysolcrypto/borromean.py,57,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"56     ring = [sbmul(s) for s in secrets]
+57     i = randint(0, m[i] - 1)
+58     rings.append(ring)",LOW,HIGH,,1,bandit,bandit,B311,blacklist,bandit:B311,False
+2448,chasrickarby_three_crypto,chasrickarby_three_crypto/three_crypto.py,4,1,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133|dlint:DUO133,False
+1287,makerspace_internal,makerspace_internal/database/generate/common.py,48,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"47 def chance(chance):
+48     return random.random() < chance
+49",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+2013,PengZhenfeng_Goods-Payment-System-Base-On-YoloV3,PengZhenfeng_Goods-Payment-System-Base-On-YoloV3/YOLOv3_TensorFlow-master/utils/plot_utils.py,10,5,"insecure use of ""random"" module, prefer ""random.SystemRandom""",,HIGH,,,1,dlint,dlint,DUO102,,dlint:DUO102,False
+1644,teamsempo_SempoBlockchain,teamsempo_SempoBlockchain/app/server/utils/mock_data.py,205,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"204             while not found_a_sender:
+205                 sender_user, sender_behavior = random.choice(users_by_location[sender_loc])
+206",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+306,JUNICHIFUJIO_CryptoTests,JUNICHIFUJIO_CryptoTests/FinalMain.py,677,0,"Use of insecure MD2, MD4, MD5, or SHA1 hash function.","676                                                       cryptography.hazmat.primitives.asymmetric.padding.OAEP(
+677                                                           mgf = cryptography.hazmat.primitives.asymmetric.padding.MGF1(algorithm = hashes.SHA1()),
+678                                                           algorithm = hashes.SHA1(),",MEDIUM,HIGH,,3,bandit|dlint|semgrep,bandit,B303,blacklist,bandit:B303|semgrep:python.cryptography.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1|dlint:DUO134,True
+3252,tezos-reward-distributor-organization_tezos-reward-distributor,tezos-reward-distributor-organization_tezos-reward-distributor/src/plugins/email.py,83,42,"insecure ""ssl"" module attribute use",,HIGH,,,1,dlint,dlint,DUO122,,dlint:DUO122,False
+303,yazidbouallagui_cyptobox,yazidbouallagui_cyptobox/hashing.py,118,0,Use of weak SHA1 hash for security. Consider usedforsecurity=False,"117     elif type == 'base64':
+118         result = hashlib.sha1(message.encode()).hexdigest()
+119         result = base64.b64encode(bytes.fromhex(result))",HIGH,HIGH,,3,bandit|dlint|semgrep,bandit,B324,hashlib,bandit:B324|semgrep:python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1|dlint:DUO130,True
+1687,vcatalano_py-authorize,vcatalano_py-authorize/tests/test_live_transaction.py,391,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"390         transaction = FULL_CARD_NOT_PRESENT_TRANSACTION.copy()
+391         amount = random.randrange(100, 100000) / 100.0
+392         transaction['amount'] = amount",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3266,wildcardcorp_samson,wildcardcorp_samson/samson/utilities/general.py,336,0,Unverified SSL context detected. This will permit insecure connections without verifying SSL certificates. Use 'ssl.create_default_context' instead.,"        bytes/dict: Certificate (possibly decoded).
+    """"""
+    context = ssl._create_unverified_context()
+    context.check_hostname = False
+
+",HIGH,MEDIUM,CWE-295: Improper Certificate Validation,1,semgrep,semgrep,python.lang.security.unverified-ssl-context.unverified-ssl-context,,semgrep:python.lang.security.unverified-ssl-context.unverified-ssl-context,False
+1509,raiden-network_raiden,raiden-network_raiden/raiden/tests/unit/transfer/mediated_transfer/test_mediatorstate_regression.py,285,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"284     """"""
+285     pseudo_random_generator = random.Random()
+286",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1102,gramedia-digital-nusantara_midtranspay,gramedia-digital-nusantara_midtranspay/tests/request_address_tests.py,116,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"115         bad_long_city = ''.join(
+116             random.choice(string.ascii_letters) for _ in range(21))
+117",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+11,JUNICHIFUJIO_CryptoTests,JUNICHIFUJIO_CryptoTests/FinalMain.py,464,0,Use of insecure cipher cryptography.hazmat.primitives.ciphers.algorithms.Blowfish. Replace with a known secure cipher such as AES.,"463 
+464             blowfish = Cipher(algorithms.Blowfish(key), modes.CBC(IV), default_backend())
+465             blowfishEncryptor = blowfish.encryptor()",HIGH,HIGH,,3,bandit|dlint|semgrep,bandit,B304,blacklist,bandit:B304|semgrep:python.cryptography.security.insecure-cipher-algorithms-blowfish.insecure-cipher-algorithm-blowfish|dlint:DUO134,True
+3592,ashutosh1206_Crypton,ashutosh1206_Crypton/Block-Cipher/Attack-CBC-Padding-Oracle/Challenges/Secret-Server/secretserver.py,73,0,Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.,"                send_msg(str(time.time()))
+            elif msg.startswith('get-sha1'):
+                send_msg(SHA.new(msg[8:]).digest())
+            elif msg.startswith('get-sha256'):
+                send_msg(SHA256.new(msg[10:]).digest())
+",MEDIUM,MEDIUM,CWE-327: Use of a Broken or Risky Cryptographic Algorithm,1,semgrep,semgrep,python.pycryptodome.security.insecure-hash-algorithm.insecure-hash-algorithm-sha1,,semgrep:python.pycryptodome.security.insecure-hash-algorithm.insecure-hash-algorithm-sha1,False
+1685,vcatalano_py-authorize,vcatalano_py-authorize/tests/test_live_transaction.py,376,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"375         transaction = FULL_CARD_PRESENT_TRANSACTION.copy()
+376         transaction['amount'] = random.randrange(100, 100000) / 100.0
+377         result = Transaction.sale(transaction)",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+346,City-of-Helsinki_respa,City-of-Helsinki_respa/respa_exchange/ews/objs.py,78,0,Use of weak MD5 hash for security. Consider usedforsecurity=False,"77         """"""
+78         return hashlib.md5(self.id.encode(""utf8"")).hexdigest()",HIGH,HIGH,,2,bandit|dlint,bandit,B324,hashlib,bandit:B324|dlint:DUO130,True
+1645,teamsempo_SempoBlockchain,teamsempo_SempoBlockchain/app/server/utils/mock_data.py,211,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"210 
+211                     spend_amount = math.floor(Decimal(random.random()) * sender_balance * 100) / 100
+212",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3393,gramedia-digital-nusantara_midtranspay,gramedia-digital-nusantara_midtranspay/tests/validators_basic_tests.py,33,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"32         # generate a fake dictionary to use as keyword args
+33         kwargs = fake.pydict(randint(5, 10))
+34",LOW,HIGH,,1,bandit,bandit,B311,blacklist,bandit:B311,False
+1652,teamsempo_SempoBlockchain,teamsempo_SempoBlockchain/app/test_app/helpers/mocks.py,42,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"41 
+42         time.sleep(random.random())
+43         return MockBlockchainTasker.get_blockchain_task()",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1413,raiden-network_raiden,raiden-network_raiden/raiden/tests/unit/channel_state/test_channel_deposit.py,64,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"63         block_hash=block_hash,
+64         pseudo_random_generator=random.Random(),
+65     )",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1477,raiden-network_raiden,raiden-network_raiden/raiden/tests/unit/transfer/mediated_transfer/test_mediatorstate.py,401,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"400     payee_secret_known = (""payee_secret_revealed"", ""payee_contract_unlock"", ""payee_balance_proof"")
+401     pseudo_random_generator = random.Random()
+402",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+2455,daedalus_minerva_all_poc,daedalus_minerva_all_poc/tester/reader/test.py,48,5,"insecure use of ""random"" module, prefer ""random.SystemRandom""",,HIGH,,,1,dlint,dlint,DUO102,,dlint:DUO102,False
+3454,ANRGUSC_SDPP,ANRGUSC_SDPP/buyer.py,127,0,"Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature.  Use a modern hash algorithm from the SHA-2, SHA-3, or BLAKE2 family instead.","    :return: True/False
+    """"""
+    hash = MD5.new(message).digest()
+    return seller_public_key.verify(hash, signature)
+
+",MEDIUM,HIGH,CWE-327: Use of a Broken or Risky Cryptographic Algorithm,1,semgrep,semgrep,python.pycryptodome.security.insecure-hash-algorithm-md5.insecure-hash-algorithm-md5,,semgrep:python.pycryptodome.security.insecure-hash-algorithm-md5.insecure-hash-algorithm-md5,False
+318,mgrabovsky_cryptoverif-py-lib,mgrabovsky_cryptoverif-py-lib/crypto.py,112,0,"Use of insecure MD2, MD4, MD5, or SHA1 hash function.","111     ciphertext = public_key.encrypt(message, padding.OAEP(
+112             padding.MGF1(hashes.SHA1()),
+113             hashes.SHA1(),",MEDIUM,HIGH,,3,bandit|dlint|semgrep,bandit,B303,blacklist,bandit:B303|bandit:B303|semgrep:python.cryptography.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1|semgrep:python.cryptography.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1|dlint:DUO134|dlint:DUO134,True
+3271,yazidbouallagui_cyptobox,yazidbouallagui_cyptobox/symetric.py,3,1,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133|dlint:DUO133,False
+314,jamch21_CryptoEngine,jamch21_CryptoEngine/Main/app/cryptoGen.py,163,0,"Use of insecure MD2, MD4, MD5, or SHA1 hash function.","162     #Encrypt the plaintext provided with the loaded public key.
+163     ciphertext=public_key.encrypt(message,padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA1()),
+164                                                 algorithm=hashes.SHA1(),",MEDIUM,HIGH,,3,bandit|dlint|semgrep,bandit,B303,blacklist,bandit:B303|bandit:B303|semgrep:python.cryptography.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1|semgrep:python.cryptography.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1|dlint:DUO134|dlint:DUO134,True
+300,wbond_oscrypto,wbond_oscrypto/oscrypto/_win/trust_list.py,85,0,Use of weak SHA1 hash for security. Consider usedforsecurity=False,"84             data = bytes_from_buffer(context.pbCertEncoded, int(context.cbCertEncoded))
+85             digest = hashlib.sha1(data).digest()
+86             if digest in processed:",HIGH,HIGH,,3,bandit|dlint|semgrep,bandit,B324,hashlib,bandit:B324|semgrep:python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1|dlint:DUO130,True
+3973,balanced_BalBot,balanced_BalBot/app.py,70,0,"Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",,INFO,HIGH,,1,semgrep,semgrep,python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http,request-with-http,semgrep:python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http,False
+993,btclib-org_btclib,btclib-org_btclib/tests/ecc/test_sign_to_contract.py,38,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"37 
+38             nonce = 1 + random.randrange(ec.n - 1)
+39             dsa_sig, R = dsa_commit_sign(commit_msg, msg, prv_key, nonce, ec, hf)",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+795,JJChiDguez_sibc,JJChiDguez_sibc/sibc/bsidh/precompute_parameters.py,138,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"137 
+138     k = random.randint(0, p)
+139     R = Ladder3pt(k, S, T, ST, algo.curve.field(6))",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1220,kunalgupta777_pycryptokg,kunalgupta777_pycryptokg/pycryptokg/asymmetric_crypto.py,131,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"130         ## now select a random integer q such that q > sum(super_sequence)
+131         q = random.randint(sum(super_sequence)+1, 2*sum(super_sequence))
+132",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1707,wbond_oscrypto,wbond_oscrypto/oscrypto/_win/asymmetric.py,1116,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"1115     for _ in range(k):
+1116         a = random.randrange(2, n - 1)
+1117         x = pow(a, s, n)",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+2453,codenerix_django-codenerix-payments,codenerix_django-codenerix-payments/codenerix_payments/models.py,43,1,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133,False
+3974,say2memohitverma_PaymentApi,say2memohitverma_PaymentApi/testing_code.py,29,0,"Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",,INFO,HIGH,,1,semgrep,semgrep,python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http,request-with-http,semgrep:python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http,False
+733,yazidbouallagui_cyptobox,yazidbouallagui_cyptobox/symetric.py,204,0,Use of insecure cipher Crypto.Cipher.Blowfish.new. Replace with a known secure cipher such as AES.,"203     iv = Random.new().read(bs)
+204     cipher = Blowfish.new(my_password, Blowfish.MODE_CBC, iv)
+205     plen = bs - divmod(len(data), bs)[1]",HIGH,HIGH,,2,bandit|semgrep,bandit,B304,blacklist,bandit:B304|semgrep:python.pycryptodome.security.insecure-cipher-algorithm-blowfish.insecure-cipher-algorithm-blowfish,True
+3256,tinydeltas_edcrypto,tinydeltas_edcrypto/edecc/elgamal.py,2,1,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133,False
+1155,ivansarno_EllipticCurvesLibrary,ivansarno_EllipticCurvesLibrary/tests/ecdsa_test.py,64,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"63     public = private.public_key
+64     message = bytearray(random.randrange(1, 10000000))
+65     signature = private.sign(message, utility.generator)",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+922,Sidhant341_contactless-payment-system,Sidhant341_contactless-payment-system/tensorflow_yolo/yolov3/dataset.py,186,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"185             tx = random.uniform(-(max_l_trans - 1), (max_r_trans - 1))
+186             ty = random.uniform(-(max_u_trans - 1), (max_d_trans - 1))
+187",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3258,tinydeltas_edcrypto,tinydeltas_edcrypto/edecc/utils.py,6,1,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133,False
+996,codeadict_alignetpy,codeadict_alignetpy/alignetpy/alignetpy.py,172,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"171         """"""
+172         return ''.join(random.choice(string.digits + string.letters) for _ in range(16))
+173",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1549,reablaz_atomic_tipbot,reablaz_atomic_tipbot/tipman.py,524,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"523         userdata = mongo.users.find_one({""platform"": 'telegram', ""user"": userid})
+524         voucher = ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
+525         voucher_data = {",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1447,raiden-network_raiden,raiden-network_raiden/raiden/tests/unit/test_node_queue.py,66,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"65 def test_withdraw_request_message_cleanup(chain_id, token_network_state):
+66     pseudo_random_generator = random.Random()
+67     block_number = 10",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3025,mozilla_solitude,mozilla_solitude/lib/bango/client.py,198,0,"Call to requests with verify=False disabling SSL certificate checks, security issue.","197                         headers=self.get_headers(request.url, request.headers),
+198                         verify=False)
+199         if response.status_code in FATAL_PROXY_STATUS_CODES:
+200             msg = ('Proxy returned: %s from: %s' %
+201                    (response.status_code, request.url))
+202             log.error(msg)",HIGH,HIGH,,1,bandit,bandit,B501,request_with_no_cert_validation,bandit:B501,False
+141,intelligenia_django-virtual-pos,intelligenia_django-virtual-pos/djangovirtualpos/models.py,981,0,Use of weak SHA1 hash for security. Consider usedforsecurity=False,"980         dlprint(""FIRMA {0}"".format(signature))
+981         return hashlib.sha1(signature).hexdigest()
+982",HIGH,HIGH,,3,bandit|dlint|semgrep,bandit,B324,hashlib,bandit:B324|semgrep:python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1|dlint:DUO130,True
+717,spatialcurrent_geocrypt,spatialcurrent_geocrypt/geocrypt/core.py,133,0,Use of weak MD5 hash for security. Consider usedforsecurity=False,"132     if algorithm == ""md5"":
+133         digest = hashlib.md5(text.encode(""utf-8"")).hexdigest()
+134     elif algorithm == ""sha1"":",HIGH,HIGH,,2,bandit|dlint,bandit,B324,hashlib,bandit:B324|dlint:DUO130,True
+1691,vcatalano_py-authorize,vcatalano_py-authorize/tests/test_live_transaction.py,448,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"447         transaction = FULL_CARD_NOT_PRESENT_TRANSACTION.copy()
+448         transaction['amount'] = random.randrange(100, 100000) / 100.0
+449         result = Transaction.auth(transaction)",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3975,johnjosephhorton_TurkAdmin,johnjosephhorton_TurkAdmin/gae_upload/boto/connection.py,316,0,"The HTTPSConnection API has changed frequently with minor releases of Python. Ensure you are using the API for your version of Python securely. For example, Python 3 versions prior to 3.4.3 will not verify SSL certificates by default. See https://docs.python.org/3/library/http.client.html#http.clien",,WARNING,HIGH,,1,semgrep,semgrep,python.lang.security.audit.httpsconnection-detected.httpsconnection-detected,httpsconnection-detected,semgrep:python.lang.security.audit.httpsconnection-detected.httpsconnection-detected,False
+3425,pkdone_PaymentsWriteReadConcerns,pkdone_PaymentsWriteReadConcerns/payments-records-loader.py,87,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"86         try:
+87             doc_id = f'{randint(0, processor_count-1)}_{randint(0, records_per_process-1)}'
+88",LOW,HIGH,,1,bandit,bandit,B311,blacklist,bandit:B311|bandit:B311,False
+323,mgrabovsky_cryptoverif-py-lib,mgrabovsky_cryptoverif-py-lib/wlskout/crypto.py,112,0,"Use of insecure MD2, MD4, MD5, or SHA1 hash function.","111     ciphertext = public_key.encrypt(message, padding.OAEP(
+112             padding.MGF1(hashes.SHA1()),
+113             hashes.SHA1(),",MEDIUM,HIGH,,3,bandit|dlint|semgrep,bandit,B303,blacklist,bandit:B303|bandit:B303|semgrep:python.cryptography.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1|semgrep:python.cryptography.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1|dlint:DUO134|dlint:DUO134,True
+3976,OpenMined_PySyft,OpenMined_PySyft/packages/syft/src/syft/client/client.py,285,0,"Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",,INFO,HIGH,,1,semgrep,semgrep,python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http,request-with-http,semgrep:python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http,False
+308,Whompithian_css527-project3,Whompithian_css527-project3/algo.py,306,0,"Use of insecure MD2, MD4, MD5, or SHA1 hash function.","305     pad = asymmetric.padding.OAEP(
+306                         mgf=asymmetric.padding.MGF1(algorithm=hashes.SHA1()),
+307                         algorithm=hashes.SHA1(),",MEDIUM,HIGH,,3,bandit|dlint|semgrep,bandit,B303,blacklist,bandit:B303|bandit:B303|semgrep:python.cryptography.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1|semgrep:python.cryptography.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1|dlint:DUO134|dlint:DUO134,True
+2979,knovichikhin_pyemv,knovichikhin_pyemv/pyemv/mac.py,88,0,Use of insecure cipher cryptography.hazmat.primitives.ciphers.algorithms.TripleDES. Replace with a known secure cipher such as AES.,"87     cipher1 = _Cipher(
+88         _algorithms.TripleDES(key1),
+89         _modes.CBC(b""\x00\x00\x00\x00\x00\x00\x00\x00""),",HIGH,HIGH,,1,bandit,bandit,B304,blacklist,bandit:B304,False
+916,Sidhant341_contactless-payment-system,Sidhant341_contactless-payment-system/tensorflow_yolo/yolov3/dataset.py,146,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"145     def random_horizontal_flip(self, image, bboxes):
+146         if random.random() < 0.5:
+147             _, w, _ = image.shape",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3977,JASchilz_pystrike,JASchilz_pystrike/pystrike/charge.py,101,0,"The HTTPSConnection API has changed frequently with minor releases of Python. Ensure you are using the API for your version of Python securely. For example, Python 3 versions prior to 3.4.3 will not verify SSL certificates by default. See https://docs.python.org/3/library/http.client.html#http.clien",,WARNING,HIGH,,1,semgrep,semgrep,python.lang.security.audit.httpsconnection-detected.httpsconnection-detected,httpsconnection-detected,semgrep:python.lang.security.audit.httpsconnection-detected.httpsconnection-detected,False
+3621,binary-signal_crypto-messaging,binary-signal_crypto-messaging/rsa_module.py,174,0,Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.,"    plaintext = private_key.decrypt(ciphertext,
+                                    padding.OAEP(
+                                            mgf=padding.MGF1(algorithm=hashes.SHA1()),
+                                            algorithm=hashes.SHA1(),
+                                            label=None
+",MEDIUM,MEDIUM,CWE-327: Use of a Broken or Risky Cryptographic Algorithm,1,semgrep,semgrep,python.cryptography.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1,,semgrep:python.cryptography.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1|semgrep:python.cryptography.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1,False
+1496,raiden-network_raiden,raiden-network_raiden/raiden/tests/unit/transfer/mediated_transfer/test_mediatorstate.py,1501,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"1500     block_hash = factories.make_block_hash()
+1501     pseudo_random_generator = random.Random()
+1502",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1893,Agasper_django-google-play-check-payment,Agasper_django-google-play-check-payment/oauth2client/crypt.py,141,3,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133|dlint:DUO133,False
+3878,timgabets_pynblock,timgabets_pynblock/pynblock/tools.py,65,0,"Detected DES cipher or Triple DES algorithm which is considered insecure. This algorithm is not cryptographically secure and can be reversed easily. Use a secure symmetric cipher from the cryptodome package instead. Use secure stream ciphers such as ChaCha20, XChaCha20 and Salsa20, or a block cipher such as AES with a block size of 128 bits. When using a block cipher, use a modern mode of operation that also provides authentication, such as GCM.","    Get DES key check value. The key is binary hex e.g. b'DF1267EEDCBA9876'
+    """"""
+    cipher = DES3.new(B2raw(key), DES3.MODE_ECB)
+    encrypted = raw2B(cipher.encrypt(B2raw(b'00000000000000000000000000000000')))
+
+",MEDIUM,HIGH,CWE-327: Use of a Broken or Risky Cryptographic Algorithm,1,semgrep,semgrep,python.pycryptodome.security.insecure-cipher-algorithm-des.insecure-cipher-algorithm-des,,semgrep:python.pycryptodome.security.insecure-cipher-algorithm-des.insecure-cipher-algorithm-des,False
+1469,raiden-network_raiden,raiden-network_raiden/raiden/tests/unit/transfer/mediated_transfer/test_initiatorstate.py,1278,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"1277     block_hash = factories.make_block_hash()
+1278     pseudo_random_generator = random.Random()
+1279     setup = setup_initiator_tests(amount=UNIT_TRANSFER_AMOUNT * 2, block_number=block_number)",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1626,teamsempo_SempoBlockchain,teamsempo_SempoBlockchain/app/server/api/export_api.py,265,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"264 
+265         random_string = ''.join(random.choices(string.ascii_letters, k=5))
+266         export_time = str(datetime.utcnow())",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+2051,SergeyBel_cryptofield,SergeyBel_cryptofield/cryptofield/permutation/permutation.py,1,1,"insecure use of ""random"" module, prefer ""random.SystemRandom""",,HIGH,,,1,dlint,dlint,DUO102,,dlint:DUO102,False
+411,arzuhuseyn_Kapital-Bank-Payment-Gateway,arzuhuseyn_Kapital-Bank-Payment-Gateway/kapital_gateway/base.py,34,0,Certificate verification has been explicitly disabled. This permits insecure connections to insecure servers. Re-enable certification validation.,"    def __post(self, data: str) -> str:
+        headers = {'Content-Type': 'application/xml'} 
+        r = requests.post(
+            f'{self.BASE_URL}:{self.PORT}/Exec',
+            data=data,
+            verify=False,
+            headers=headers,
+            cert=(self.CERT_FILE, self.KEY_FILE)
+        )
+        return r.text
+
+",HIGH,LOW,CWE-295: Improper Certificate Validation,2,dlint|semgrep,semgrep,python.requests.security.disabled-cert-validation.disabled-cert-validation,,semgrep:python.requests.security.disabled-cert-validation.disabled-cert-validation|dlint:DUO123,True
+1294,munisisazade_millikart-python,munisisazade_millikart-python/payment.py,40,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"39     def generate_code(self, size=20, chars=string.ascii_uppercase + string.digits):
+40         return ''.join(random.choice(chars) for _ in range(size))
+41",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1964,JUNICHIFUJIO_CryptoTests,JUNICHIFUJIO_CryptoTests/FinalMain.py,60,1,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133,False
+333,66ru_payback,66ru_payback/cashflow/backends/robokassa_backend.py,23,0,Use of weak MD5 hash for security. Consider usedforsecurity=False,"22     param_str = "":"".join([str(a) for a in args])
+23     return md5(param_str).hexdigest()
+24",HIGH,HIGH,,2,bandit|dlint,bandit,B324,hashlib,bandit:B324|dlint:DUO130,True
+1917,CommanderSnuggle_RSA,CommanderSnuggle_RSA/signer.py,6,1,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133,False
+1358,openlabs_payment-gateway-authorize-net,openlabs_payment-gateway-authorize-net/tests/test_transaction.py,434,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"433                     'gateway': self.auth_net_gateway.id,
+434                     'amount': random.randint(6, 10),
+435                 }])",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3978,raiden-network_raiden,raiden-network_raiden/raiden/utils/http.py,82,0,"The HTTPSConnection API has changed frequently with minor releases of Python. Ensure you are using the API for your version of Python securely. For example, Python 3 versions prior to 3.4.3 will not verify SSL certificates by default. See https://docs.python.org/3/library/http.client.html#http.clien",,WARNING,HIGH,,1,semgrep,semgrep,python.lang.security.audit.httpsconnection-detected.httpsconnection-detected,httpsconnection-detected,semgrep:python.lang.security.audit.httpsconnection-detected.httpsconnection-detected,False
+3085,prakashcc_HashPay,prakashcc_HashPay/swirld.py,5,1,"insecure use of ""random"" module, prefer ""random.SystemRandom""",,HIGH,,,1,dlint,dlint,DUO102,,dlint:DUO102,False
+3409,kuan51_pylihim,kuan51_pylihim/util/crypto.py,109,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"108     # generate random bits
+109     p = getrandbits(length)
+110     # apply a mask to set MSB and LSB to 1",LOW,HIGH,,1,bandit,bandit,B311,blacklist,bandit:B311,False
+3365,boppreh_simplecrypto,boppreh_simplecrypto/simplecrypto/key.py,209,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"208     """"""
+209     session_key_bytes = random(AES.block_size)
+210     session_key = AesKey(session_key_bytes)",LOW,HIGH,,1,bandit,bandit,B311,blacklist,bandit:B311,False
+3161,reyamag_RSA_Implementation,reyamag_RSA_Implementation/signandverify.py,7,1,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133|dlint:DUO133,False
+1446,raiden-network_raiden,raiden-network_raiden/raiden/tests/unit/test_node_queue.py,50,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"49         recipient_metadata=None,
+50         message_identifier=random.randint(0, 2**16),
+51         secret=secret,",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1752,TwistoPayments_pycsob,TwistoPayments_pycsob/pycsob/utils.py,22,0,"Use of insecure MD2, MD4, MD5, or SHA1 hash function.","21     key = RSA.importKey(open(keyfile).read())
+22     h = SHA.new(msg)
+23     signer = PKCS1_v1_5.new(key)",MEDIUM,HIGH,,2,bandit|semgrep,bandit,B303,blacklist,bandit:B303|semgrep:python.pycryptodome.security.insecure-hash-algorithm.insecure-hash-algorithm-sha1,True
+1526,raiden-network_raiden,raiden-network_raiden/raiden/tests/utils/factories.py,174,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"173 def make_uint256() -> int:
+174     return random.randint(0, UINT256_MAX)
+175",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3296,Doug-Richardson_Combined-Cryptography-,Doug-Richardson_Combined-Cryptography-/Cryptogrophy_Combined_Richardson.py,165,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"164         while (r == 0 and s == 0):
+165             k = rand.randint(1, n-1)
+166             p = multpoint(k, G, C)",LOW,HIGH,,1,bandit,bandit,B311,blacklist,bandit:B311,False
+3456,ANRGUSC_SDPP,ANRGUSC_SDPP/seller.py,76,0,"Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature.  Use a modern hash algorithm from the SHA-2, SHA-3, or BLAKE2 family instead.","    :return: signature<Tuple>
+    """"""
+    hash = MD5.new(plaintext).digest()
+    signature = key.sign(hash, '')
+    return signature
+",MEDIUM,HIGH,CWE-327: Use of a Broken or Risky Cryptographic Algorithm,1,semgrep,semgrep,python.pycryptodome.security.insecure-hash-algorithm-md5.insecure-hash-algorithm-md5,,semgrep:python.pycryptodome.security.insecure-hash-algorithm-md5.insecure-hash-algorithm-md5,False
+1483,raiden-network_raiden,raiden-network_raiden/raiden/tests/unit/transfer/mediated_transfer/test_mediatorstate.py,688,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"687 def secret_learned_setup():
+688     pseudo_random_generator = random.Random()
+689     channels = mediator_make_channel_pair()",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+837,Muthupandi1306_cryptopy,Muthupandi1306_cryptopy/MRT.py,27,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"26     def __millerTest(self,d,n):
+27         a = 2 + random.randint(1, n - 4)
+28         x = self.power(a, d, n)",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3979,reablaz_atomic_tipbot,reablaz_atomic_tipbot/tipman.py,309,0,"Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",,INFO,MEDIUM,,1,semgrep,semgrep,python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http,request-with-http,semgrep:python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http,False
+2001,OpenMined_PySyft,OpenMined_PySyft/notebooks/scenarios/bigquery/upgradability/0.9.1_helpers/job_helpers.py,136,23,"insecure use of ""random"" module, prefer ""random.SystemRandom""",,HIGH,,,1,dlint,dlint,DUO102,,dlint:DUO102,False
+231,pretix_pretix-adyen,pretix_pretix-adyen/pretix_adyen/payment.py,381,0,Use of weak SHA1 hash for security. Consider usedforsecurity=False,"380                     'payment': payment.pk,
+381                     'hash': hashlib.sha1(payment.order.secret.lower().encode()).hexdigest(),
+382                 }),",HIGH,HIGH,,3,bandit|dlint|semgrep,bandit,B324,hashlib,bandit:B324|semgrep:python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1|dlint:DUO130,True
+3659,eruina_laffka,eruina_laffka/app/routes.py,116,0,"This code uses a 224-bit hash function, which is deprecated or disallowed in some security policies. Consider updating to a stronger hash function such as SHA-384 or higher to ensure compliance and security.","    if 'adminkey' not in session:
+        abort(404)
+    elif (session['adminkey']!=hashlib.sha224(configuration.Configuration.secret_key.encode('utf-8')).hexdigest()):
+        abort(404)
+    session['adminkey']=''
+",MEDIUM,HIGH,CWE-327: Use of a Broken or Risky Cryptographic Algorithm,1,semgrep,semgrep,python.lang.security.audit.sha224-hash.sha224-hash,,semgrep:python.lang.security.audit.sha224-hash.sha224-hash,False
+3272,yazidbouallagui_cyptobox,yazidbouallagui_cyptobox/symetric.py,6,1,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133|dlint:DUO133|dlint:DUO133,False
+1533,raiden-network_raiden,raiden-network_raiden/raiden/tests/utils/factories.py,214,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"213 def make_block_timeout() -> BlockTimeout:
+214     return BlockTimeout(random.randint(0, UINT256_MAX))
+215",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+2972,jsbitcoin_bpp-client,jsbitcoin_bpp-client/lib/interface.py,333,0,"certificate verification explicitly disabled, insecure connections possible","
+                    try:
+                        s = ssl.wrap_socket(s, ssl_version=ssl.PROTOCOL_SSLv3, cert_reqs=ssl.CERT_NONE, ca_certs=None)
+                    except ssl.SSLError, e:
+                        print_error(""SSL error retrieving SSL certificate:"", self.host, e)
+",HIGH,MEDIUM,CWE-295: Improper Certificate Validation,1,semgrep,semgrep,python.lang.security.audit.network.disabled-cert-validation.disabled-cert-validation,,semgrep:python.lang.security.audit.network.disabled-cert-validation.disabled-cert-validation|semgrep:python.lang.security.audit.ssl-wrap-socket-is-deprecated.ssl-wrap-socket-is-deprecated|semgrep:python.lang.security.audit.weak-ssl-version.weak-ssl-version,False
+3980,OpenMined_PySyft,OpenMined_PySyft/packages/syft/src/syft/client/registry.py,273,0,"Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",,INFO,HIGH,,1,semgrep,semgrep,python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http,request-with-http,semgrep:python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http,False
+384,S3Infosoft_mvr-payments,S3Infosoft_mvr-payments/app/model.py,138,0,Use of weak MD5 hash for security. Consider usedforsecurity=False,"137     def __encrypt__(self,password):
+138         h = hashlib.md5(password.encode())
+139         return h.hexdigest()",HIGH,HIGH,,2,bandit|dlint,bandit,B324,hashlib,bandit:B324|dlint:DUO130,True
+3026,mozvat_PaymentBOT,mozvat_PaymentBOT/lib/requests/packages/urllib3/contrib/pyopenssl.py,74,5,"insecure ""ssl"" module attribute use",,HIGH,,,1,dlint,dlint,DUO122,,dlint:DUO122,False
+1060,fbenke_BeamPay,fbenke_BeamPay/referral/utils.py,6,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"5 def generate_referral_code(size=6, chars=string.ascii_uppercase):
+6     return ''.join(random.choice(chars) for _ in range(size))",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1601,shaojianyong_wx_payment_agent,shaojianyong_wx_payment_agent/wx_pay/refund/wx_refund_query.py,49,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"48             'mch_id': wx_merchant.MCH_SPID,
+49             'nonce_str': '%s%d' % (datetime.now().strftime('%Y%m%d%H%M%S%f'), random.randint(10000000, 99999999)),
+50             'out_trade_no': self.order_id,",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+2471,elessarelfstone_tcomapi,elessarelfstone_tcomapi/tasks/companies.py,29,1,"""urllib3"" warnings disabled, insecure connections possible",,HIGH,,,1,dlint,dlint,DUO131,,dlint:DUO131,False
+3120,raiden-network_raiden,raiden-network_raiden/raiden/transfer/mediated_transfer/initiator_manager.py,164,30,"insecure use of ""random"" module, prefer ""random.SystemRandom""",,HIGH,,,1,dlint,dlint,DUO102,,dlint:DUO102,False
+3448,wadobo_congressus,wadobo_congressus/congressus/dashboard/views.py,132,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"131         for x in range(3):
+132             rand.append(randint(0, 255))
+133         if extra_alpha:",LOW,HIGH,,1,bandit,bandit,B311,blacklist,bandit:B311,False
+3094,raiden-network_raiden,raiden-network_raiden/raiden/storage/serialization/schemas.py,1,1,"insecure use of ""random"" module, prefer ""random.SystemRandom""",,HIGH,,,1,dlint,dlint,DUO102,,dlint:DUO102,False
+910,SergeyBel_cryptofield,SergeyBel_cryptofield/cryptofield/ffield/ffield.py,410,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"409     if (maxDegree < 31):
+410       return random.randint(nonZero != 0,(1<<maxDegree)-1)
+411     else:",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1219,kunalgupta777_pycryptokg,kunalgupta777_pycryptokg/pycryptokg/asymmetric_crypto.py,127,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"126             sum_so_far = sum(super_sequence)
+127             element = random.randint(sum_so_far+1, 2*sum_so_far)
+128             super_sequence.append(element)",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+669,river291_weichatpay,river291_weichatpay/lib/wxpay_data.py,84,0,Use of weak MD5 hash for security. Consider usedforsecurity=False,"83         # 签名步骤三：MD5加密
+84         wx_string = hashlib.md5(wx_string.encode('utf-8')).hexdigest()
+85         # 签名步骤四：所有字符转为大写",HIGH,HIGH,,2,bandit|dlint,bandit,B324,hashlib,bandit:B324|dlint:DUO130,True
+3124,raiden-network_raiden,raiden-network_raiden/raiden/transfer/mediated_transfer/initiator_manager.py,421,30,"insecure use of ""random"" module, prefer ""random.SystemRandom""",,HIGH,,,1,dlint,dlint,DUO102,,dlint:DUO102,False
+1114,hallgrimur1471_cryptography_exploits,hallgrimur1471_cryptography_exploits/src/drvn/cryptography_challenges/s03_c17_the_cbc_padding_oracle.py,83,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"82     def get_ciphertext(self):
+83         random_secret = random.choice(self._secrets)
+84         ciphertext = aes.encrypt_cbc(",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1640,teamsempo_SempoBlockchain,teamsempo_SempoBlockchain/app/server/utils/mock_data.py,152,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"151     # A fixed likelihood that this user will actually make a purchase if selected.
+152     behavior['spend_probability'] = random.random()
+153",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3981,johnjosephhorton_Hagglebot,johnjosephhorton_Hagglebot/gae_upload/boto/connection.py,316,0,"The HTTPSConnection API has changed frequently with minor releases of Python. Ensure you are using the API for your version of Python securely. For example, Python 3 versions prior to 3.4.3 will not verify SSL certificates by default. See https://docs.python.org/3/library/http.client.html#http.clien",,WARNING,HIGH,,1,semgrep,semgrep,python.lang.security.audit.httpsconnection-detected.httpsconnection-detected,httpsconnection-detected,semgrep:python.lang.security.audit.httpsconnection-detected.httpsconnection-detected,False
+1649,teamsempo_SempoBlockchain,teamsempo_SempoBlockchain/app/server/utils/mock_data.py,232,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"231 
+232             recipient_user, _ = random.choice(users_by_location[recipient_loc])
+233",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+838,Muthupandi1306_cryptopy,Muthupandi1306_cryptopy/MRT.py,59,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"58     def generate_random_prime(self):
+59         value=random.randint(math.pow(10,3), math.pow(10,6))
+60         iteration=20",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1590,seyijava_PaymentProcessorAPIGateway,seyijava_PaymentProcessorAPIGateway/src/services/TransactionService.py,103,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"102                   cardList = ['VISA','MASTER','AMEX','DISCOVERY']
+103                   cardtype = random.choice(cardList)
+104",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+917,Sidhant341_contactless-payment-system,Sidhant341_contactless-payment-system/tensorflow_yolo/yolov3/dataset.py,154,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"153     def random_crop(self, image, bboxes):
+154         if random.random() < 0.5:
+155             h, w, _ = image.shape",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1497,raiden-network_raiden,raiden-network_raiden/raiden/tests/unit/transfer/mediated_transfer/test_mediatorstate.py,1586,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"1585 def test_mediator_lock_expired_with_receive_lock_expired():
+1586     pseudo_random_generator = random.Random()
+1587",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1207,jsbitcoin_bpp-client,jsbitcoin_bpp-client/lib/pybitcointools.py,287,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"286     # Gotta be secure after that java.SecureRandom fiasco...
+287     entropy = os.urandom(32)+str(random.randrange(2**256))+str(int(time.time())**7)
+288     return sha256(entropy)",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1116,hallgrimur1471_cryptography_exploits,hallgrimur1471_cryptography_exploits/src/drvn/cryptography_challenges/s03_c22_crack_an_mt19937_seed.py,25,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"24     logging.info(""Waiting a bit ..."")
+25     time.sleep(random.randint(5, 15))
+26",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3293,DiegoMagg_pyrecard,DiegoMagg_pyrecard/pyrecard/test/mock.py,85,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"84     '''
+85     code = ''.join(choices('ABCDEF1234567890', k=10))
+86     return {",LOW,HIGH,,1,bandit,bandit,B311,blacklist,bandit:B311,False
+560,kellydosocorro_Cryptography-Algorithms,kellydosocorro_Cryptography-Algorithms/3DEScomPBKDF2.py,50,0,Use of insecure cipher cryptography.hazmat.primitives.ciphers.algorithms.TripleDES. Replace with a known secure cipher such as AES.,"49 def Triple_DES_ECB(chave):
+50     return Cipher(algorithms.TripleDES(chave), modes.ECB(), backend=default_backend())
+51",HIGH,HIGH,,2,bandit|dlint,bandit,B304,blacklist,bandit:B304|bandit:B305|dlint:DUO134,True
+3982,burhan_e24PaymentPipe,burhan_e24PaymentPipe/e24PaymentPipe/e24PaymentPipe.py,160,0,"Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",,INFO,MEDIUM,,1,semgrep,semgrep,python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http,request-with-http,semgrep:python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http,False
+1720,DM20911_cryptographyCipherCBC_OFB_CFB_ECB,DM20911_cryptographyCipherCBC_OFB_CFB_ECB/cryptographyCipherCBC_OFB_CFB_ECB.py,15,0,Use of insecure cipher mode cryptography.hazmat.primitives.ciphers.modes.ECB.,"14 cipherCFB = Cipher(algorithms.AES(key), modes.CFB(iv), backend=backend)
+15 cipherECB = Cipher(algorithms.AES(key), modes.ECB(), backend=backend)
+16",MEDIUM,HIGH,,2,bandit|dlint,bandit,B305,blacklist,bandit:B305|dlint:DUO134,True
+1836,knovichikhin_psec,knovichikhin_psec/psec/aes.py,95,0,Use of insecure cipher mode cryptography.hazmat.primitives.ciphers.modes.ECB.,"94 
+95     cipher = _Cipher(_algorithms.AES(key), _modes.ECB(), backend=_default_backend())
+96     return cipher.encryptor().update(data)",MEDIUM,HIGH,,2,bandit|dlint,bandit,B305,blacklist,bandit:B305|dlint:DUO134,True
+2435,binoymvas_payment-engine,binoymvas_payment-engine/card_crypt.py,12,1,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133|dlint:DUO133,False
+773,ChanMo_django-payment-cn,ChanMo_django-payment-cn/payment/models.py,35,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"34         wxa = Wxa()
+35         number = '{}{}'.format(number, random.randint(1000,9999)) # 随机数
+36         data = {",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+741,AustinAkerley_crypto,AustinAkerley_crypto/crypto/cryptanalysis/unit_test/test_bsgs.py,34,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"33             for j in range(1, 10):
+34                 g = random.randint(2, prime-1)
+35                 for i in range(1, 10):",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+2927,intelligenia_django-virtual-pos,intelligenia_django-virtual-pos/djangovirtualpos/models.py,31,1,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133|dlint:DUO133,False
+595,michalwerner_django-payu-payments,michalwerner_django-payu-payments/payu/api.py,31,0,Use of weak MD5 hash for security. Consider usedforsecurity=False,"30     second_md5_key = payu_settings.PAYU_SECOND_MD5_KEY.encode('utf-8')
+31     expected_signature = hashlib.md5(request.body + second_md5_key).hexdigest()
+32     if incoming_signature != expected_signature:",HIGH,HIGH,,2,bandit|dlint,bandit,B324,hashlib,bandit:B324|dlint:DUO130,True
+299,wbond_oscrypto,wbond_oscrypto/oscrypto/_mac/trust_list.py,202,0,Use of weak SHA1 hash for security. Consider usedforsecurity=False,"201         der_cert = CFHelpers.cf_data_to_bytes(data_pointer)
+202         cert_hash = hashlib.sha1(der_cert).digest()
+203",HIGH,HIGH,,3,bandit|dlint|semgrep,bandit,B324,hashlib,bandit:B324|semgrep:python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1|dlint:DUO130,True
+3309,HarryR_solcrypto,HarryR_solcrypto/pysolcrypto/altbn128.py,12,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"11 
+12 randsn = lambda: randint(1, curve_order - 1)
+13 randsp = lambda: randint(1, field_modulus - 1)",LOW,HIGH,,1,bandit,bandit,B311,blacklist,bandit:B311|bandit:B311,False
+451,cuchac_thepay,cuchac_thepay/thepay/payment.py,307,0,Use of weak MD5 hash for security. Consider usedforsecurity=False,"306         # this interface is using deprecated md5 hashing
+307         return hashlib.md5(params).hexdigest()
+308",HIGH,HIGH,,2,bandit|dlint,bandit,B324,hashlib,bandit:B324|dlint:DUO130,True
+2949,jbq_payment_paybox,jbq_payment_paybox/paybox_signature.py,6,1,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133,False
+1977,NataliaDeriuzhova_generate_cloud_payments_cryptogram,NataliaDeriuzhova_generate_cloud_payments_cryptogram/generate_cloud_payments_cryptogram/generate_cloud_payments_cryptogram.py,4,1,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133|dlint:DUO133,False
+1920,D-Thatcher_HybridCryptoSystem,D-Thatcher_HybridCryptoSystem/AsymmetricEncryption.py,1,1,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133|dlint:DUO133,False
+2044,Quantosec_QuantoCrypt-py,Quantosec_QuantoCrypt-py/src/QuantoCrypt/cipher.py,6,1,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133,False
+1616,smukhidev_python-package,smukhidev_python-package/shurjopay/shurjoPay.py,35,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"34     letters = string.ascii_lowercase
+35     return ''.join(random.choice(letters) for i in range(string_length))",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+953,adrijanik_junction-mobilepay,adrijanik_junction-mobilepay/get_contacts.py,17,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"16     for i in range(0,n):
+17         type_of = random.choice([0,1])
+18         contact = contacts[random.choice(contacts.keys())]",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1291,mgrabovsky_cryptoverif-py-lib,mgrabovsky_cryptoverif-py-lib/wlskout/base.py,65,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"64     """"""
+65     return random.choice(xs)
+66",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+2975,knovichikhin_psec,knovichikhin_psec/psec/des.py,156,0,Use of insecure cipher cryptography.hazmat.primitives.ciphers.algorithms.TripleDES. Replace with a known secure cipher such as AES.,"155     cipher = _Cipher(
+156         _algorithms.TripleDES(key),
+157         _modes.CBC(iv),",HIGH,HIGH,,1,bandit,bandit,B304,blacklist,bandit:B304,False
+2007,OpenMined_PySyft,OpenMined_PySyft/packages/syft/src/syft/util/test_helpers/job_helpers.py,104,13,"insecure use of ""random"" module, prefer ""random.SystemRandom""",,HIGH,,,1,dlint,dlint,DUO102,,dlint:DUO102,False
+1908,Blazzerrr_PaymentCheckout,Blazzerrr_PaymentCheckout/paymentcheckout/WebMoneyCheck.py,27,52,"insecure ""ssl"" module attribute use",,HIGH,,,1,dlint,dlint,DUO122,,dlint:DUO122,False
+561,knovichikhin_psec,knovichikhin_psec/psec/des.py,112,0,Use of insecure cipher cryptography.hazmat.primitives.ciphers.algorithms.TripleDES. Replace with a known secure cipher such as AES.,"111     cipher = _Cipher(
+112         _algorithms.TripleDES(key), _modes.ECB(), backend=_default_backend()
+113     )",HIGH,HIGH,,2,bandit|dlint,bandit,B304,blacklist,bandit:B304|bandit:B305|dlint:DUO134,True
+667,raiden-network_raiden,raiden-network_raiden/tools/debugging/json-log-to-html.py,451,0,Use of weak MD5 hash for security. Consider usedforsecurity=False,"450     color_value = (
+451         int.from_bytes(hashlib.md5(str(obj).encode(""utf-8"")).digest(), ""little"") % 0xFFFFFF
+452     )",HIGH,HIGH,,2,bandit|dlint,bandit,B324,hashlib,bandit:B324|dlint:DUO130,True
+840,Muthupandi1306_cryptopy,Muthupandi1306_cryptopy/publickey.py,33,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"32         pin=(p-1)*(q-1)
+33         e=random.randint(1,pin)
+34         while self.__gcd(e,pin)!=1:",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|bandit:B311|dlint:DUO102|dlint:DUO102,True
+1204,jsbitcoin_bpp-client,jsbitcoin_bpp-client/lib/network.py,36,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"35 def pick_random_server(p='s'):
+36     return random.choice( filter_protocol(DEFAULT_SERVERS,p) )
+37",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3131,raiden-network_raiden,raiden-network_raiden/raiden/transfer/mediated_transfer/mediator.py,930,30,"insecure use of ""random"" module, prefer ""random.SystemRandom""",,HIGH,,,1,dlint,dlint,DUO102,,dlint:DUO102,False
+1378,orancanoren_cryptoran,orancanoren_cryptoran/cryptoran/packages/Utils.py,53,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"52 def randomNumber(bitLength):
+53     return random.randint((1 << bitLength - 1) + 1, (1 << bitLength))
+54",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+1433,raiden-network_raiden,raiden-network_raiden/raiden/tests/unit/channel_state/test_withdraw.py,101,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"100 def test_receive_withdraw_request():
+101     pseudo_random_generator = random.Random()
+102",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3730,fsiwi-hka_coffeesale,fsiwi-hka_coffeesale/httpsclient.py,45,0,"'ssl.wrap_socket()' is deprecated. This function creates an insecure socket without server name indication or hostname matching. Instead, create an SSL context using 'ssl.SSLContext()' and use that to wrap a socket.","    def connect(self):
+        sock = socket.create_connection((self.host, self.port))
+        self.sock = ssl.wrap_socket(sock, keyfile=self.key_file, certfile=self.cert_file, cert_reqs=self.cert_reqs, ca_certs=self.ca_certs)
+        if self.cert_reqs & ssl.CERT_REQUIRED:
+            cert = self.sock.getpeercert()
+",MEDIUM,MEDIUM,CWE-326: Inadequate Encryption Strength,1,semgrep,semgrep,python.lang.security.audit.ssl-wrap-socket-is-deprecated.ssl-wrap-socket-is-deprecated,,semgrep:python.lang.security.audit.ssl-wrap-socket-is-deprecated.ssl-wrap-socket-is-deprecated,False
+449,click-llc_click-integration-django,click-llc_click-integration-django/click/utils.py,51,0,Use of weak MD5 hash for security. Consider usedforsecurity=False,"50     )
+51     encoder = hashlib.md5(signString.encode('utf-8'))
+52     signString = encoder.hexdigest()",HIGH,HIGH,,2,bandit|dlint,bandit,B324,hashlib,bandit:B324|dlint:DUO130,True
+244,pretix_pretix-mollie,pretix_pretix-mollie/pretix_mollie/views.py,494,0,Use of weak SHA1 hash for security. Consider usedforsecurity=False,"493             if (
+494                 hashlib.sha1(self.order.secret.lower().encode()).hexdigest()
+495                 != kwargs[""hash""].lower()",HIGH,HIGH,,3,bandit|dlint|semgrep,bandit,B324,hashlib,bandit:B324|semgrep:python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1|dlint:DUO130,True
+83,boppreh_simplecrypto,boppreh_simplecrypto/simplecrypto/hashes.py,19,0,Use of weak SHA1 hash for security. Consider usedforsecurity=False,"18     """"""
+19     return hashlib.sha1(to_bytes(message)).hexdigest()
+20",HIGH,HIGH,,3,bandit|dlint|semgrep,bandit,B324,hashlib,bandit:B324|semgrep:python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1|dlint:DUO130,True
+313,bandoche_PyPinkSign,bandoche_PyPinkSign/pypinksign/pypinksign.py,415,0,"Use of insecure MD2, MD4, MD5, or SHA1 hash function.","414         kdf = PBKDF2HMAC(
+415             algorithm=hashes.SHA1(),
+416             length=16,",MEDIUM,HIGH,,3,bandit|dlint|semgrep,bandit,B303,blacklist,bandit:B303|semgrep:python.cryptography.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1|dlint:DUO134,True
+2012,PengZhenfeng_Goods-Payment-System-Base-On-YoloV3,PengZhenfeng_Goods-Payment-System-Base-On-YoloV3/YOLOv3_TensorFlow-master/utils/misc_utils.py,33,5,"insecure use of ""random"" module, prefer ""random.SystemRandom""",,HIGH,,,1,dlint,dlint,DUO102,,dlint:DUO102,False
+802,JJChiDguez_sibc,JJChiDguez_sibc/sibc/montgomery/curve.py,648,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"647             """""" issupersingular() verifies supersingularity """"""
+648             x = field(random.randint(1, p))
+649             T = [x, field(1)]",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3376,emesik_mamona,emesik_mamona/test-project/sales/tests.py,16,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"15 		i = 1
+16 		while i <= randint(1,10):
+17 			self.o1.item_set.create(",LOW,HIGH,,1,bandit,bandit,B311,blacklist,bandit:B311,False
+1375,orancanoren_cryptoran,orancanoren_cryptoran/cryptoran/packages/Encoding.py,58,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"57         if self.k1 == None:
+58             self.k1 = random.randrange(1 << 127, (1 << 128) - 1)
+59         if self.blockLength == None:",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3475,Gubbi_trackr,Gubbi_trackr/lib/httplib2/__init__.py,79,0,"'ssl.wrap_socket()' is deprecated. This function creates an insecure socket without server name indication or hostname matching. Instead, create an SSL context using 'ssl.SSLContext()' and use that to wrap a socket.","        # doesn't expose the necessary knobs. So we need to go with the default
+        # of SSLv23.
+        return ssl.wrap_socket(sock, keyfile=key_file, certfile=cert_file,
+                               cert_reqs=cert_reqs, ca_certs=ca_certs)
+except (AttributeError, ImportError):
+    ssl_SSLError = None
+",MEDIUM,MEDIUM,CWE-326: Inadequate Encryption Strength,1,semgrep,semgrep,python.lang.security.audit.ssl-wrap-socket-is-deprecated.ssl-wrap-socket-is-deprecated,,semgrep:python.lang.security.audit.ssl-wrap-socket-is-deprecated.ssl-wrap-socket-is-deprecated,False
+1544,raiden-network_raiden,raiden-network_raiden/raiden/transfer/utils/__init__.py,44,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"43     # JSON serializes a tuple as a list
+44     pseudo_random_generator = random.Random()
+45     state = list(data[""pseudo_random_generator""])  # copy",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+724,v0y_django-fortumo,v0y_django-fortumo/fortumo/utils.py,23,0,Use of weak MD5 hash for security. Consider usedforsecurity=False,"22 
+23     return hashlib.md5(calculation_string.encode('utf-8')).hexdigest()
+24",HIGH,HIGH,,2,bandit|dlint,bandit,B324,hashlib,bandit:B324|dlint:DUO130,True
+1419,raiden-network_raiden,raiden-network_raiden/raiden/tests/unit/channel_state/test_coop_settle.py,117,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"116 def test_initiate():
+117     pseudo_random_generator = random.Random()
+118",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3133,raiden-network_raiden,raiden-network_raiden/raiden/transfer/mediated_transfer/mediator.py,1042,30,"insecure use of ""random"" module, prefer ""random.SystemRandom""",,HIGH,,,1,dlint,dlint,DUO102,,dlint:DUO102,False
+3294,Doug-Richardson_Combined-Cryptography-,Doug-Richardson_Combined-Cryptography-/Cryptogrophy_Combined_Richardson.py,128,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"127         for q in range(0,100000):
+128             a = rand.randint(0,n-1)
+129             x = rand.randint(0,n-1)",LOW,HIGH,,1,bandit,bandit,B311,blacklist,bandit:B311,False
+3116,raiden-network_raiden,raiden-network_raiden/raiden/transfer/mediated_transfer/initiator.py,498,30,"insecure use of ""random"" module, prefer ""random.SystemRandom""",,HIGH,,,1,dlint,dlint,DUO102,,dlint:DUO102,False
+594,membermatters_MemberMatters,membermatters_MemberMatters/memberportal/access/models.py,278,0,Use of weak MD5 hash for security. Consider usedforsecurity=False,"277             authorised_tags,
+278             hashlib.md5(str(authorised_tags).encode(""utf-8"")).hexdigest(),
+279         )",HIGH,HIGH,,2,bandit|dlint,bandit,B324,hashlib,bandit:B324|dlint:DUO130,True
+3622,codeadict_alignetpy,codeadict_alignetpy/alignetpy/alignetpy.py,221,0,"Detected DES cipher or Triple DES algorithm which is considered insecure. This algorithm is not cryptographically secure and can be reversed easily. Use a secure symmetric cipher from the cryptodome package instead. Use secure stream ciphers such as ChaCha20, XChaCha20 and Salsa20, or a block cipher such as AES with a block size of 128 bits. When using a block cipher, use a modern mode of operation that also provides authentication, such as GCM.","        text += chr(padding) * padding
+
+        des3 = DES3.new(key, DES3.MODE_CBC, binvector)
+        crypttext = base64.b64encode(des3.encrypt(text))
+
+",MEDIUM,HIGH,CWE-327: Use of a Broken or Risky Cryptographic Algorithm,1,semgrep,semgrep,python.pycryptodome.security.insecure-cipher-algorithm-des.insecure-cipher-algorithm-des,,semgrep:python.pycryptodome.security.insecure-cipher-algorithm-des.insecure-cipher-algorithm-des,False
+3114,raiden-network_raiden,raiden-network_raiden/raiden/transfer/mediated_transfer/initiator.py,378,30,"insecure use of ""random"" module, prefer ""random.SystemRandom""",,HIGH,,,1,dlint,dlint,DUO102,,dlint:DUO102,False
+857,OpenMined_PySyft,OpenMined_PySyft/tests/scenariosv2/flows/user_bigquery_api.py,42,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"41     # Randomly define a func_name a function to call
+42     func_name = ""invalid_func"" if random.random() < 0.5 else ""test_query""
+43",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+3074,onel_mobilpy,onel_mobilpy/mobilpy/__init__.py,15,1,"use of ""Crypto"" module is insecure",,HIGH,,,1,dlint,dlint,DUO133,,dlint:DUO133|dlint:DUO133|dlint:DUO133,False
+3983,OpenMined_PySyft,OpenMined_PySyft/packages/syft/src/syft/client/client.py,317,0,"Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",,INFO,HIGH,,1,semgrep,semgrep,python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http,request-with-http,semgrep:python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http,False
+1706,wadobo_congressus,wadobo_congressus/congressus/tickets/views.py,681,0,Standard pseudo-random generators are not suitable for security/cryptographic purposes.,"680                 # template=template,
+681                 space=random.choice(list(Space.objects.all())),
+682                 start=timezone.now(),",LOW,HIGH,,2,bandit|dlint,bandit,B311,blacklist,bandit:B311|dlint:DUO102,True
+195,mozvat_PaymentBOT,mozvat_PaymentBOT/lib/requests/auth.py,120,0,Use of weak SHA1 hash for security. Consider usedforsecurity=False,"119 
+120         cnonce = (hashlib.sha1(s).hexdigest()[:16])
+121         noncebit = ""%s:%s:%s:%s:%s"" % (nonce, ncvalue, cnonce, qop, HA2)",HIGH,HIGH,,3,bandit|dlint|semgrep,bandit,B324,hashlib,bandit:B324|semgrep:python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1|dlint:DUO130,True

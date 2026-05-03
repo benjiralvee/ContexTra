@@ -1,0 +1,3408 @@
+[
+  {
+    "issue_id": "1720",
+    "repo_name": "DM20911_cryptographyCipherCBC_OFB_CFB_ECB",
+    "filename": "DM20911_cryptographyCipherCBC_OFB_CFB_ECB/cryptographyCipherCBC_OFB_CFB_ECB.py",
+    "line_number": 15,
+    "function_name": "<module>",
+    "status": "success",
+    "tool": "jarviscg_complete",
+    "call_graph_context": {
+      "function": "<module>",
+      "matched_key": null,
+      "callers": [],
+      "callees": [],
+      "caller_count": 0,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": [],
+      "warning": "Function not found in call graph"
+    },
+    "full_callgraph_size": 10,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": false
+    }
+  },
+  {
+    "issue_id": "cg_DM20911_cryptographyCipherCBC_OFB_CFB_ECB_cryptographyCipherCBC_OFB_CFB_ECB",
+    "repo_name": "DM20911_cryptographyCipherCBC_OFB_CFB_ECB",
+    "filename": "cryptographyCipherCBC_OFB_CFB_ECB.py",
+    "line_number": 0,
+    "function_name": "cryptographyCipherCBC_OFB_CFB_ECB",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "cryptographyCipherCBC_OFB_CFB_ECB",
+      "matched_key": "cryptographyCipherCBC_OFB_CFB_ECB",
+      "callers": [],
+      "callees": [
+        "<builtin>.print",
+        "cryptography.hazmat.primitives.ciphers.modes.ECB",
+        "<int>.to_bytes",
+        "cryptography.hazmat.primitives.ciphers.modes.CBC",
+        "cryptography.hazmat.primitives.ciphers.modes.CFB",
+        "cryptography.hazmat.primitives.ciphers.modes.OFB",
+        "cryptography.hazmat.primitives.ciphers.Cipher",
+        "cryptography.hazmat.primitives.ciphers.algorithms.AES",
+        "cryptography.hazmat.backends.default_backend"
+      ],
+      "caller_count": 0,
+      "callee_count": 9,
+      "crypto_calls": [
+        "cryptography.hazmat.primitives.ciphers.modes.ECB",
+        "cryptography.hazmat.primitives.ciphers.modes.CBC",
+        "cryptography.hazmat.primitives.ciphers.modes.CFB",
+        "cryptography.hazmat.primitives.ciphers.modes.OFB",
+        "cryptography.hazmat.primitives.ciphers.Cipher",
+        "cryptography.hazmat.primitives.ciphers.algorithms.AES",
+        "cryptography.hazmat.backends.default_backend"
+      ],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 10,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_DM20911_cryptographyCipherCBC_OFB_CFB_ECB_cryptography.hazmat.backends.default_backend",
+    "repo_name": "DM20911_cryptographyCipherCBC_OFB_CFB_ECB",
+    "filename": "cryptographyCipherCBC_OFB_CFB_ECB.py",
+    "line_number": 0,
+    "function_name": "cryptography.hazmat.backends.default_backend",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "cryptography.hazmat.backends.default_backend",
+      "matched_key": "cryptography.hazmat.backends.default_backend",
+      "callers": [
+        "cryptographyCipherCBC_OFB_CFB_ECB"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 10,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_DM20911_cryptographyCipherCBC_OFB_CFB_ECB_<int>.to_bytes",
+    "repo_name": "DM20911_cryptographyCipherCBC_OFB_CFB_ECB",
+    "filename": "cryptographyCipherCBC_OFB_CFB_ECB.py",
+    "line_number": 0,
+    "function_name": "<int>.to_bytes",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "<int>.to_bytes",
+      "matched_key": "<int>.to_bytes",
+      "callers": [
+        "cryptographyCipherCBC_OFB_CFB_ECB"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 10,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_DM20911_cryptographyCipherCBC_OFB_CFB_ECB_cryptography.hazmat.primitives.ciphers.algorithms.AES",
+    "repo_name": "DM20911_cryptographyCipherCBC_OFB_CFB_ECB",
+    "filename": "cryptographyCipherCBC_OFB_CFB_ECB.py",
+    "line_number": 0,
+    "function_name": "cryptography.hazmat.primitives.ciphers.algorithms.AES",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "cryptography.hazmat.primitives.ciphers.algorithms.AES",
+      "matched_key": "cryptography.hazmat.primitives.ciphers.algorithms.AES",
+      "callers": [
+        "cryptographyCipherCBC_OFB_CFB_ECB"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 10,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_DM20911_cryptographyCipherCBC_OFB_CFB_ECB_cryptography.hazmat.primitives.ciphers.modes.CBC",
+    "repo_name": "DM20911_cryptographyCipherCBC_OFB_CFB_ECB",
+    "filename": "cryptographyCipherCBC_OFB_CFB_ECB.py",
+    "line_number": 0,
+    "function_name": "cryptography.hazmat.primitives.ciphers.modes.CBC",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "cryptography.hazmat.primitives.ciphers.modes.CBC",
+      "matched_key": "cryptography.hazmat.primitives.ciphers.modes.CBC",
+      "callers": [
+        "cryptographyCipherCBC_OFB_CFB_ECB"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 10,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_DM20911_cryptographyCipherCBC_OFB_CFB_ECB_cryptography.hazmat.primitives.ciphers.Cipher",
+    "repo_name": "DM20911_cryptographyCipherCBC_OFB_CFB_ECB",
+    "filename": "cryptographyCipherCBC_OFB_CFB_ECB.py",
+    "line_number": 0,
+    "function_name": "cryptography.hazmat.primitives.ciphers.Cipher",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "cryptography.hazmat.primitives.ciphers.Cipher",
+      "matched_key": "cryptography.hazmat.primitives.ciphers.Cipher",
+      "callers": [
+        "cryptographyCipherCBC_OFB_CFB_ECB"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 10,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_DM20911_cryptographyCipherCBC_OFB_CFB_ECB_cryptography.hazmat.primitives.ciphers.modes.OFB",
+    "repo_name": "DM20911_cryptographyCipherCBC_OFB_CFB_ECB",
+    "filename": "cryptographyCipherCBC_OFB_CFB_ECB.py",
+    "line_number": 0,
+    "function_name": "cryptography.hazmat.primitives.ciphers.modes.OFB",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "cryptography.hazmat.primitives.ciphers.modes.OFB",
+      "matched_key": "cryptography.hazmat.primitives.ciphers.modes.OFB",
+      "callers": [
+        "cryptographyCipherCBC_OFB_CFB_ECB"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 10,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_DM20911_cryptographyCipherCBC_OFB_CFB_ECB_cryptography.hazmat.primitives.ciphers.modes.CFB",
+    "repo_name": "DM20911_cryptographyCipherCBC_OFB_CFB_ECB",
+    "filename": "cryptographyCipherCBC_OFB_CFB_ECB.py",
+    "line_number": 0,
+    "function_name": "cryptography.hazmat.primitives.ciphers.modes.CFB",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "cryptography.hazmat.primitives.ciphers.modes.CFB",
+      "matched_key": "cryptography.hazmat.primitives.ciphers.modes.CFB",
+      "callers": [
+        "cryptographyCipherCBC_OFB_CFB_ECB"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 10,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_DM20911_cryptographyCipherCBC_OFB_CFB_ECB_cryptography.hazmat.primitives.ciphers.modes.ECB",
+    "repo_name": "DM20911_cryptographyCipherCBC_OFB_CFB_ECB",
+    "filename": "cryptographyCipherCBC_OFB_CFB_ECB.py",
+    "line_number": 0,
+    "function_name": "cryptography.hazmat.primitives.ciphers.modes.ECB",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "cryptography.hazmat.primitives.ciphers.modes.ECB",
+      "matched_key": "cryptography.hazmat.primitives.ciphers.modes.ECB",
+      "callers": [
+        "cryptographyCipherCBC_OFB_CFB_ECB"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 10,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "834",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "Muthupandi1306_cryptopy/Elgamal.py",
+    "line_number": 24,
+    "function_name": "Elgamal.__generate_private_key",
+    "status": "success",
+    "tool": "jarviscg_complete",
+    "call_graph_context": {
+      "function": "Elgamal.__generate_private_key",
+      "matched_key": "Elgamal.Elgamal.__generate_private_key",
+      "callers": [
+        "Elgamal.Elgamal.generate_key"
+      ],
+      "callees": [
+        "random.randint",
+        "self.__gcd",
+        "Elgamal.Elgamal.__gcd",
+        "math.pow"
+      ],
+      "caller_count": 1,
+      "callee_count": 4,
+      "crypto_calls": [
+        "random.randint"
+      ],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "835",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "Muthupandi1306_cryptopy/Elgamal.py",
+    "line_number": 27,
+    "function_name": "Elgamal.__generate_private_key",
+    "status": "success",
+    "tool": "jarviscg_complete",
+    "call_graph_context": {
+      "function": "Elgamal.__generate_private_key",
+      "matched_key": "Elgamal.Elgamal.__generate_private_key",
+      "callers": [
+        "Elgamal.Elgamal.generate_key"
+      ],
+      "callees": [
+        "random.randint",
+        "self.__gcd",
+        "Elgamal.Elgamal.__gcd",
+        "math.pow"
+      ],
+      "caller_count": 1,
+      "callee_count": 4,
+      "crypto_calls": [
+        "random.randint"
+      ],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "836",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "Muthupandi1306_cryptopy/Elgamal.py",
+    "line_number": 42,
+    "function_name": "Elgamal.generate_key",
+    "status": "success",
+    "tool": "jarviscg_complete",
+    "call_graph_context": {
+      "function": "Elgamal.generate_key",
+      "matched_key": "Elgamal.Elgamal.generate_key",
+      "callers": [],
+      "callees": [
+        "self.__generate_private_key",
+        "math.pow",
+        "self.__modular_exponent",
+        "append",
+        "random.randint",
+        "<builtin>.str",
+        "Elgamal.Elgamal.__generate_private_key",
+        "str",
+        "encode",
+        "Elgamal.Elgamal.__modular_exponent"
+      ],
+      "caller_count": 0,
+      "callee_count": 10,
+      "crypto_calls": [
+        "random.randint"
+      ],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "837",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "Muthupandi1306_cryptopy/MRT.py",
+    "line_number": 27,
+    "function_name": "MRT.__millerTest",
+    "status": "success",
+    "tool": "jarviscg_complete",
+    "call_graph_context": {
+      "function": "MRT.__millerTest",
+      "matched_key": "MRT.MRT.__millerTest",
+      "callers": [
+        "MRT.MRT.__isPrime"
+      ],
+      "callees": [
+        "self.power",
+        "random.randint",
+        "MRT.MRT.power"
+      ],
+      "caller_count": 1,
+      "callee_count": 3,
+      "crypto_calls": [
+        "random.randint"
+      ],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "838",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "Muthupandi1306_cryptopy/MRT.py",
+    "line_number": 59,
+    "function_name": "MRT.generate_random_prime",
+    "status": "success",
+    "tool": "jarviscg_complete",
+    "call_graph_context": {
+      "function": "MRT.generate_random_prime",
+      "matched_key": "MRT.MRT.generate_random_prime",
+      "callers": [],
+      "callees": [
+        "self.__isPrime",
+        "random.randint",
+        "math.pow",
+        "MRT.MRT.__isPrime"
+      ],
+      "caller_count": 0,
+      "callee_count": 4,
+      "crypto_calls": [
+        "random.randint"
+      ],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "839",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "Muthupandi1306_cryptopy/MRT.py",
+    "line_number": 62,
+    "function_name": "MRT.generate_random_prime",
+    "status": "success",
+    "tool": "jarviscg_complete",
+    "call_graph_context": {
+      "function": "MRT.generate_random_prime",
+      "matched_key": "MRT.MRT.generate_random_prime",
+      "callers": [],
+      "callees": [
+        "self.__isPrime",
+        "random.randint",
+        "math.pow",
+        "MRT.MRT.__isPrime"
+      ],
+      "caller_count": 0,
+      "callee_count": 4,
+      "crypto_calls": [
+        "random.randint"
+      ],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "840",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "Muthupandi1306_cryptopy/publickey.py",
+    "line_number": 33,
+    "function_name": "publickey.generate_RSA_key",
+    "status": "success",
+    "tool": "jarviscg_complete",
+    "call_graph_context": {
+      "function": "publickey.generate_RSA_key",
+      "matched_key": "publickey.publickey.generate_RSA_key",
+      "callers": [],
+      "callees": [
+        "self.get_rsa_key",
+        "mt.MRT",
+        "publickey.publickey.get_rsa_key",
+        "append",
+        "pri_key.generate_rsa_key",
+        "random.randint",
+        "publickey.publickey.__gcd",
+        "primeno.generate_random_prime",
+        "self.__gcd"
+      ],
+      "caller_count": 0,
+      "callee_count": 9,
+      "crypto_calls": [
+        "self.get_rsa_key",
+        "publickey.publickey.get_rsa_key",
+        "pri_key.generate_rsa_key",
+        "random.randint",
+        "primeno.generate_random_prime"
+      ],
+      "network_calls": [
+        "self.get_rsa_key",
+        "publickey.publickey.get_rsa_key"
+      ],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_Elgamal",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "Elgamal.py",
+    "line_number": 0,
+    "function_name": "Elgamal",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "Elgamal",
+      "matched_key": "Elgamal",
+      "callers": [],
+      "callees": [
+        "Elgamal.Elgamal"
+      ],
+      "caller_count": 0,
+      "callee_count": 1,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_Elgamal.Elgamal",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "Elgamal.py",
+    "line_number": 0,
+    "function_name": "Elgamal.Elgamal",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "Elgamal.Elgamal",
+      "matched_key": "Elgamal.Elgamal",
+      "callers": [
+        "Elgamal"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_Elgamal.Elgamal.__gcd",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "Elgamal.py",
+    "line_number": 0,
+    "function_name": "Elgamal.Elgamal.__gcd",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "Elgamal.Elgamal.__gcd",
+      "matched_key": "Elgamal.Elgamal.__gcd",
+      "callers": [
+        "Elgamal.Elgamal.__gcd",
+        "Elgamal.Elgamal.__generate_private_key"
+      ],
+      "callees": [
+        "Elgamal.Elgamal.__gcd"
+      ],
+      "caller_count": 2,
+      "callee_count": 1,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_Elgamal.Elgamal.__generate_private_key",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "Elgamal.py",
+    "line_number": 0,
+    "function_name": "Elgamal.Elgamal.__generate_private_key",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "Elgamal.Elgamal.__generate_private_key",
+      "matched_key": "Elgamal.Elgamal.__generate_private_key",
+      "callers": [
+        "Elgamal.Elgamal.generate_key"
+      ],
+      "callees": [
+        "Elgamal.Elgamal.__gcd",
+        "math.pow",
+        "random.randint"
+      ],
+      "caller_count": 1,
+      "callee_count": 3,
+      "crypto_calls": [
+        "random.randint"
+      ],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_math.pow",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "Elgamal.py",
+    "line_number": 0,
+    "function_name": "math.pow",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "math.pow",
+      "matched_key": "math.pow",
+      "callers": [
+        "Elgamal.Elgamal.__generate_private_key",
+        "Elgamal.Elgamal.generate_key",
+        "MRT.MRT.generate_random_prime"
+      ],
+      "callees": [],
+      "caller_count": 3,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_random.randint",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "Elgamal.py",
+    "line_number": 0,
+    "function_name": "random.randint",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "random.randint",
+      "matched_key": "random.randint",
+      "callers": [
+        "Elgamal.Elgamal.__generate_private_key",
+        "Elgamal.Elgamal.generate_key",
+        "publickey.publickey.generate_RSA_key",
+        "MRT.MRT.__millerTest",
+        "MRT.MRT.generate_random_prime"
+      ],
+      "callees": [],
+      "caller_count": 5,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_Elgamal.Elgamal.__modular_exponent",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "Elgamal.py",
+    "line_number": 0,
+    "function_name": "Elgamal.Elgamal.__modular_exponent",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "Elgamal.Elgamal.__modular_exponent",
+      "matched_key": "Elgamal.Elgamal.__modular_exponent",
+      "callers": [
+        "Elgamal.Elgamal.generate_key",
+        "Elgamal.Elgamal.encrypt_message",
+        "Elgamal.Elgamal.decrypt_message"
+      ],
+      "callees": [
+        "<builtin>.int"
+      ],
+      "caller_count": 3,
+      "callee_count": 1,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_Elgamal.Elgamal.generate_key",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "Elgamal.py",
+    "line_number": 0,
+    "function_name": "Elgamal.Elgamal.generate_key",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "Elgamal.Elgamal.generate_key",
+      "matched_key": "Elgamal.Elgamal.generate_key",
+      "callers": [],
+      "callees": [
+        "append",
+        "random.randint",
+        "Elgamal.Elgamal.__generate_private_key",
+        "<builtin>.str",
+        "math.pow",
+        "Elgamal.Elgamal.__modular_exponent"
+      ],
+      "caller_count": 0,
+      "callee_count": 6,
+      "crypto_calls": [
+        "random.randint"
+      ],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_append",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "Elgamal.py",
+    "line_number": 0,
+    "function_name": "append",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "append",
+      "matched_key": "append",
+      "callers": [
+        "Elgamal.Elgamal.generate_key",
+        "publickey.publickey.generate_RSA_key",
+        "RSA.RSA.encrypt_message",
+        "RSA.RSA.decrypt_message"
+      ],
+      "callees": [],
+      "caller_count": 4,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_Elgamal.Elgamal.__convert_msg",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "Elgamal.py",
+    "line_number": 0,
+    "function_name": "Elgamal.Elgamal.__convert_msg",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "Elgamal.Elgamal.__convert_msg",
+      "matched_key": "Elgamal.Elgamal.__convert_msg",
+      "callers": [
+        "Elgamal.Elgamal.encrypt_message"
+      ],
+      "callees": [
+        "<builtin>.len",
+        "<builtin>.ord",
+        "<builtin>.range"
+      ],
+      "caller_count": 1,
+      "callee_count": 3,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_Elgamal.Elgamal.encrypt_message",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "Elgamal.py",
+    "line_number": 0,
+    "function_name": "Elgamal.Elgamal.encrypt_message",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "Elgamal.Elgamal.encrypt_message",
+      "matched_key": "Elgamal.Elgamal.encrypt_message",
+      "callers": [],
+      "callees": [
+        "Elgamal.Elgamal.__convert_msg",
+        "<builtin>.int",
+        "<builtin>.len",
+        "<builtin>.range",
+        "Elgamal.Elgamal.__modular_exponent"
+      ],
+      "caller_count": 0,
+      "callee_count": 5,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_Elgamal.Elgamal.decrypt_message",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "Elgamal.py",
+    "line_number": 0,
+    "function_name": "Elgamal.Elgamal.decrypt_message",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "Elgamal.Elgamal.decrypt_message",
+      "matched_key": "Elgamal.Elgamal.decrypt_message",
+      "callers": [],
+      "callees": [
+        "<builtin>.chr",
+        "<builtin>.int",
+        "<builtin>.len",
+        "<builtin>.range",
+        "Elgamal.Elgamal.__modular_exponent"
+      ],
+      "caller_count": 0,
+      "callee_count": 5,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_publickey",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "publickey.py",
+    "line_number": 0,
+    "function_name": "publickey",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "publickey",
+      "matched_key": "publickey",
+      "callers": [
+        "RSA"
+      ],
+      "callees": [
+        "publickey.publickey",
+        "MRT"
+      ],
+      "caller_count": 1,
+      "callee_count": 2,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_MRT",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "publickey.py",
+    "line_number": 0,
+    "function_name": "MRT",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "MRT",
+      "matched_key": "MRT",
+      "callers": [
+        "publickey"
+      ],
+      "callees": [
+        "MRT.MRT"
+      ],
+      "caller_count": 1,
+      "callee_count": 1,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_MRT.MRT",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "publickey.py",
+    "line_number": 0,
+    "function_name": "MRT.MRT",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "MRT.MRT",
+      "matched_key": "MRT.MRT",
+      "callers": [
+        "MRT"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_publickey.publickey",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "publickey.py",
+    "line_number": 0,
+    "function_name": "publickey.publickey",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "publickey.publickey",
+      "matched_key": "publickey.publickey",
+      "callers": [
+        "publickey"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_publickey.publickey.__gcd",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "publickey.py",
+    "line_number": 0,
+    "function_name": "publickey.publickey.__gcd",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "publickey.publickey.__gcd",
+      "matched_key": "publickey.publickey.__gcd",
+      "callers": [
+        "publickey.publickey.__gcd",
+        "publickey.publickey.generate_RSA_key"
+      ],
+      "callees": [
+        "publickey.publickey.__gcd"
+      ],
+      "caller_count": 2,
+      "callee_count": 1,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_publickey.publickey.generate_RSA_key",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "publickey.py",
+    "line_number": 0,
+    "function_name": "publickey.publickey.generate_RSA_key",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "publickey.publickey.generate_RSA_key",
+      "matched_key": "publickey.publickey.generate_RSA_key",
+      "callers": [],
+      "callees": [
+        "random.randint",
+        "publickey.publickey.__gcd",
+        "append",
+        "publickey.publickey.get_rsa_key"
+      ],
+      "caller_count": 0,
+      "callee_count": 4,
+      "crypto_calls": [
+        "random.randint",
+        "publickey.publickey.get_rsa_key"
+      ],
+      "network_calls": [
+        "publickey.publickey.get_rsa_key"
+      ],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_publickey.publickey.get_rsa_key",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "publickey.py",
+    "line_number": 0,
+    "function_name": "publickey.publickey.get_rsa_key",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "publickey.publickey.get_rsa_key",
+      "matched_key": "publickey.publickey.get_rsa_key",
+      "callers": [
+        "publickey.publickey.generate_RSA_key"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_MRT.MRT.__millerTest",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "MRT.py",
+    "line_number": 0,
+    "function_name": "MRT.MRT.__millerTest",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "MRT.MRT.__millerTest",
+      "matched_key": "MRT.MRT.__millerTest",
+      "callers": [
+        "MRT.MRT.__isPrime"
+      ],
+      "callees": [
+        "MRT.MRT.power",
+        "random.randint"
+      ],
+      "caller_count": 1,
+      "callee_count": 2,
+      "crypto_calls": [
+        "random.randint"
+      ],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_MRT.MRT.power",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "MRT.py",
+    "line_number": 0,
+    "function_name": "MRT.MRT.power",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "MRT.MRT.power",
+      "matched_key": "MRT.MRT.power",
+      "callers": [
+        "MRT.MRT.__millerTest"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_MRT.MRT.__isPrime",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "MRT.py",
+    "line_number": 0,
+    "function_name": "MRT.MRT.__isPrime",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "MRT.MRT.__isPrime",
+      "matched_key": "MRT.MRT.__isPrime",
+      "callers": [
+        "MRT.MRT.generate_random_prime"
+      ],
+      "callees": [
+        "<builtin>.range",
+        "MRT.MRT.__millerTest"
+      ],
+      "caller_count": 1,
+      "callee_count": 2,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_MRT.MRT.generate_random_prime",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "MRT.py",
+    "line_number": 0,
+    "function_name": "MRT.MRT.generate_random_prime",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "MRT.MRT.generate_random_prime",
+      "matched_key": "MRT.MRT.generate_random_prime",
+      "callers": [],
+      "callees": [
+        "MRT.MRT.__isPrime",
+        "math.pow",
+        "random.randint"
+      ],
+      "caller_count": 0,
+      "callee_count": 3,
+      "crypto_calls": [
+        "random.randint"
+      ],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_RSA",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "RSA.py",
+    "line_number": 0,
+    "function_name": "RSA",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "RSA",
+      "matched_key": "RSA",
+      "callers": [],
+      "callees": [
+        "publickey",
+        "RSA.RSA",
+        "privatekey"
+      ],
+      "caller_count": 0,
+      "callee_count": 3,
+      "crypto_calls": [
+        "RSA.RSA"
+      ],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_privatekey",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "RSA.py",
+    "line_number": 0,
+    "function_name": "privatekey",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "privatekey",
+      "matched_key": "privatekey",
+      "callers": [
+        "RSA"
+      ],
+      "callees": [
+        "privatekey.privatekey"
+      ],
+      "caller_count": 1,
+      "callee_count": 1,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_privatekey.privatekey",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "RSA.py",
+    "line_number": 0,
+    "function_name": "privatekey.privatekey",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "privatekey.privatekey",
+      "matched_key": "privatekey.privatekey",
+      "callers": [
+        "privatekey"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_RSA.RSA",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "RSA.py",
+    "line_number": 0,
+    "function_name": "RSA.RSA",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "RSA.RSA",
+      "matched_key": "RSA.RSA",
+      "callers": [
+        "RSA"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_RSA.RSA.encrypt_message",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "RSA.py",
+    "line_number": 0,
+    "function_name": "RSA.RSA.encrypt_message",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "RSA.RSA.encrypt_message",
+      "matched_key": "RSA.RSA.encrypt_message",
+      "callers": [],
+      "callees": [
+        "<builtin>.list",
+        "<builtin>.ord",
+        "append"
+      ],
+      "caller_count": 0,
+      "callee_count": 3,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_RSA.RSA.decrypt_message",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "RSA.py",
+    "line_number": 0,
+    "function_name": "RSA.RSA.decrypt_message",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "RSA.RSA.decrypt_message",
+      "matched_key": "RSA.RSA.decrypt_message",
+      "callers": [],
+      "callees": [
+        "<str>.join",
+        "append"
+      ],
+      "caller_count": 0,
+      "callee_count": 2,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_<str>.join",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "RSA.py",
+    "line_number": 0,
+    "function_name": "<str>.join",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "<str>.join",
+      "matched_key": "<str>.join",
+      "callers": [
+        "RSA.RSA.decrypt_message"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_dsa",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "dsa.py",
+    "line_number": 0,
+    "function_name": "dsa",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "dsa",
+      "matched_key": "dsa",
+      "callers": [],
+      "callees": [
+        "<builtin>.pow",
+        "<builtin>.range",
+        "<builtin>.int",
+        "cryptocommons.modInverse",
+        "<builtin>.print",
+        "dsa.testPrimeness"
+      ],
+      "caller_count": 0,
+      "callee_count": 6,
+      "crypto_calls": [
+        "cryptocommons.modInverse"
+      ],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_dsa.testPrimeness",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "dsa.py",
+    "line_number": 0,
+    "function_name": "dsa.testPrimeness",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "dsa.testPrimeness",
+      "matched_key": "dsa.testPrimeness",
+      "callers": [
+        "dsa"
+      ],
+      "callees": [
+        "<builtin>.range"
+      ],
+      "caller_count": 1,
+      "callee_count": 1,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_Muthupandi1306_cryptopy_cryptocommons.modInverse",
+    "repo_name": "Muthupandi1306_cryptopy",
+    "filename": "dsa.py",
+    "line_number": 0,
+    "function_name": "cryptocommons.modInverse",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "cryptocommons.modInverse",
+      "matched_key": "cryptocommons.modInverse",
+      "callers": [
+        "dsa"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 42,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "1977",
+    "repo_name": "NataliaDeriuzhova_generate_cloud_payments_cryptogram",
+    "filename": "NataliaDeriuzhova_generate_cloud_payments_cryptogram/generate_cloud_payments_cryptogram/generate_cloud_payments_cryptogram.py",
+    "line_number": 4,
+    "function_name": "<module>",
+    "status": "success",
+    "tool": "jarviscg_complete",
+    "call_graph_context": {
+      "function": "<module>",
+      "matched_key": null,
+      "callers": [],
+      "callees": [],
+      "caller_count": 0,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": [],
+      "warning": "Function not found in call graph"
+    },
+    "full_callgraph_size": 10,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": false
+    }
+  },
+  {
+    "issue_id": "cg_NataliaDeriuzhova_generate_cloud_payments_cryptogram_generate_cloud_payments_cryptogram.generate_cloud_payments_cryptogram",
+    "repo_name": "NataliaDeriuzhova_generate_cloud_payments_cryptogram",
+    "filename": "generate_cloud_payments_cryptogram/generate_cloud_payments_cryptogram.py",
+    "line_number": 0,
+    "function_name": "generate_cloud_payments_cryptogram.generate_cloud_payments_cryptogram",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "generate_cloud_payments_cryptogram.generate_cloud_payments_cryptogram",
+      "matched_key": "generate_cloud_payments_cryptogram.generate_cloud_payments_cryptogram",
+      "callers": [],
+      "callees": [],
+      "caller_count": 0,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 10,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": false
+    }
+  },
+  {
+    "issue_id": "cg_NataliaDeriuzhova_generate_cloud_payments_cryptogram_generate_cloud_payments_cryptogram.generate_cloud_payments_cryptogram.generate_cloud_payments_cryptogram",
+    "repo_name": "NataliaDeriuzhova_generate_cloud_payments_cryptogram",
+    "filename": "generate_cloud_payments_cryptogram/generate_cloud_payments_cryptogram.py",
+    "line_number": 0,
+    "function_name": "generate_cloud_payments_cryptogram.generate_cloud_payments_cryptogram.generate_cloud_payments_cryptogram",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "generate_cloud_payments_cryptogram.generate_cloud_payments_cryptogram.generate_cloud_payments_cryptogram",
+      "matched_key": "generate_cloud_payments_cryptogram.generate_cloud_payments_cryptogram.generate_cloud_payments_cryptogram",
+      "callers": [],
+      "callees": [
+        "<str>.split",
+        "Crypto.PublicKey.RSA.importKey",
+        "<builtin>.range",
+        "base64.b64encode",
+        "Crypto.Cipher.PKCS1_OAEP.new",
+        "<builtin>.bytes",
+        "base64.b64decode",
+        "<builtin>.len"
+      ],
+      "caller_count": 0,
+      "callee_count": 8,
+      "crypto_calls": [
+        "Crypto.PublicKey.RSA.importKey",
+        "Crypto.Cipher.PKCS1_OAEP.new"
+      ],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 10,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_NataliaDeriuzhova_generate_cloud_payments_cryptogram_base64.b64decode",
+    "repo_name": "NataliaDeriuzhova_generate_cloud_payments_cryptogram",
+    "filename": "generate_cloud_payments_cryptogram/generate_cloud_payments_cryptogram.py",
+    "line_number": 0,
+    "function_name": "base64.b64decode",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "base64.b64decode",
+      "matched_key": "base64.b64decode",
+      "callers": [
+        "generate_cloud_payments_cryptogram.generate_cloud_payments_cryptogram.generate_cloud_payments_cryptogram"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 10,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_NataliaDeriuzhova_generate_cloud_payments_cryptogram_Crypto.PublicKey.RSA.importKey",
+    "repo_name": "NataliaDeriuzhova_generate_cloud_payments_cryptogram",
+    "filename": "generate_cloud_payments_cryptogram/generate_cloud_payments_cryptogram.py",
+    "line_number": 0,
+    "function_name": "Crypto.PublicKey.RSA.importKey",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "Crypto.PublicKey.RSA.importKey",
+      "matched_key": "Crypto.PublicKey.RSA.importKey",
+      "callers": [
+        "generate_cloud_payments_cryptogram.generate_cloud_payments_cryptogram.generate_cloud_payments_cryptogram"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 10,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_NataliaDeriuzhova_generate_cloud_payments_cryptogram_Crypto.Cipher.PKCS1_OAEP.new",
+    "repo_name": "NataliaDeriuzhova_generate_cloud_payments_cryptogram",
+    "filename": "generate_cloud_payments_cryptogram/generate_cloud_payments_cryptogram.py",
+    "line_number": 0,
+    "function_name": "Crypto.Cipher.PKCS1_OAEP.new",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "Crypto.Cipher.PKCS1_OAEP.new",
+      "matched_key": "Crypto.Cipher.PKCS1_OAEP.new",
+      "callers": [
+        "generate_cloud_payments_cryptogram.generate_cloud_payments_cryptogram.generate_cloud_payments_cryptogram"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 10,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_NataliaDeriuzhova_generate_cloud_payments_cryptogram_base64.b64encode",
+    "repo_name": "NataliaDeriuzhova_generate_cloud_payments_cryptogram",
+    "filename": "generate_cloud_payments_cryptogram/generate_cloud_payments_cryptogram.py",
+    "line_number": 0,
+    "function_name": "base64.b64encode",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "base64.b64encode",
+      "matched_key": "base64.b64encode",
+      "callers": [
+        "generate_cloud_payments_cryptogram.generate_cloud_payments_cryptogram.generate_cloud_payments_cryptogram"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 10,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_NataliaDeriuzhova_generate_cloud_payments_cryptogram_<str>.split",
+    "repo_name": "NataliaDeriuzhova_generate_cloud_payments_cryptogram",
+    "filename": "generate_cloud_payments_cryptogram/generate_cloud_payments_cryptogram.py",
+    "line_number": 0,
+    "function_name": "<str>.split",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "<str>.split",
+      "matched_key": "<str>.split",
+      "callers": [
+        "generate_cloud_payments_cryptogram.generate_cloud_payments_cryptogram.generate_cloud_payments_cryptogram"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 10,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "953",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "adrijanik_junction-mobilepay/get_contacts.py",
+    "line_number": 17,
+    "function_name": "generate_random_transactions",
+    "status": "success",
+    "tool": "jarviscg_complete",
+    "call_graph_context": {
+      "function": "generate_random_transactions",
+      "matched_key": "get_contacts.generate_random_transactions",
+      "callers": [
+        "get_contacts.generate_history"
+      ],
+      "callees": [
+        "range",
+        "<map>.keys",
+        "get_contacts",
+        "transactions.append",
+        "<builtin>.range",
+        "append",
+        "contacts.keys",
+        "get_contacts.get_contacts",
+        "str",
+        "random.choice"
+      ],
+      "caller_count": 1,
+      "callee_count": 10,
+      "crypto_calls": [
+        "random.choice"
+      ],
+      "network_calls": [
+        "get_contacts",
+        "get_contacts.get_contacts"
+      ],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "954",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "adrijanik_junction-mobilepay/get_contacts.py",
+    "line_number": 18,
+    "function_name": "generate_random_transactions",
+    "status": "success",
+    "tool": "jarviscg_complete",
+    "call_graph_context": {
+      "function": "generate_random_transactions",
+      "matched_key": "get_contacts.generate_random_transactions",
+      "callers": [
+        "get_contacts.generate_history"
+      ],
+      "callees": [
+        "range",
+        "<map>.keys",
+        "get_contacts",
+        "transactions.append",
+        "<builtin>.range",
+        "append",
+        "contacts.keys",
+        "get_contacts.get_contacts",
+        "str",
+        "random.choice"
+      ],
+      "caller_count": 1,
+      "callee_count": 10,
+      "crypto_calls": [
+        "random.choice"
+      ],
+      "network_calls": [
+        "get_contacts",
+        "get_contacts.get_contacts"
+      ],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_get_contacts",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "get_contacts.py",
+    "line_number": 0,
+    "function_name": "get_contacts",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "get_contacts",
+      "matched_key": "get_contacts",
+      "callers": [
+        "main"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_get_contacts.get_contacts",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "get_contacts.py",
+    "line_number": 0,
+    "function_name": "get_contacts.get_contacts",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "get_contacts.get_contacts",
+      "matched_key": "get_contacts.get_contacts",
+      "callers": [
+        "get_contacts.generate_random_transactions"
+      ],
+      "callees": [
+        "<builtin>.open"
+      ],
+      "caller_count": 1,
+      "callee_count": 1,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_get_contacts.generate_random_transactions",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "get_contacts.py",
+    "line_number": 0,
+    "function_name": "get_contacts.generate_random_transactions",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "get_contacts.generate_random_transactions",
+      "matched_key": "get_contacts.generate_random_transactions",
+      "callers": [
+        "get_contacts.generate_history"
+      ],
+      "callees": [
+        "random.choice",
+        "append",
+        "<map>.keys",
+        "<builtin>.range",
+        "get_contacts.get_contacts"
+      ],
+      "caller_count": 1,
+      "callee_count": 5,
+      "crypto_calls": [
+        "random.choice"
+      ],
+      "network_calls": [
+        "get_contacts.get_contacts"
+      ],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_random.choice",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "get_contacts.py",
+    "line_number": 0,
+    "function_name": "random.choice",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "random.choice",
+      "matched_key": "random.choice",
+      "callers": [
+        "get_contacts.generate_random_transactions"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_<map>.keys",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "get_contacts.py",
+    "line_number": 0,
+    "function_name": "<map>.keys",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "<map>.keys",
+      "matched_key": "<map>.keys",
+      "callers": [
+        "get_contacts.generate_random_transactions"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_append",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "get_contacts.py",
+    "line_number": 0,
+    "function_name": "append",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "append",
+      "matched_key": "append",
+      "callers": [
+        "get_contacts.generate_random_transactions"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_get_contacts.generate_history",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "get_contacts.py",
+    "line_number": 0,
+    "function_name": "get_contacts.generate_history",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "get_contacts.generate_history",
+      "matched_key": "get_contacts.generate_history",
+      "callers": [],
+      "callees": [
+        "get_contacts.generate_random_transactions",
+        "<builtin>.open",
+        "<str>.join"
+      ],
+      "caller_count": 0,
+      "callee_count": 3,
+      "crypto_calls": [
+        "get_contacts.generate_random_transactions"
+      ],
+      "network_calls": [
+        "get_contacts.generate_random_transactions"
+      ],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_<str>.join",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "get_contacts.py",
+    "line_number": 0,
+    "function_name": "<str>.join",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "<str>.join",
+      "matched_key": "<str>.join",
+      "callers": [
+        "get_contacts.generate_history",
+        "main.webhook"
+      ],
+      "callees": [],
+      "caller_count": 2,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_app",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "app.py",
+    "line_number": 0,
+    "function_name": "app",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "app",
+      "matched_key": "app",
+      "callers": [],
+      "callees": [
+        "pandas.read_csv",
+        "dash_html_components.Div",
+        "dash_core_components.Graph",
+        "plotly.graph_objs.Scatter",
+        "plotly.graph_objs.Layout",
+        "dash_html_components.H1",
+        "dash.Dash"
+      ],
+      "caller_count": 0,
+      "callee_count": 7,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_pandas.read_csv",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "app.py",
+    "line_number": 0,
+    "function_name": "pandas.read_csv",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "pandas.read_csv",
+      "matched_key": "pandas.read_csv",
+      "callers": [
+        "app"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_plotly.graph_objs.Scatter",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "app.py",
+    "line_number": 0,
+    "function_name": "plotly.graph_objs.Scatter",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "plotly.graph_objs.Scatter",
+      "matched_key": "plotly.graph_objs.Scatter",
+      "callers": [
+        "app"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_dash.Dash",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "app.py",
+    "line_number": 0,
+    "function_name": "dash.Dash",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "dash.Dash",
+      "matched_key": "dash.Dash",
+      "callers": [
+        "app"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_dash_html_components.H1",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "app.py",
+    "line_number": 0,
+    "function_name": "dash_html_components.H1",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "dash_html_components.H1",
+      "matched_key": "dash_html_components.H1",
+      "callers": [
+        "app"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_dash_html_components.Div",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "app.py",
+    "line_number": 0,
+    "function_name": "dash_html_components.Div",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "dash_html_components.Div",
+      "matched_key": "dash_html_components.Div",
+      "callers": [
+        "app"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_plotly.graph_objs.Layout",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "app.py",
+    "line_number": 0,
+    "function_name": "plotly.graph_objs.Layout",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "plotly.graph_objs.Layout",
+      "matched_key": "plotly.graph_objs.Layout",
+      "callers": [
+        "app"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_dash_core_components.Graph",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "app.py",
+    "line_number": 0,
+    "function_name": "dash_core_components.Graph",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "dash_core_components.Graph",
+      "matched_key": "dash_core_components.Graph",
+      "callers": [
+        "app"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_main",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "main.py",
+    "line_number": 0,
+    "function_name": "main",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "main",
+      "matched_key": "main",
+      "callers": [],
+      "callees": [
+        "get_contacts",
+        "flask.Flask"
+      ],
+      "caller_count": 0,
+      "callee_count": 2,
+      "crypto_calls": [],
+      "network_calls": [
+        "get_contacts"
+      ],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_flask.Flask",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "main.py",
+    "line_number": 0,
+    "function_name": "flask.Flask",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "flask.Flask",
+      "matched_key": "flask.Flask",
+      "callers": [
+        "main"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_main.webhook",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "main.py",
+    "line_number": 0,
+    "function_name": "main.webhook",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "main.webhook",
+      "matched_key": "main.webhook",
+      "callers": [],
+      "callees": [
+        "main.friend_transfer",
+        "<builtin>.type",
+        "<str>.join",
+        "<builtin>.print",
+        "json.loads",
+        "<builtin>.open",
+        "flask.jsonify"
+      ],
+      "caller_count": 0,
+      "callee_count": 7,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_json.loads",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "main.py",
+    "line_number": 0,
+    "function_name": "json.loads",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "json.loads",
+      "matched_key": "json.loads",
+      "callers": [
+        "main.webhook"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_main.friend_transfer",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "main.py",
+    "line_number": 0,
+    "function_name": "main.friend_transfer",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "main.friend_transfer",
+      "matched_key": "main.friend_transfer",
+      "callers": [
+        "main.webhook"
+      ],
+      "callees": [
+        "json.dumps",
+        "main.handle_money",
+        "<builtin>.print"
+      ],
+      "caller_count": 1,
+      "callee_count": 3,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_json.dumps",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "main.py",
+    "line_number": 0,
+    "function_name": "json.dumps",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "json.dumps",
+      "matched_key": "json.dumps",
+      "callers": [
+        "main.friend_transfer"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_main.handle_money",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "main.py",
+    "line_number": 0,
+    "function_name": "main.handle_money",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "main.handle_money",
+      "matched_key": "main.handle_money",
+      "callers": [
+        "main.friend_transfer"
+      ],
+      "callees": [
+        "<builtin>.print",
+        "<str>.format"
+      ],
+      "caller_count": 1,
+      "callee_count": 2,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_<str>.format",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "main.py",
+    "line_number": 0,
+    "function_name": "<str>.format",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "<str>.format",
+      "matched_key": "<str>.format",
+      "callers": [
+        "main.handle_money"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_adrijanik_junction-mobilepay_flask.jsonify",
+    "repo_name": "adrijanik_junction-mobilepay",
+    "filename": "main.py",
+    "line_number": 0,
+    "function_name": "flask.jsonify",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "flask.jsonify",
+      "matched_key": "flask.jsonify",
+      "callers": [
+        "main.webhook"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 29,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "1885",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "sahilchadha1991_cryptoExamples/assym.py",
+    "line_number": 6,
+    "function_name": "<module>",
+    "status": "success",
+    "tool": "jarviscg_complete",
+    "call_graph_context": {
+      "function": "<module>",
+      "matched_key": null,
+      "callers": [],
+      "callees": [],
+      "caller_count": 0,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": [],
+      "warning": "Function not found in call graph"
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": false
+    }
+  },
+  {
+    "issue_id": "1886",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "sahilchadha1991_cryptoExamples/assym.py",
+    "line_number": 9,
+    "function_name": "<module>",
+    "status": "success",
+    "tool": "jarviscg_complete",
+    "call_graph_context": {
+      "function": "<module>",
+      "matched_key": null,
+      "callers": [],
+      "callees": [],
+      "caller_count": 0,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": [],
+      "warning": "Function not found in call graph"
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": false
+    }
+  },
+  {
+    "issue_id": "1887",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "sahilchadha1991_cryptoExamples/ecb.py",
+    "line_number": 10,
+    "function_name": "<module>",
+    "status": "success",
+    "tool": "jarviscg_complete",
+    "call_graph_context": {
+      "function": "<module>",
+      "matched_key": null,
+      "callers": [],
+      "callees": [],
+      "caller_count": 0,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": [],
+      "warning": "Function not found in call graph"
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": false
+    }
+  },
+  {
+    "issue_id": "cg_sahilchadha1991_cryptoExamples_ecb",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "ecb.py",
+    "line_number": 0,
+    "function_name": "ecb",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "ecb",
+      "matched_key": "ecb",
+      "callers": [],
+      "callees": [
+        "cryptography.hazmat.primitives.ciphers.Cipher",
+        "cryptography.hazmat.backends.default_backend",
+        "<builtin>.print",
+        "cryptography.hazmat.primitives.ciphers.algorithms.AES",
+        "cryptography.hazmat.primitives.ciphers.modes.ECB",
+        "os.urandom"
+      ],
+      "caller_count": 0,
+      "callee_count": 6,
+      "crypto_calls": [
+        "cryptography.hazmat.primitives.ciphers.Cipher",
+        "cryptography.hazmat.backends.default_backend",
+        "cryptography.hazmat.primitives.ciphers.algorithms.AES",
+        "cryptography.hazmat.primitives.ciphers.modes.ECB",
+        "os.urandom"
+      ],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_sahilchadha1991_cryptoExamples_cryptography.hazmat.backends.default_backend",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "ecb.py",
+    "line_number": 0,
+    "function_name": "cryptography.hazmat.backends.default_backend",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "cryptography.hazmat.backends.default_backend",
+      "matched_key": "cryptography.hazmat.backends.default_backend",
+      "callers": [
+        "ecb",
+        "assym",
+        "cbcRandomIV",
+        "cbcStaticIV",
+        "hashExample",
+        "keyedHashExample"
+      ],
+      "callees": [],
+      "caller_count": 6,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_sahilchadha1991_cryptoExamples_os.urandom",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "ecb.py",
+    "line_number": 0,
+    "function_name": "os.urandom",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "os.urandom",
+      "matched_key": "os.urandom",
+      "callers": [
+        "ecb",
+        "cbcRandomIV",
+        "cbcStaticIV"
+      ],
+      "callees": [],
+      "caller_count": 3,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_sahilchadha1991_cryptoExamples_cryptography.hazmat.primitives.ciphers.algorithms.AES",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "ecb.py",
+    "line_number": 0,
+    "function_name": "cryptography.hazmat.primitives.ciphers.algorithms.AES",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "cryptography.hazmat.primitives.ciphers.algorithms.AES",
+      "matched_key": "cryptography.hazmat.primitives.ciphers.algorithms.AES",
+      "callers": [
+        "ecb",
+        "cbcRandomIV",
+        "cbcStaticIV"
+      ],
+      "callees": [],
+      "caller_count": 3,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_sahilchadha1991_cryptoExamples_cryptography.hazmat.primitives.ciphers.modes.ECB",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "ecb.py",
+    "line_number": 0,
+    "function_name": "cryptography.hazmat.primitives.ciphers.modes.ECB",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "cryptography.hazmat.primitives.ciphers.modes.ECB",
+      "matched_key": "cryptography.hazmat.primitives.ciphers.modes.ECB",
+      "callers": [
+        "ecb"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_sahilchadha1991_cryptoExamples_cryptography.hazmat.primitives.ciphers.Cipher",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "ecb.py",
+    "line_number": 0,
+    "function_name": "cryptography.hazmat.primitives.ciphers.Cipher",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "cryptography.hazmat.primitives.ciphers.Cipher",
+      "matched_key": "cryptography.hazmat.primitives.ciphers.Cipher",
+      "callers": [
+        "ecb",
+        "cbcRandomIV",
+        "cbcStaticIV"
+      ],
+      "callees": [],
+      "caller_count": 3,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_sahilchadha1991_cryptoExamples_assym",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "assym.py",
+    "line_number": 0,
+    "function_name": "assym",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "assym",
+      "matched_key": "assym",
+      "callers": [],
+      "callees": [
+        "cryptography.hazmat.primitives.hashes.SHA256",
+        "cryptography.hazmat.primitives.asymmetric.dsa.generate_private_key",
+        "<builtin>.repr",
+        "cryptography.hazmat.backends.default_backend",
+        "<builtin>.print"
+      ],
+      "caller_count": 0,
+      "callee_count": 5,
+      "crypto_calls": [
+        "cryptography.hazmat.primitives.hashes.SHA256",
+        "cryptography.hazmat.primitives.asymmetric.dsa.generate_private_key",
+        "cryptography.hazmat.backends.default_backend"
+      ],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_sahilchadha1991_cryptoExamples_cryptography.hazmat.primitives.asymmetric.dsa.generate_private_key",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "assym.py",
+    "line_number": 0,
+    "function_name": "cryptography.hazmat.primitives.asymmetric.dsa.generate_private_key",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "cryptography.hazmat.primitives.asymmetric.dsa.generate_private_key",
+      "matched_key": "cryptography.hazmat.primitives.asymmetric.dsa.generate_private_key",
+      "callers": [
+        "assym"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_sahilchadha1991_cryptoExamples_cryptography.hazmat.primitives.hashes.SHA256",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "assym.py",
+    "line_number": 0,
+    "function_name": "cryptography.hazmat.primitives.hashes.SHA256",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "cryptography.hazmat.primitives.hashes.SHA256",
+      "matched_key": "cryptography.hazmat.primitives.hashes.SHA256",
+      "callers": [
+        "assym",
+        "hashExample",
+        "keyedHashExample"
+      ],
+      "callees": [],
+      "caller_count": 3,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_sahilchadha1991_cryptoExamples_cbcRandomIV",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "cbcRandomIV.py",
+    "line_number": 0,
+    "function_name": "cbcRandomIV",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "cbcRandomIV",
+      "matched_key": "cbcRandomIV",
+      "callers": [],
+      "callees": [
+        "<builtin>.print",
+        "cryptography.hazmat.primitives.ciphers.algorithms.AES",
+        "os.urandom",
+        "cryptography.hazmat.backends.default_backend",
+        "cryptography.hazmat.primitives.ciphers.modes.CBC",
+        "cryptography.hazmat.primitives.ciphers.Cipher"
+      ],
+      "caller_count": 0,
+      "callee_count": 6,
+      "crypto_calls": [
+        "cryptography.hazmat.primitives.ciphers.algorithms.AES",
+        "os.urandom",
+        "cryptography.hazmat.backends.default_backend",
+        "cryptography.hazmat.primitives.ciphers.modes.CBC",
+        "cryptography.hazmat.primitives.ciphers.Cipher"
+      ],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_sahilchadha1991_cryptoExamples_cryptography.hazmat.primitives.ciphers.modes.CBC",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "cbcRandomIV.py",
+    "line_number": 0,
+    "function_name": "cryptography.hazmat.primitives.ciphers.modes.CBC",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "cryptography.hazmat.primitives.ciphers.modes.CBC",
+      "matched_key": "cryptography.hazmat.primitives.ciphers.modes.CBC",
+      "callers": [
+        "cbcRandomIV",
+        "cbcStaticIV"
+      ],
+      "callees": [],
+      "caller_count": 2,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_sahilchadha1991_cryptoExamples_cbcStaticIV",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "cbcStaticIV.py",
+    "line_number": 0,
+    "function_name": "cbcStaticIV",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "cbcStaticIV",
+      "matched_key": "cbcStaticIV",
+      "callers": [],
+      "callees": [
+        "os.urandom",
+        "<builtin>.print",
+        "cryptography.hazmat.primitives.ciphers.modes.CBC",
+        "cryptography.hazmat.primitives.ciphers.algorithms.AES",
+        "cryptography.hazmat.backends.default_backend",
+        "cryptography.hazmat.primitives.ciphers.Cipher"
+      ],
+      "caller_count": 0,
+      "callee_count": 6,
+      "crypto_calls": [
+        "os.urandom",
+        "cryptography.hazmat.primitives.ciphers.modes.CBC",
+        "cryptography.hazmat.primitives.ciphers.algorithms.AES",
+        "cryptography.hazmat.backends.default_backend",
+        "cryptography.hazmat.primitives.ciphers.Cipher"
+      ],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_sahilchadha1991_cryptoExamples_hashExample",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "hashExample.py",
+    "line_number": 0,
+    "function_name": "hashExample",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "hashExample",
+      "matched_key": "hashExample",
+      "callers": [],
+      "callees": [
+        "<builtin>.print",
+        "cryptography.hazmat.primitives.hashes.SHA256",
+        "cryptography.hazmat.backends.default_backend",
+        "cryptography.hazmat.primitives.hashes.Hash"
+      ],
+      "caller_count": 0,
+      "callee_count": 4,
+      "crypto_calls": [
+        "cryptography.hazmat.primitives.hashes.SHA256",
+        "cryptography.hazmat.backends.default_backend",
+        "cryptography.hazmat.primitives.hashes.Hash"
+      ],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_sahilchadha1991_cryptoExamples_cryptography.hazmat.primitives.hashes.Hash",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "hashExample.py",
+    "line_number": 0,
+    "function_name": "cryptography.hazmat.primitives.hashes.Hash",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "cryptography.hazmat.primitives.hashes.Hash",
+      "matched_key": "cryptography.hazmat.primitives.hashes.Hash",
+      "callers": [
+        "hashExample"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_sahilchadha1991_cryptoExamples_keyedHashExample",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "keyedHashExample.py",
+    "line_number": 0,
+    "function_name": "keyedHashExample",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "keyedHashExample",
+      "matched_key": "keyedHashExample",
+      "callers": [],
+      "callees": [
+        "cryptography.hazmat.backends.default_backend",
+        "cryptography.hazmat.primitives.hashes.SHA256",
+        "cryptography.hazmat.primitives.hmac.HMAC",
+        "<builtin>.print"
+      ],
+      "caller_count": 0,
+      "callee_count": 4,
+      "crypto_calls": [
+        "cryptography.hazmat.backends.default_backend",
+        "cryptography.hazmat.primitives.hashes.SHA256",
+        "cryptography.hazmat.primitives.hmac.HMAC"
+      ],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_sahilchadha1991_cryptoExamples_cryptography.hazmat.primitives.hmac.HMAC",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "keyedHashExample.py",
+    "line_number": 0,
+    "function_name": "cryptography.hazmat.primitives.hmac.HMAC",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "cryptography.hazmat.primitives.hmac.HMAC",
+      "matched_key": "cryptography.hazmat.primitives.hmac.HMAC",
+      "callers": [
+        "keyedHashExample"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_sahilchadha1991_cryptoExamples_symmEncryption",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "symmEncryption.py",
+    "line_number": 0,
+    "function_name": "symmEncryption",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "symmEncryption",
+      "matched_key": "symmEncryption",
+      "callers": [],
+      "callees": [
+        "<builtin>.print",
+        "symmEncryption.keygeneration",
+        "<builtin>.bytes",
+        "symmEncryption.encryption",
+        "symmEncryption.decryption",
+        "<builtin>.input"
+      ],
+      "caller_count": 0,
+      "callee_count": 6,
+      "crypto_calls": [
+        "symmEncryption.keygeneration",
+        "symmEncryption.encryption",
+        "symmEncryption.decryption"
+      ],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_sahilchadha1991_cryptoExamples_symmEncryption.keygeneration",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "symmEncryption.py",
+    "line_number": 0,
+    "function_name": "symmEncryption.keygeneration",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "symmEncryption.keygeneration",
+      "matched_key": "symmEncryption.keygeneration",
+      "callers": [
+        "symmEncryption"
+      ],
+      "callees": [
+        "<builtin>.print",
+        "cryptography.fernet.Fernet.generate_key",
+        "cryptography.fernet.Fernet"
+      ],
+      "caller_count": 1,
+      "callee_count": 3,
+      "crypto_calls": [
+        "cryptography.fernet.Fernet.generate_key",
+        "cryptography.fernet.Fernet"
+      ],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_sahilchadha1991_cryptoExamples_cryptography.fernet.Fernet.generate_key",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "symmEncryption.py",
+    "line_number": 0,
+    "function_name": "cryptography.fernet.Fernet.generate_key",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "cryptography.fernet.Fernet.generate_key",
+      "matched_key": "cryptography.fernet.Fernet.generate_key",
+      "callers": [
+        "symmEncryption.keygeneration"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_sahilchadha1991_cryptoExamples_cryptography.fernet.Fernet",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "symmEncryption.py",
+    "line_number": 0,
+    "function_name": "cryptography.fernet.Fernet",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "cryptography.fernet.Fernet",
+      "matched_key": "cryptography.fernet.Fernet",
+      "callers": [
+        "symmEncryption.keygeneration"
+      ],
+      "callees": [],
+      "caller_count": 1,
+      "callee_count": 0,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_sahilchadha1991_cryptoExamples_symmEncryption.encryption",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "symmEncryption.py",
+    "line_number": 0,
+    "function_name": "symmEncryption.encryption",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "symmEncryption.encryption",
+      "matched_key": "symmEncryption.encryption",
+      "callers": [
+        "symmEncryption"
+      ],
+      "callees": [
+        "<builtin>.print"
+      ],
+      "caller_count": 1,
+      "callee_count": 1,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  },
+  {
+    "issue_id": "cg_sahilchadha1991_cryptoExamples_symmEncryption.decryption",
+    "repo_name": "sahilchadha1991_cryptoExamples",
+    "filename": "symmEncryption.py",
+    "line_number": 0,
+    "function_name": "symmEncryption.decryption",
+    "status": "success",
+    "tool": "jarviscg_all_functions",
+    "call_graph_context": {
+      "function": "symmEncryption.decryption",
+      "matched_key": "symmEncryption.decryption",
+      "callers": [
+        "symmEncryption"
+      ],
+      "callees": [
+        "<builtin>.print"
+      ],
+      "caller_count": 1,
+      "callee_count": 1,
+      "crypto_calls": [],
+      "network_calls": [],
+      "auth_calls": []
+    },
+    "full_callgraph_size": 26,
+    "completeness_indicators": {
+      "analyzed_whole_repo": true,
+      "function_identified": true,
+      "cross_file_calls_captured": true
+    }
+  }
+]

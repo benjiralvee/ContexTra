@@ -1,0 +1,502 @@
+{
+  "1": {
+    "label": "FP",
+    "uid": 1,
+    "source_id": 1,
+    "repo": "0l4bone_payment-processor",
+    "file": "0l4bone_payment-processor/connection.py",
+    "line": 38,
+    "issue": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "reasoning": "MD5 input is literally Faker().password() in toy script with exec() recursion; faker_dummy confirmed."
+  },
+  "2": {
+    "label": "FP",
+    "uid": 2,
+    "source_id": 2,
+    "repo": "0l4bone_payment-processor",
+    "file": "0l4bone_payment-processor/connection.py",
+    "line": 64,
+    "issue": "Call to requests with verify=False disabling SSL certificate checks, security issue.",
+    "reasoning": "verify=False in abandoned one-file toy with hardcoded dummy token and self-recursive exec()."
+  },
+  "3": {
+    "label": "TP",
+    "uid": 3,
+    "source_id": 3,
+    "repo": "66ru_payback",
+    "file": "66ru_payback/gateauth/models.py",
+    "line": 36,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "gateauth/models.py:36-38 chains hashlib.sha1 twice over params+salt for partner API auth; bespoke non-HMAC SHA1, no mandate."
+  },
+  "4": {
+    "label": "NON_ACTIONABLE",
+    "uid": 4,
+    "source_id": 4,
+    "repo": "Apkawa_django-payments-paymaster",
+    "file": "Apkawa_django-payments-paymaster/payments_paymaster/rest_api/client.py",
+    "line": 104,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "Docstring cites 'PHP \u043a\u043e\u0434 \u0444\u043e\u0440\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f \u0445\u0435\u0448\u0430: $hash = base64_encode(sha1($str, true))' showing Paymaster spec mandates SHA1+base64."
+  },
+  "9": {
+    "label": "NON_ACTIONABLE",
+    "uid": 5,
+    "source_id": 9,
+    "repo": "CavidRzayev_payment-az",
+    "file": "CavidRzayev_payment-az/payment/utils.py",
+    "line": 18,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "convert_string_to_hash produces base64(SHA1) as mandated by NestPay 3DSecure hash field; no algorithm config available."
+  },
+  "10": {
+    "label": "NON_ACTIONABLE",
+    "uid": 6,
+    "source_id": 10,
+    "repo": "CyberLight_django-demirbank",
+    "file": "CyberLight_django-demirbank/demirbank/views.py",
+    "line": 167,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "_generate_hash implements DemirBank's legacy 3D-Secure base64(unhexlify(SHA1.hex)) HASH field; bank-mandated."
+  },
+  "11": {
+    "label": "FP",
+    "uid": 7,
+    "source_id": 11,
+    "repo": "JUNICHIFUJIO_CryptoTests",
+    "file": "JUNICHIFUJIO_CryptoTests/FinalMain.py",
+    "line": 464,
+    "issue": "Use of insecure cipher cryptography.hazmat.primitives.ciphers.algorithms.Blowfish. Replace with a known secure cipher such as AES.",
+    "reasoning": "File header states 'CSS 527 Final Project' performance benchmark of block ciphers including Blowfish."
+  },
+  "12": {
+    "label": "FP",
+    "uid": 8,
+    "source_id": 12,
+    "repo": "JUNICHIFUJIO_CryptoTests",
+    "file": "JUNICHIFUJIO_CryptoTests/FinalMain.py",
+    "line": 544,
+    "issue": "Use of insecure cipher cryptography.hazmat.primitives.ciphers.algorithms.ARC4. Replace with a known secure cipher such as AES.",
+    "reasoning": "ARC4 in same CSS 527 performance benchmark as blockCipher2; educational timing study."
+  },
+  "13": {
+    "label": "NON_ACTIONABLE",
+    "uid": 9,
+    "source_id": 13,
+    "repo": "NavonHobby75_Stripe-PaymentProcessors-MerchantAPI-Django",
+    "file": "NavonHobby75_Stripe-PaymentProcessors-MerchantAPI-Django/billing/gateways/global_iris_gateway.py",
+    "line": 117,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "File comments cite globaliris.com/documents URL and implements double-SHA1(val.secret) signature mandated by Realex RealAuth protocol."
+  },
+  "14": {
+    "label": "TP",
+    "uid": 10,
+    "source_id": 14,
+    "repo": "OpenG2P_openg2p-erp",
+    "file": "OpenG2P_openg2p-erp/openg2p_disbursement/models/openg2p_disbursement_batch_transaction.py",
+    "line": 289,
+    "issue": "Call to requests with verify=False disabling SSL certificate checks, security issue.",
+    "reasoning": "openg2p_disbursement_batch_transaction.py:289 requests.get with Bearer token + verify=False on disbursement-status call, production code."
+  },
+  "33": {
+    "label": "FP",
+    "uid": 11,
+    "source_id": 33,
+    "repo": "Quantosec_QuantoCrypt-py",
+    "file": "Quantosec_QuantoCrypt-py/src/QuantoCrypt/hash.py",
+    "line": 52,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "Alpha QuantoCrypt library exposes SHA1 class; README shows 'alpha' status, no evidence of production use."
+  },
+  "34": {
+    "label": "FP",
+    "uid": 12,
+    "source_id": 34,
+    "repo": "Quantosec_QuantoCrypt-py",
+    "file": "Quantosec_QuantoCrypt-py/src/QuantoCrypt/hash.py",
+    "line": 61,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "Same SHA1 class hex() method in alpha/abandoned QuantoCrypt library."
+  },
+  "44": {
+    "label": "FP",
+    "uid": 13,
+    "source_id": 44,
+    "repo": "Udala_docforever",
+    "file": "Udala_docforever/pycoin/tx/script/microcode.py",
+    "line": 424,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "do_OP_SHA1 implements Bitcoin opcode 0xA7 in vendored pycoin; protocol-mandated."
+  },
+  "45": {
+    "label": "FP",
+    "uid": 14,
+    "source_id": 45,
+    "repo": "Whompithian_css527-project3",
+    "file": "Whompithian_css527-project3/algo.py",
+    "line": 199,
+    "issue": "Use of insecure cipher cryptography.hazmat.primitives.ciphers.algorithms.ARC4. Replace with a known secure cipher such as AES.",
+    "reasoning": "CSS 527 Project 3 benchmark with ARC4 labeled as stream cipher under test."
+  },
+  "46": {
+    "label": "NON_ACTIONABLE",
+    "uid": 15,
+    "source_id": 46,
+    "repo": "YO-Uganda_YoPaymentsPython",
+    "file": "YO-Uganda_YoPaymentsPython/yopayments.py",
+    "line": 454,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "Yo! Payments API requires 'sha1WithRSAEncryption' - the algorithm name appears literally as the third argument to crypto.sign."
+  },
+  "47": {
+    "label": "FP",
+    "uid": 16,
+    "source_id": 47,
+    "repo": "achow101_payment-proto-interface",
+    "file": "achow101_payment-proto-interface/paymentrequest.py",
+    "line": 279,
+    "issue": "Call to requests with verify=False disabling SSL certificate checks, security issue.",
+    "reasoning": "File header 'Electrum - lightweight Bitcoin client Copyright 2014 Thomas Voegtlin'; vendored Electrum BIP-70 code."
+  },
+  "48": {
+    "label": "FP",
+    "uid": 17,
+    "source_id": 48,
+    "repo": "achow101_payment-proto-interface",
+    "file": "achow101_payment-proto-interface/rsakey.py",
+    "line": 44,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "File header credits Electrum and TLSLite authors; SHA1 helper is vendored code."
+  },
+  "49": {
+    "label": "FP",
+    "uid": 18,
+    "source_id": 49,
+    "repo": "achow101_payment-proto-interface",
+    "file": "achow101_payment-proto-interface/x509.py",
+    "line": 310,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "Vendored Electrum x509.py; SHA1 is certificate fingerprint (non-security identifier)."
+  },
+  "50": {
+    "label": "NON_ACTIONABLE",
+    "uid": 19,
+    "source_id": 50,
+    "repo": "agiliq_merchant",
+    "file": "agiliq_merchant/billing/gateways/global_iris_gateway.py",
+    "line": 117,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "Identical Global Iris/Realex RealAuth double-SHA1(val.secret) signature; URL references globaliris.com in adjacent docstring."
+  },
+  "75": {
+    "label": "NON_ACTIONABLE",
+    "uid": 20,
+    "source_id": 75,
+    "repo": "bakaat_realex",
+    "file": "bakaat_realex/base.py",
+    "line": 89,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "Realex HPP integration with endpoint hpp.realexpayments.com; produces SHA1HASH hidden field via mandated double-SHA1 construction."
+  },
+  "76": {
+    "label": "NON_ACTIONABLE",
+    "uid": 21,
+    "source_id": 76,
+    "repo": "bakaat_realex",
+    "file": "bakaat_realex/base.py",
+    "line": 95,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "Outer SHA1(hash1.secret) step of Realex HPP's mandated SHA1HASH field; field name and algorithm are prescribed by gateway."
+  },
+  "77": {
+    "label": "NON_ACTIONABLE",
+    "uid": 22,
+    "source_id": 77,
+    "repo": "bakaat_realex",
+    "file": "bakaat_realex/base.py",
+    "line": 156,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "Realex is_valid verification uses SHA1HASH field and double-SHA1 pattern exactly as mandated by Realex HPP spec."
+  },
+  "78": {
+    "label": "NON_ACTIONABLE",
+    "uid": 23,
+    "source_id": 78,
+    "repo": "bandoche_PyPinkSign",
+    "file": "bandoche_PyPinkSign/pypinksign/pypinksign.py",
+    "line": 388,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "Function get_private_key_decryption_key_for_seed_cbc_with_sha1 implements K-PKI id-seedCBCWithSHA1 key derivation; SHA1 required by OID spec."
+  },
+  "79": {
+    "label": "NON_ACTIONABLE",
+    "uid": 24,
+    "source_id": 79,
+    "repo": "bandoche_PyPinkSign",
+    "file": "bandoche_PyPinkSign/pypinksign/pypinksign.py",
+    "line": 587,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "Docstring cites PKCS#5 v2.0 PBKDF1 spec; SHA1 is mandated by PBKDF1 and K-PKI id-seedCBCWithSHA1 OID."
+  },
+  "80": {
+    "label": "NON_ACTIONABLE",
+    "uid": 25,
+    "source_id": 80,
+    "repo": "bandoche_PyPinkSign",
+    "file": "bandoche_PyPinkSign/pypinksign/pypinksign.py",
+    "line": 594,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "PBKDF1 inner iteration t=SHA1(t); SHA1 is the spec-required hash for PBKDF1 per PKCS#5 v2.0."
+  },
+  "81": {
+    "label": "NON_ACTIONABLE",
+    "uid": 26,
+    "source_id": 81,
+    "repo": "bandoche_PyPinkSign",
+    "file": "bandoche_PyPinkSign/pypinksign/pypinksign.py",
+    "line": 661,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "Mirror encrypt-side of K-PKI id-seedCBCWithSHA1 PBKDF1-SHA1 KDF; ID_SEED_CBC_WITH_SHA1 OID mandates SHA1."
+  },
+  "82": {
+    "label": "TP",
+    "uid": 27,
+    "source_id": 82,
+    "repo": "bcurtu_django-sermepa",
+    "file": "bcurtu_django-sermepa/django-sermepa/sermepa/models.py",
+    "line": 64,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "Strong TP. The same SDK exposes both algorithms; the developer chose to leave SHA1 code in the merchant response model. Fixing the line does not break gateway compatibility because the gateway has long since transitioned to HMAC-SHA256 and the SDK already implements it."
+  },
+  "83": {
+    "label": "FP",
+    "uid": 28,
+    "source_id": 83,
+    "repo": "boppreh_simplecrypto",
+    "file": "boppreh_simplecrypto/simplecrypto/hashes.py",
+    "line": 19,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "sha1() exposed as utility alongside md5/sha256 in pre-1.0 abandoned simplecrypto library."
+  },
+  "84": {
+    "label": "TP",
+    "uid": 29,
+    "source_id": 84,
+    "repo": "chrisglass_django-shop-postfinance",
+    "file": "chrisglass_django-shop-postfinance/shop_postfinance/utils.py",
+    "line": 35,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "Ingenico/PostFinance gateway exposes Hash algorithm (SHA-1/256/512) as merchant-configurable. NA reserved for cryptographic mandates (RFC/spec/hardware-locked API), not unmaintained dormancy. Fix is mechanical: hashlib.sha1 -> hashlib.sha256 plus merchant-side dropdown."
+  },
+  "85": {
+    "label": "TP",
+    "uid": 30,
+    "source_id": 85,
+    "repo": "chrisglass_django-shop-postfinance",
+    "file": "chrisglass_django-shop-postfinance/shop_postfinance/utils.py",
+    "line": 49,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "Same SDK as uid 29 (outbound SHASIGN). Same gateway, same fix path."
+  },
+  "86": {
+    "label": "NON_ACTIONABLE",
+    "uid": 31,
+    "source_id": 86,
+    "repo": "click-llc_click-integration-django",
+    "file": "click-llc_click-integration-django/click/__init__.py",
+    "line": 30,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "Click.uz Merchant API (endpoint api.click.uz) prescribes Auth digest=sha1(timestamp+secret_key); no algorithm choice exposed by Click."
+  },
+  "106": {
+    "label": "TP",
+    "uid": 32,
+    "source_id": 106,
+    "repo": "elessarelfstone_tcomapi",
+    "file": "elessarelfstone_tcomapi/tcomapi/common/utils.py",
+    "line": 208,
+    "issue": "Call to requests with verify=False disabling SSL certificate checks, security issue.",
+    "reasoning": "utils.py:208 generic get() helper uses verify=False; comment cites internal Kazakhtelecom convenience, not external mandate."
+  },
+  "107": {
+    "label": "TP",
+    "uid": 33,
+    "source_id": 107,
+    "repo": "elessarelfstone_tcomapi",
+    "file": "elessarelfstone_tcomapi/tcomapi/common/utils.py",
+    "line": 222,
+    "issue": "Call to requests with verify=False disabling SSL certificate checks, security issue.",
+    "reasoning": "utils.py:222 shared post() helper passes verify=False with same internal-convenience comment; used for outbound HTTPS."
+  },
+  "108": {
+    "label": "TP",
+    "uid": 34,
+    "source_id": 108,
+    "repo": "elessarelfstone_tcomapi",
+    "file": "elessarelfstone_tcomapi/tcomapi/common/utils.py",
+    "line": 253,
+    "issue": "Call to requests with verify=False disabling SSL certificate checks, security issue.",
+    "reasoning": "utils.py:253 load_url_content uses requests.get(verify=False) for general URL fetch; no external mandate."
+  },
+  "109": {
+    "label": "TP",
+    "uid": 35,
+    "source_id": 109,
+    "repo": "elessarelfstone_tcomapi",
+    "file": "elessarelfstone_tcomapi/tcomapi/common/utils.py",
+    "line": 390,
+    "issue": "Call to requests with verify=False disabling SSL certificate checks, security issue.",
+    "reasoning": "utils.py:390 download() streams with verify=False; same internal-network comment, not a spec requirement."
+  },
+  "110": {
+    "label": "TP",
+    "uid": 36,
+    "source_id": 110,
+    "repo": "elessarelfstone_tcomapi",
+    "file": "elessarelfstone_tcomapi/tcomapi/kgd/api.py",
+    "line": 95,
+    "issue": "Call to requests with verify=False disabling SSL certificate checks, security issue.",
+    "reasoning": "kgd/api.py:95 requests.post with token in URL and verify=False against tokenised KGD endpoint."
+  },
+  "111": {
+    "label": "TP",
+    "uid": 37,
+    "source_id": 111,
+    "repo": "elessarelfstone_tcomapi",
+    "file": "elessarelfstone_tcomapi/tcomapi/sgov/api.py",
+    "line": 88,
+    "issue": "Call to requests with verify=False disabling SSL certificate checks, security issue.",
+    "reasoning": "sgov/api.py:88 SgovRCutParser __init__ calls requests.get(rcuts_url, verify=False)."
+  },
+  "112": {
+    "label": "TP",
+    "uid": 38,
+    "source_id": 112,
+    "repo": "elessarelfstone_tcomapi",
+    "file": "elessarelfstone_tcomapi/tcomapi/sgov/api.py",
+    "line": 111,
+    "issue": "Call to requests with verify=False disabling SSL certificate checks, security issue.",
+    "reasoning": "sgov/api.py:111 requests.post(request_url, ..., verify=False) in get_order; drives downstream fileGuid retrieval."
+  },
+  "113": {
+    "label": "TP",
+    "uid": 39,
+    "source_id": 113,
+    "repo": "elessarelfstone_tcomapi",
+    "file": "elessarelfstone_tcomapi/tcomapi/sgov/api.py",
+    "line": 126,
+    "issue": "Call to requests with verify=False disabling SSL certificate checks, security issue.",
+    "reasoning": "sgov/api.py:126 requests.get(url, headers=headers, verify=False) in get_file_guid; no mandate."
+  },
+  "114": {
+    "label": "NON_ACTIONABLE",
+    "uid": 40,
+    "source_id": 114,
+    "repo": "esistgut_django-payments-bnlepos",
+    "file": "esistgut_django-payments-bnlepos/payments_bnlepos/__init__.py",
+    "line": 32,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "BNL e-POS/Fiserv IPG Connect: endpoint ipg-online.com with storename/txndatetime/chargetotal fields; legacy SHA1 hash mandated for this Connect product version."
+  },
+  "140": {
+    "label": "FP",
+    "uid": 41,
+    "source_id": 140,
+    "repo": "gnrfan_EZCrypto",
+    "file": "gnrfan_EZCrypto/ezcrypto/pki/rsa.py",
+    "line": 71,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "Heuristic mis-applied. This alert is bandit's SHA1 weak-hash warning at line 71 (hashlib.sha1(data).hexdigest()) for an RSA sign/verify get_hash helper, NOT a DUO133 Crypto.* import alert. The pycrypto pin is irrelevant to this finding; swapping to pycryptodome would not remove the SHA1 use. On merits the SHA1-for-signatures concern is real, but the repo is a single-commit 2012-2013 abandoned wrapper with no consumers, so even the underlying SHA1 issue is non-actionable; pin rule does not justify the TP."
+  },
+  "141": {
+    "label": "NON_ACTIONABLE",
+    "uid": 42,
+    "source_id": 141,
+    "repo": "intelligenia_django-virtual-pos",
+    "file": "intelligenia_django-virtual-pos/djangovirtualpos/models.py",
+    "line": 981,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "Signature literally embeds 'SHA1' constant string as required CECA field; CECA virtual POS mandates SHA1 signature algorithm."
+  },
+  "142": {
+    "label": "NON_ACTIONABLE",
+    "uid": 43,
+    "source_id": 142,
+    "repo": "intelligenia_django-virtual-pos",
+    "file": "intelligenia_django-virtual-pos/djangovirtualpos/models.py",
+    "line": 1010,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "CECA verification-side _verification_signature; same CECA-mandated SHA1 scheme; no merchant configurable alternative."
+  },
+  "143": {
+    "label": "NON_ACTIONABLE",
+    "uid": 44,
+    "source_id": 143,
+    "repo": "intelligenia_django-virtual-pos",
+    "file": "intelligenia_django-virtual-pos/djangovirtualpos/models.py",
+    "line": 3496,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "Santander Elavon (Realex) HPP double-SHA1(val.secret) signature; inner hash step of the mandated SHA1HASH construction."
+  },
+  "144": {
+    "label": "NON_ACTIONABLE",
+    "uid": 45,
+    "source_id": 144,
+    "repo": "intelligenia_django-virtual-pos",
+    "file": "intelligenia_django-virtual-pos/djangovirtualpos/models.py",
+    "line": 3501,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "Outer hash of Santander Elavon double-SHA1 mandated signature; hash1.secret pattern fixed by gateway spec."
+  },
+  "145": {
+    "label": "NON_ACTIONABLE",
+    "uid": 46,
+    "source_id": 145,
+    "repo": "intelligenia_django-virtual-pos",
+    "file": "intelligenia_django-virtual-pos/djangovirtualpos/models.py",
+    "line": 3520,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "_settle_void_signature inner SHA1 on Santander Elavon Remote XML endpoint; same mandated double-SHA1 construction."
+  },
+  "146": {
+    "label": "NON_ACTIONABLE",
+    "uid": 47,
+    "source_id": 146,
+    "repo": "intelligenia_django-virtual-pos",
+    "file": "intelligenia_django-virtual-pos/djangovirtualpos/models.py",
+    "line": 3525,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "Outer SHA1(firma1.secret) step for settle/void Remote; Santander Elavon prescribes algorithm."
+  },
+  "147": {
+    "label": "NON_ACTIONABLE",
+    "uid": 48,
+    "source_id": 147,
+    "repo": "intelligenia_django-virtual-pos",
+    "file": "intelligenia_django-virtual-pos/djangovirtualpos/models.py",
+    "line": 3560,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "_verification_signature inner SHA1 over timestamp.merchant_id.order_id.result.message.pasref.authcode per Santander Elavon response-validation spec."
+  },
+  "148": {
+    "label": "NON_ACTIONABLE",
+    "uid": 49,
+    "source_id": 148,
+    "repo": "intelligenia_django-virtual-pos",
+    "file": "intelligenia_django-virtual-pos/djangovirtualpos/models.py",
+    "line": 3565,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "Outer SHA1(firma1.secret) in verification of Santander Elavon response; gateway-mandated algorithm."
+  },
+  "149": {
+    "label": "NON_ACTIONABLE",
+    "uid": 50,
+    "source_id": 149,
+    "repo": "intk_bda.plone.molliepayment",
+    "file": "intk_bda.plone.molliepayment/src/bda/plone/molliepayment/mollie_payment/easyideal.py",
+    "line": 42,
+    "issue": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "reasoning": "SignatureBuilder.get_signature returns hashlib.sha1 of joined tokens+merchant_secret for Qantani Easy iDEAL XML API Checksum; spec-mandated."
+  }
+}

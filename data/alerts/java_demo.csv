@@ -1,0 +1,921 @@
+id,repo_name,filename,line_number,issue_text,code,severity,cwe,found_by_count,all_sources,source,tool_issue_id,combined_tool_ids,is_duplicate
+136,jetty.project,jetty-aggregate/jetty-all/target/sources/org/eclipse/jetty/client/security/DigestAuthentication.java,115,Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use HMAC instead.," 100:            byte[] digest=md.digest();
+ 101:
+ 102:            // check digest
+ 103:            return encode(digest);
+ 104:        }
+ 105:        catch(Exception e)
+ 106:        {
+ 107:            throw new RuntimeException(e);
+ 108:        }
+ 109:    }
+ 110:
+ 111:    protected String newCnonce(HttpExchange exchange, Realm securityRealm, Map details)
+ 112:    {
+ 113:        try
+ 114:        {
+ 115:FLAGGED_LINE:            MessageDigest md = MessageDigest.getInstance(""MD5"");
+ 116:            byte[] b= md.digest(String.valueOf(System.currentTimeMillis()).getBytes(StringUtil.__ISO_8859_1));
+ 117:            return encode(b);
+ 118:        }
+ 119:        catch(Exception e)
+ 120:        {
+ 121:            throw new RuntimeException(e);
+ 122:        }
+ 123:    }
+ 124:
+ 125:    private static String encode(byte[] data)
+ 126:    {
+ 127:        StringBuilder buffer = new StringBuilder();
+ 128:        for (int i=0; i<data.length; i++)
+ 129:        {
+ 130:            buffer.append(Integer.toHexString((data[i] & 0xf0) >>> 4));",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.use-of-md5.use-of-md5,Semgrep:java.lang.security.audit.crypto.use-of-md5.use-of-md5,False
+137,jetty.project,jetty-aggregate/jetty-all/target/sources/org/eclipse/jetty/client/security/DigestAuthentication.java,73,Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use HMAC instead.,"  58:
+  59:        buffer.append("", "").append(""qop"").append('=').append(String.valueOf(details.get(""qop"")));
+  60:
+  61:
+  62:        buffer.append("", "").append(""nc"").append('=').append(NC);
+  63:
+  64:        buffer.append("", "").append(""cnonce"").append('=').append('""').append(cnonce).append('""');
+  65:
+  66:        exchange.setRequestHeader( HttpHeaders.AUTHORIZATION,
+  67:                new String(buffer.toString().getBytes(StringUtil.__ISO_8859_1)));
+  68:    }
+  69:
+  70:    protected String newResponse(String cnonce, HttpExchange exchange, Realm securityRealm, Map details)
+  71:    {
+  72:        try{
+  73:FLAGGED_LINE:            MessageDigest md = MessageDigest.getInstance(""MD5"");
+  74:
+  75:            // calc A1 digest
+  76:            md.update(securityRealm.getPrincipal().getBytes(StringUtil.__ISO_8859_1));
+  77:            md.update((byte)':');
+  78:            md.update(String.valueOf(details.get(""realm"")).getBytes(StringUtil.__ISO_8859_1));
+  79:            md.update((byte)':');
+  80:            md.update(securityRealm.getCredentials().getBytes(StringUtil.__ISO_8859_1));
+  81:            byte[] ha1 = md.digest();
+  82:            // calc A2 digest
+  83:            md.reset();
+  84:            md.update(exchange.getMethod().getBytes(StringUtil.__ISO_8859_1));
+  85:            md.update((byte)':');
+  86:            md.update(exchange.getURI().getBytes(StringUtil.__ISO_8859_1));
+  87:            byte[] ha2=md.digest();
+  88:",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.use-of-md5.use-of-md5,Semgrep:java.lang.security.audit.crypto.use-of-md5.use-of-md5,False
+138,jetty.project,jetty-aggregate/jetty-all/target/sources/org/eclipse/jetty/security/authentication/DigestAuthenticator.java,319,Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use HMAC instead.," 304:        Digest(String m)
+ 305:        {
+ 306:            method = m;
+ 307:        }
+ 308:
+ 309:        /* ------------------------------------------------------------ */
+ 310:        @Override
+ 311:        public boolean check(Object credentials)
+ 312:        {
+ 313:            if (credentials instanceof char[])
+ 314:                credentials=new String((char[])credentials);
+ 315:            String password = (credentials instanceof String) ? (String) credentials : credentials.toString();
+ 316:
+ 317:            try
+ 318:            {
+ 319:FLAGGED_LINE:                MessageDigest md = MessageDigest.getInstance(""MD5"");
+ 320:                byte[] ha1;
+ 321:                if (credentials instanceof Credential.MD5)
+ 322:                {
+ 323:                    // Credentials are already a MD5 digest - assume it's in
+ 324:                    // form user:realm:password (we have no way to know since
+ 325:                    // it's a digest, alright?)
+ 326:                    ha1 = ((Credential.MD5) credentials).getDigest();
+ 327:                }
+ 328:                else
+ 329:                {
+ 330:                    // calc A1 digest
+ 331:                    md.update(username.getBytes(StringUtil.__ISO_8859_1));
+ 332:                    md.update((byte) ':');
+ 333:                    md.update(realm.getBytes(StringUtil.__ISO_8859_1));
+ 334:                    md.update((byte) ':');",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.use-of-md5.use-of-md5,Semgrep:java.lang.security.audit.crypto.use-of-md5.use-of-md5,False
+139,jetty.project,jetty-aggregate/jetty-all/target/sources/org/eclipse/jetty/security/jaspi/modules/DigestAuthModule.java,191,Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use HMAC instead.," 176:        // long ts=request.getTimeStamp();
+ 177:        long sk = nonceSecret;
+ 178:
+ 179:        byte[] nounce = new byte[24];
+ 180:        for (int i = 0; i < 8; i++)
+ 181:        {
+ 182:            nounce[i] = (byte) (ts & 0xff);
+ 183:            ts = ts >> 8;
+ 184:            nounce[8 + i] = (byte) (sk & 0xff);
+ 185:            sk = sk >> 8;
+ 186:        }
+ 187:
+ 188:        byte[] hash = null;
+ 189:        try
+ 190:        {
+ 191:FLAGGED_LINE:            MessageDigest md = MessageDigest.getInstance(""MD5"");
+ 192:            md.reset();
+ 193:            md.update(nounce, 0, 16);
+ 194:            hash = md.digest();
+ 195:        }
+ 196:        catch (Exception e)
+ 197:        {
+ 198:            LOG.warn(e);
+ 199:        }
+ 200:
+ 201:        for (int i = 0; i < hash.length; i++)
+ 202:        {
+ 203:            nounce[8 + i] = hash[i];
+ 204:            if (i == 23) break;
+ 205:        }
+ 206:",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.use-of-md5.use-of-md5,Semgrep:java.lang.security.audit.crypto.use-of-md5.use-of-md5,False
+140,jetty.project,jetty-aggregate/jetty-all/target/sources/org/eclipse/jetty/security/jaspi/modules/DigestAuthModule.java,240,Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use HMAC instead.," 225:            byte[] n2 = new byte[16];
+ 226:            System.arraycopy(n, 0, n2, 0, 8);
+ 227:            for (int i = 0; i < 8; i++)
+ 228:            {
+ 229:                n2[8 + i] = (byte) (sk & 0xff);
+ 230:                sk = sk >> 8;
+ 231:                ts = (ts << 8) + (0xff & (long) n[7 - i]);
+ 232:            }
+ 233:
+ 234:            long age = timestamp - ts;
+ 235:            if (LOG.isDebugEnabled()) LOG.debug(""age="" + age);
+ 236:
+ 237:            byte[] hash = null;
+ 238:            try
+ 239:            {
+ 240:FLAGGED_LINE:                MessageDigest md = MessageDigest.getInstance(""MD5"");
+ 241:                md.reset();
+ 242:                md.update(n2, 0, 16);
+ 243:                hash = md.digest();
+ 244:            }
+ 245:            catch (Exception e)
+ 246:            {
+ 247:                LOG.warn(e);
+ 248:            }
+ 249:
+ 250:            for (int i = 0; i < 16; i++)
+ 251:                if (n[i + 8] != hash[i]) return -1;
+ 252:
+ 253:            if (maxNonceAge > 0 && (age < 0 || age > maxNonceAge)) return 0; // stale
+ 254:
+ 255:            return 1;",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.use-of-md5.use-of-md5,Semgrep:java.lang.security.audit.crypto.use-of-md5.use-of-md5,False
+141,jetty.project,jetty-aggregate/jetty-all/target/sources/org/eclipse/jetty/security/jaspi/modules/DigestAuthModule.java,292,Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use HMAC instead.," 277:
+ 278:        /* ------------------------------------------------------------ */
+ 279:        Digest(String m)
+ 280:        {
+ 281:            method = m;
+ 282:        }
+ 283:
+ 284:        /* ------------------------------------------------------------ */
+ 285:        @Override
+ 286:        public boolean check(Object credentials)
+ 287:        {
+ 288:            String password = (credentials instanceof String) ? (String) credentials : credentials.toString();
+ 289:
+ 290:            try
+ 291:            {
+ 292:FLAGGED_LINE:                MessageDigest md = MessageDigest.getInstance(""MD5"");
+ 293:                byte[] ha1;
+ 294:                if (credentials instanceof Credential.MD5)
+ 295:                {
+ 296:                    // Credentials are already a MD5 digest - assume it's in
+ 297:                    // form user:realm:password (we have no way to know since
+ 298:                    // it's a digest, alright?)
+ 299:                    ha1 = ((Credential.MD5) credentials).getDigest();
+ 300:                }
+ 301:                else
+ 302:                {
+ 303:                    // calc A1 digest
+ 304:                    md.update(username.getBytes(StringUtil.__ISO_8859_1));
+ 305:                    md.update((byte) ':');
+ 306:                    md.update(realm.getBytes(StringUtil.__ISO_8859_1));
+ 307:                    md.update((byte) ':');",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.use-of-md5.use-of-md5,Semgrep:java.lang.security.audit.crypto.use-of-md5.use-of-md5,False
+142,jetty.project,jetty-aggregate/jetty-all/target/sources/org/eclipse/jetty/util/security/Credential.java,152,Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use HMAC instead.," 137:
+ 138:        /* ------------------------------------------------------------ */
+ 139:        @Override
+ 140:        public boolean check(Object credentials)
+ 141:        {
+ 142:            try
+ 143:            {
+ 144:                byte[] digest = null;
+ 145:
+ 146:                if (credentials instanceof char[])
+ 147:                    credentials=new String((char[])credentials);
+ 148:                if (credentials instanceof Password || credentials instanceof String)
+ 149:                {
+ 150:                    synchronized (__md5Lock)
+ 151:                    {
+ 152:FLAGGED_LINE:                        if (__md == null) __md = MessageDigest.getInstance(""MD5"");
+ 153:                        __md.reset();
+ 154:                        __md.update(credentials.toString().getBytes(StringUtil.__ISO_8859_1));
+ 155:                        digest = __md.digest();
+ 156:                    }
+ 157:                    if (digest == null || digest.length != _digest.length) return false;
+ 158:                    for (int i = 0; i < digest.length; i++)
+ 159:                        if (digest[i] != _digest[i]) return false;
+ 160:                    return true;
+ 161:                }
+ 162:                else if (credentials instanceof MD5)
+ 163:                {
+ 164:                    MD5 md5 = (MD5) credentials;
+ 165:                    if (_digest.length != md5._digest.length) return false;
+ 166:                    for (int i = 0; i < _digest.length; i++)
+ 167:                        if (_digest[i] != md5._digest[i]) return false;",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.use-of-md5.use-of-md5,Semgrep:java.lang.security.audit.crypto.use-of-md5.use-of-md5,False
+143,jetty.project,jetty-aggregate/jetty-all/target/sources/org/eclipse/jetty/util/security/Credential.java,201,Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use HMAC instead.," 186:            }
+ 187:        }
+ 188:
+ 189:        /* ------------------------------------------------------------ */
+ 190:        public static String digest(String password)
+ 191:        {
+ 192:            try
+ 193:            {
+ 194:                byte[] digest;
+ 195:                synchronized (__md5Lock)
+ 196:                {
+ 197:                    if (__md == null)
+ 198:                    {
+ 199:                        try
+ 200:                        {
+ 201:FLAGGED_LINE:                            __md = MessageDigest.getInstance(""MD5"");
+ 202:                        }
+ 203:                        catch (Exception e)
+ 204:                        {
+ 205:                            LOG.warn(e);
+ 206:                            return null;
+ 207:                        }
+ 208:                    }
+ 209:
+ 210:                    __md.reset();
+ 211:                    __md.update(password.getBytes(StringUtil.__ISO_8859_1));
+ 212:                    digest = __md.digest();
+ 213:                }
+ 214:
+ 215:                return __TYPE + TypeUtil.toString(digest, 16);
+ 216:            }",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.use-of-md5.use-of-md5,Semgrep:java.lang.security.audit.crypto.use-of-md5.use-of-md5,False
+144,jetty.project,jetty-aggregate/jetty-all/target/sources/org/eclipse/jetty/util/ssl/SslContextFactory.java,81,"Detected empty trust manager implementations. This is dangerous because it accepts any certificate, enabling man-in-the-middle attacks. Consider using a KeyStore and TrustManagerFactory instead. See https://stackoverflow.com/questions/2642777/trusting-all-certificates-using-httpclient-over-https for more information.","  66:/**
+  67: * SslContextFactory is used to configure SSL connectors
+  68: * as well as HttpClient. It holds all SSL parameters and
+  69: * creates SSL context based on these parameters to be
+  70: * used by the SSL connectors.
+  71: */
+  72:public class SslContextFactory extends AbstractLifeCycle
+  73:{
+  74:    public final static TrustManager[] TRUST_ALL_CERTS = new X509TrustManager[]{new X509TrustManager()
+  75:    {
+  76:        public java.security.cert.X509Certificate[] getAcceptedIssuers()
+  77:        {
+  78:            return new java.security.cert.X509Certificate[]{};
+  79:        }
+  80:
+  81:FLAGGED_LINE:        public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType)
+  82:        {
+  83:        }
+  84:
+  85:        public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType)
+  86:        {
+  87:        }
+  88:    }};
+  89:
+  90:    private static final Logger LOG = Log.getLogger(SslContextFactory.class);
+  91:
+  92:    public static final String DEFAULT_KEYMANAGERFACTORY_ALGORITHM =
+  93:        (Security.getProperty(""ssl.KeyManagerFactory.algorithm"") == null ?
+  94:                ""SunX509"" : Security.getProperty(""ssl.KeyManagerFactory.algorithm""));
+  95:    public static final String DEFAULT_TRUSTMANAGERFACTORY_ALGORITHM =
+  96:        (Security.getProperty(""ssl.TrustManagerFactory.algorithm"") == null ?",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.ssl.insecure-trust-manager.insecure-trust-manager,Semgrep:java.lang.security.audit.crypto.ssl.insecure-trust-manager.insecure-trust-manager,False
+145,jetty.project,jetty-aggregate/jetty-all/target/sources/org/eclipse/jetty/util/ssl/SslContextFactory.java,85,"Detected empty trust manager implementations. This is dangerous because it accepts any certificate, enabling man-in-the-middle attacks. Consider using a KeyStore and TrustManagerFactory instead. See https://stackoverflow.com/questions/2642777/trusting-all-certificates-using-httpclient-over-https for more information.","  70: * used by the SSL connectors.
+  71: */
+  72:public class SslContextFactory extends AbstractLifeCycle
+  73:{
+  74:    public final static TrustManager[] TRUST_ALL_CERTS = new X509TrustManager[]{new X509TrustManager()
+  75:    {
+  76:        public java.security.cert.X509Certificate[] getAcceptedIssuers()
+  77:        {
+  78:            return new java.security.cert.X509Certificate[]{};
+  79:        }
+  80:
+  81:        public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType)
+  82:        {
+  83:        }
+  84:
+  85:FLAGGED_LINE:        public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType)
+  86:        {
+  87:        }
+  88:    }};
+  89:
+  90:    private static final Logger LOG = Log.getLogger(SslContextFactory.class);
+  91:
+  92:    public static final String DEFAULT_KEYMANAGERFACTORY_ALGORITHM =
+  93:        (Security.getProperty(""ssl.KeyManagerFactory.algorithm"") == null ?
+  94:                ""SunX509"" : Security.getProperty(""ssl.KeyManagerFactory.algorithm""));
+  95:    public static final String DEFAULT_TRUSTMANAGERFACTORY_ALGORITHM =
+  96:        (Security.getProperty(""ssl.TrustManagerFactory.algorithm"") == null ?
+  97:                ""SunX509"" : Security.getProperty(""ssl.TrustManagerFactory.algorithm""));
+  98:
+  99:    /** Default value for the keystore location path. */
+ 100:    public static final String DEFAULT_KEYSTORE_PATH =",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.ssl.insecure-trust-manager.insecure-trust-manager,Semgrep:java.lang.security.audit.crypto.ssl.insecure-trust-manager.insecure-trust-manager,False
+146,jetty.project,jetty-aggregate/jetty-all/target/sources/org/eclipse/jetty/websocket/WebSocketClientFactory.java,366,"Detected use of the functions `Math.random()` or `java.util.Random()`. These are both not cryptographically strong random number generators (RNGs). If you are using these RNGs to create passwords or secret tokens, use `java.security.SecureRandom` instead."," 351:        private final AsyncEndPoint _endp;
+ 352:        private final WebSocketClient.WebSocketFuture _future;
+ 353:        private final String _key;
+ 354:        private final HttpParser _parser;
+ 355:        private String _accept;
+ 356:        private String _error;
+ 357:        private ByteArrayBuffer _handshake;
+ 358:
+ 359:        public HandshakeConnection(AsyncEndPoint endpoint, WebSocketClient.WebSocketFuture future)
+ 360:        {
+ 361:            super(endpoint, System.currentTimeMillis());
+ 362:            _endp = endpoint;
+ 363:            _future = future;
+ 364:
+ 365:            byte[] bytes = new byte[16];
+ 366:FLAGGED_LINE:            new Random().nextBytes(bytes);
+ 367:            _key = new String(B64Code.encode(bytes));
+ 368:
+ 369:            Buffers buffers = new SimpleBuffers(_buffers.getBuffer(), null);
+ 370:            _parser = new HttpParser(buffers, _endp, new HttpParser.EventHandler()
+ 371:            {
+ 372:                @Override
+ 373:                public void startResponse(Buffer version, int status, Buffer reason) throws IOException
+ 374:                {
+ 375:                    if (status != 101)
+ 376:                    {
+ 377:                        _error = ""Bad response status "" + status + "" "" + reason;
+ 378:                        _endp.close();
+ 379:                    }
+ 380:                }
+ 381:",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.weak-random.weak-random,Semgrep:java.lang.security.audit.crypto.weak-random.weak-random,False
+147,jetty.project,jetty-aggregate/jetty-all/target/sources/org/eclipse/jetty/websocket/WebSocketConnectionD00.java,338,Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use HMAC instead.," 323:        int spaces=0;
+ 324:        for (char c : key.toCharArray())
+ 325:        {
+ 326:            if (Character.isDigit(c))
+ 327:                number=number*10+(c-'0');
+ 328:            else if (c==' ')
+ 329:                spaces++;
+ 330:        }
+ 331:        return number/spaces;
+ 332:    }
+ 333:
+ 334:    public static byte[] doTheHixieHixieShake(long key1,long key2,byte[] key3)
+ 335:    {
+ 336:        try
+ 337:        {
+ 338:FLAGGED_LINE:            MessageDigest md = MessageDigest.getInstance(""MD5"");
+ 339:            byte [] fodder = new byte[16];
+ 340:
+ 341:            fodder[0]=(byte)(0xff&(key1>>24));
+ 342:            fodder[1]=(byte)(0xff&(key1>>16));
+ 343:            fodder[2]=(byte)(0xff&(key1>>8));
+ 344:            fodder[3]=(byte)(0xff&key1);
+ 345:            fodder[4]=(byte)(0xff&(key2>>24));
+ 346:            fodder[5]=(byte)(0xff&(key2>>16));
+ 347:            fodder[6]=(byte)(0xff&(key2>>8));
+ 348:            fodder[7]=(byte)(0xff&key2);
+ 349:            System.arraycopy(key3, 0, fodder, 8, 8);
+ 350:            md.update(fodder);
+ 351:            return md.digest();
+ 352:        }
+ 353:        catch (NoSuchAlgorithmException e)",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.use-of-md5.use-of-md5,Semgrep:java.lang.security.audit.crypto.use-of-md5.use-of-md5,False
+148,jetty.project,jetty-aggregate/jetty-all/target/sources/org/eclipse/jetty/websocket/WebSocketConnectionD06.java,734,"Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Instead, use PBKDF2 for password hashing or SHA256 or SHA512 for other hash function applications."," 719:            _connection.close(code,message);
+ 720:        }
+ 721:
+ 722:        @Override
+ 723:        public String toString()
+ 724:        {
+ 725:            return WebSocketConnectionD06.this.toString()+""FH"";
+ 726:        }
+ 727:    }
+ 728:
+ 729:    /* ------------------------------------------------------------ */
+ 730:    public static String hashKey(String key)
+ 731:    {
+ 732:        try
+ 733:        {
+ 734:FLAGGED_LINE:            MessageDigest md = MessageDigest.getInstance(""SHA1"");
+ 735:            md.update(key.getBytes(""UTF-8""));
+ 736:            md.update(MAGIC);
+ 737:            return new String(B64Code.encode(md.digest()));
+ 738:        }
+ 739:        catch (Exception e)
+ 740:        {
+ 741:            throw new RuntimeException(e);
+ 742:        }
+ 743:    }
+ 744:}",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.use-of-sha1.use-of-sha1,Semgrep:java.lang.security.audit.crypto.use-of-sha1.use-of-sha1,False
+149,jetty.project,jetty-aggregate/jetty-all/target/sources/org/eclipse/jetty/websocket/WebSocketConnectionD08.java,835,"Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Instead, use PBKDF2 for password hashing or SHA256 or SHA512 for other hash function applications."," 820:            _connection.close(code,message);
+ 821:        }
+ 822:
+ 823:        @Override
+ 824:        public String toString()
+ 825:        {
+ 826:            return WebSocketConnectionD08.this.toString()+""FH"";
+ 827:        }
+ 828:    }
+ 829:
+ 830:    /* ------------------------------------------------------------ */
+ 831:    public static String hashKey(String key)
+ 832:    {
+ 833:        try
+ 834:        {
+ 835:FLAGGED_LINE:            MessageDigest md = MessageDigest.getInstance(""SHA1"");
+ 836:            md.update(key.getBytes(""UTF-8""));
+ 837:            md.update(MAGIC);
+ 838:            return new String(B64Code.encode(md.digest()));
+ 839:        }
+ 840:        catch (Exception e)
+ 841:        {
+ 842:            throw new RuntimeException(e);
+ 843:        }
+ 844:    }
+ 845:
+ 846:    /* ------------------------------------------------------------ */
+ 847:    @Override
+ 848:    public String toString()
+ 849:    {
+ 850:        return String.format(""WS/D%d p=%s g=%s"", _draft, _parser, _generator);",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.use-of-sha1.use-of-sha1,Semgrep:java.lang.security.audit.crypto.use-of-sha1.use-of-sha1,False
+150,jetty.project,jetty-aggregate/jetty-all/target/sources/org/eclipse/jetty/websocket/WebSocketConnectionRFC6455.java,967,"Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Instead, use PBKDF2 for password hashing or SHA256 or SHA512 for other hash function applications."," 952:            _connection.close(code,message);
+ 953:        }
+ 954:
+ 955:        @Override
+ 956:        public String toString()
+ 957:        {
+ 958:            return WebSocketConnectionRFC6455.this.toString()+""FH"";
+ 959:        }
+ 960:    }
+ 961:
+ 962:    /* ------------------------------------------------------------ */
+ 963:    public static String hashKey(String key)
+ 964:    {
+ 965:        try
+ 966:        {
+ 967:FLAGGED_LINE:            MessageDigest md = MessageDigest.getInstance(""SHA1"");
+ 968:            md.update(key.getBytes(""UTF-8""));
+ 969:            md.update(MAGIC);
+ 970:            return new String(B64Code.encode(md.digest()));
+ 971:        }
+ 972:        catch (Exception e)
+ 973:        {
+ 974:            throw new RuntimeException(e);
+ 975:        }
+ 976:    }
+ 977:
+ 978:    /* ------------------------------------------------------------ */
+ 979:    @Override
+ 980:    public String toString()
+ 981:    {
+ 982:        return String.format(""%s p=%s g=%s"", getClass().getSimpleName(), _parser, _generator);",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.use-of-sha1.use-of-sha1,Semgrep:java.lang.security.audit.crypto.use-of-sha1.use-of-sha1,False
+151,jetty.project,jetty-client/src/main/java/org/eclipse/jetty/client/security/DigestAuthentication.java,115,Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use HMAC instead.," 100:            byte[] digest=md.digest();
+ 101:
+ 102:            // check digest
+ 103:            return encode(digest);
+ 104:        }
+ 105:        catch(Exception e)
+ 106:        {
+ 107:            throw new RuntimeException(e);
+ 108:        }
+ 109:    }
+ 110:
+ 111:    protected String newCnonce(HttpExchange exchange, Realm securityRealm, Map details)
+ 112:    {
+ 113:        try
+ 114:        {
+ 115:FLAGGED_LINE:            MessageDigest md = MessageDigest.getInstance(""MD5"");
+ 116:            byte[] b= md.digest(String.valueOf(System.currentTimeMillis()).getBytes(StringUtil.__ISO_8859_1));
+ 117:            return encode(b);
+ 118:        }
+ 119:        catch(Exception e)
+ 120:        {
+ 121:            throw new RuntimeException(e);
+ 122:        }
+ 123:    }
+ 124:
+ 125:    private static String encode(byte[] data)
+ 126:    {
+ 127:        StringBuilder buffer = new StringBuilder();
+ 128:        for (int i=0; i<data.length; i++)
+ 129:        {
+ 130:            buffer.append(Integer.toHexString((data[i] & 0xf0) >>> 4));",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.use-of-md5.use-of-md5,Semgrep:java.lang.security.audit.crypto.use-of-md5.use-of-md5,False
+152,jetty.project,jetty-client/src/main/java/org/eclipse/jetty/client/security/DigestAuthentication.java,73,Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use HMAC instead.,"  58:
+  59:        buffer.append("", "").append(""qop"").append('=').append(String.valueOf(details.get(""qop"")));
+  60:
+  61:
+  62:        buffer.append("", "").append(""nc"").append('=').append(NC);
+  63:
+  64:        buffer.append("", "").append(""cnonce"").append('=').append('""').append(cnonce).append('""');
+  65:
+  66:        exchange.setRequestHeader( HttpHeaders.AUTHORIZATION,
+  67:                new String(buffer.toString().getBytes(StringUtil.__ISO_8859_1)));
+  68:    }
+  69:
+  70:    protected String newResponse(String cnonce, HttpExchange exchange, Realm securityRealm, Map details)
+  71:    {
+  72:        try{
+  73:FLAGGED_LINE:            MessageDigest md = MessageDigest.getInstance(""MD5"");
+  74:
+  75:            // calc A1 digest
+  76:            md.update(securityRealm.getPrincipal().getBytes(StringUtil.__ISO_8859_1));
+  77:            md.update((byte)':');
+  78:            md.update(String.valueOf(details.get(""realm"")).getBytes(StringUtil.__ISO_8859_1));
+  79:            md.update((byte)':');
+  80:            md.update(securityRealm.getCredentials().getBytes(StringUtil.__ISO_8859_1));
+  81:            byte[] ha1 = md.digest();
+  82:            // calc A2 digest
+  83:            md.reset();
+  84:            md.update(exchange.getMethod().getBytes(StringUtil.__ISO_8859_1));
+  85:            md.update((byte)':');
+  86:            md.update(exchange.getURI().getBytes(StringUtil.__ISO_8859_1));
+  87:            byte[] ha2=md.digest();
+  88:",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.use-of-md5.use-of-md5,Semgrep:java.lang.security.audit.crypto.use-of-md5.use-of-md5,False
+153,jetty.project,jetty-jaspi/src/main/java/org/eclipse/jetty/security/jaspi/modules/DigestAuthModule.java,191,Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use HMAC instead.," 176:        // long ts=request.getTimeStamp();
+ 177:        long sk = nonceSecret;
+ 178:
+ 179:        byte[] nounce = new byte[24];
+ 180:        for (int i = 0; i < 8; i++)
+ 181:        {
+ 182:            nounce[i] = (byte) (ts & 0xff);
+ 183:            ts = ts >> 8;
+ 184:            nounce[8 + i] = (byte) (sk & 0xff);
+ 185:            sk = sk >> 8;
+ 186:        }
+ 187:
+ 188:        byte[] hash = null;
+ 189:        try
+ 190:        {
+ 191:FLAGGED_LINE:            MessageDigest md = MessageDigest.getInstance(""MD5"");
+ 192:            md.reset();
+ 193:            md.update(nounce, 0, 16);
+ 194:            hash = md.digest();
+ 195:        }
+ 196:        catch (Exception e)
+ 197:        {
+ 198:            LOG.warn(e);
+ 199:        }
+ 200:
+ 201:        for (int i = 0; i < hash.length; i++)
+ 202:        {
+ 203:            nounce[8 + i] = hash[i];
+ 204:            if (i == 23) break;
+ 205:        }
+ 206:",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.use-of-md5.use-of-md5,Semgrep:java.lang.security.audit.crypto.use-of-md5.use-of-md5,False
+154,jetty.project,jetty-jaspi/src/main/java/org/eclipse/jetty/security/jaspi/modules/DigestAuthModule.java,240,Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use HMAC instead.," 225:            byte[] n2 = new byte[16];
+ 226:            System.arraycopy(n, 0, n2, 0, 8);
+ 227:            for (int i = 0; i < 8; i++)
+ 228:            {
+ 229:                n2[8 + i] = (byte) (sk & 0xff);
+ 230:                sk = sk >> 8;
+ 231:                ts = (ts << 8) + (0xff & (long) n[7 - i]);
+ 232:            }
+ 233:
+ 234:            long age = timestamp - ts;
+ 235:            if (LOG.isDebugEnabled()) LOG.debug(""age="" + age);
+ 236:
+ 237:            byte[] hash = null;
+ 238:            try
+ 239:            {
+ 240:FLAGGED_LINE:                MessageDigest md = MessageDigest.getInstance(""MD5"");
+ 241:                md.reset();
+ 242:                md.update(n2, 0, 16);
+ 243:                hash = md.digest();
+ 244:            }
+ 245:            catch (Exception e)
+ 246:            {
+ 247:                LOG.warn(e);
+ 248:            }
+ 249:
+ 250:            for (int i = 0; i < 16; i++)
+ 251:                if (n[i + 8] != hash[i]) return -1;
+ 252:
+ 253:            if (maxNonceAge > 0 && (age < 0 || age > maxNonceAge)) return 0; // stale
+ 254:
+ 255:            return 1;",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.use-of-md5.use-of-md5,Semgrep:java.lang.security.audit.crypto.use-of-md5.use-of-md5,False
+155,jetty.project,jetty-jaspi/src/main/java/org/eclipse/jetty/security/jaspi/modules/DigestAuthModule.java,292,Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use HMAC instead.," 277:
+ 278:        /* ------------------------------------------------------------ */
+ 279:        Digest(String m)
+ 280:        {
+ 281:            method = m;
+ 282:        }
+ 283:
+ 284:        /* ------------------------------------------------------------ */
+ 285:        @Override
+ 286:        public boolean check(Object credentials)
+ 287:        {
+ 288:            String password = (credentials instanceof String) ? (String) credentials : credentials.toString();
+ 289:
+ 290:            try
+ 291:            {
+ 292:FLAGGED_LINE:                MessageDigest md = MessageDigest.getInstance(""MD5"");
+ 293:                byte[] ha1;
+ 294:                if (credentials instanceof Credential.MD5)
+ 295:                {
+ 296:                    // Credentials are already a MD5 digest - assume it's in
+ 297:                    // form user:realm:password (we have no way to know since
+ 298:                    // it's a digest, alright?)
+ 299:                    ha1 = ((Credential.MD5) credentials).getDigest();
+ 300:                }
+ 301:                else
+ 302:                {
+ 303:                    // calc A1 digest
+ 304:                    md.update(username.getBytes(StringUtil.__ISO_8859_1));
+ 305:                    md.update((byte) ':');
+ 306:                    md.update(realm.getBytes(StringUtil.__ISO_8859_1));
+ 307:                    md.update((byte) ':');",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.use-of-md5.use-of-md5,Semgrep:java.lang.security.audit.crypto.use-of-md5.use-of-md5,False
+156,jetty.project,jetty-security/src/main/java/org/eclipse/jetty/security/authentication/DigestAuthenticator.java,319,Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use HMAC instead.," 304:        Digest(String m)
+ 305:        {
+ 306:            method = m;
+ 307:        }
+ 308:
+ 309:        /* ------------------------------------------------------------ */
+ 310:        @Override
+ 311:        public boolean check(Object credentials)
+ 312:        {
+ 313:            if (credentials instanceof char[])
+ 314:                credentials=new String((char[])credentials);
+ 315:            String password = (credentials instanceof String) ? (String) credentials : credentials.toString();
+ 316:
+ 317:            try
+ 318:            {
+ 319:FLAGGED_LINE:                MessageDigest md = MessageDigest.getInstance(""MD5"");
+ 320:                byte[] ha1;
+ 321:                if (credentials instanceof Credential.MD5)
+ 322:                {
+ 323:                    // Credentials are already a MD5 digest - assume it's in
+ 324:                    // form user:realm:password (we have no way to know since
+ 325:                    // it's a digest, alright?)
+ 326:                    ha1 = ((Credential.MD5) credentials).getDigest();
+ 327:                }
+ 328:                else
+ 329:                {
+ 330:                    // calc A1 digest
+ 331:                    md.update(username.getBytes(StringUtil.__ISO_8859_1));
+ 332:                    md.update((byte) ':');
+ 333:                    md.update(realm.getBytes(StringUtil.__ISO_8859_1));
+ 334:                    md.update((byte) ':');",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.use-of-md5.use-of-md5,Semgrep:java.lang.security.audit.crypto.use-of-md5.use-of-md5,False
+158,jetty.project,jetty-util/src/main/java/org/eclipse/jetty/util/security/Credential.java,152,Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use HMAC instead.," 137:
+ 138:        /* ------------------------------------------------------------ */
+ 139:        @Override
+ 140:        public boolean check(Object credentials)
+ 141:        {
+ 142:            try
+ 143:            {
+ 144:                byte[] digest = null;
+ 145:
+ 146:                if (credentials instanceof char[])
+ 147:                    credentials=new String((char[])credentials);
+ 148:                if (credentials instanceof Password || credentials instanceof String)
+ 149:                {
+ 150:                    synchronized (__md5Lock)
+ 151:                    {
+ 152:FLAGGED_LINE:                        if (__md == null) __md = MessageDigest.getInstance(""MD5"");
+ 153:                        __md.reset();
+ 154:                        __md.update(credentials.toString().getBytes(StringUtil.__ISO_8859_1));
+ 155:                        digest = __md.digest();
+ 156:                    }
+ 157:                    if (digest == null || digest.length != _digest.length) return false;
+ 158:                    for (int i = 0; i < digest.length; i++)
+ 159:                        if (digest[i] != _digest[i]) return false;
+ 160:                    return true;
+ 161:                }
+ 162:                else if (credentials instanceof MD5)
+ 163:                {
+ 164:                    MD5 md5 = (MD5) credentials;
+ 165:                    if (_digest.length != md5._digest.length) return false;
+ 166:                    for (int i = 0; i < _digest.length; i++)
+ 167:                        if (_digest[i] != md5._digest[i]) return false;",WARNING,,2,Semgrep|CodeQL,Semgrep,java.lang.security.audit.crypto.use-of-md5.use-of-md5,Semgrep:java.lang.security.audit.crypto.use-of-md5.use-of-md5|CodeQL:java/potentially-weak-cryptographic-algorithm,True
+159,jetty.project,jetty-util/src/main/java/org/eclipse/jetty/util/security/Credential.java,201,Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use HMAC instead.," 186:            }
+ 187:        }
+ 188:
+ 189:        /* ------------------------------------------------------------ */
+ 190:        public static String digest(String password)
+ 191:        {
+ 192:            try
+ 193:            {
+ 194:                byte[] digest;
+ 195:                synchronized (__md5Lock)
+ 196:                {
+ 197:                    if (__md == null)
+ 198:                    {
+ 199:                        try
+ 200:                        {
+ 201:FLAGGED_LINE:                            __md = MessageDigest.getInstance(""MD5"");
+ 202:                        }
+ 203:                        catch (Exception e)
+ 204:                        {
+ 205:                            LOG.warn(e);
+ 206:                            return null;
+ 207:                        }
+ 208:                    }
+ 209:
+ 210:                    __md.reset();
+ 211:                    __md.update(password.getBytes(StringUtil.__ISO_8859_1));
+ 212:                    digest = __md.digest();
+ 213:                }
+ 214:
+ 215:                return __TYPE + TypeUtil.toString(digest, 16);
+ 216:            }",WARNING,,2,Semgrep|CodeQL,Semgrep,java.lang.security.audit.crypto.use-of-md5.use-of-md5,Semgrep:java.lang.security.audit.crypto.use-of-md5.use-of-md5|CodeQL:java/potentially-weak-cryptographic-algorithm,True
+160,jetty.project,jetty-util/src/main/java/org/eclipse/jetty/util/ssl/SslContextFactory.java,81,"Detected empty trust manager implementations. This is dangerous because it accepts any certificate, enabling man-in-the-middle attacks. Consider using a KeyStore and TrustManagerFactory instead. See https://stackoverflow.com/questions/2642777/trusting-all-certificates-using-httpclient-over-https for more information.","  66:/**
+  67: * SslContextFactory is used to configure SSL connectors
+  68: * as well as HttpClient. It holds all SSL parameters and
+  69: * creates SSL context based on these parameters to be
+  70: * used by the SSL connectors.
+  71: */
+  72:public class SslContextFactory extends AbstractLifeCycle
+  73:{
+  74:    public final static TrustManager[] TRUST_ALL_CERTS = new X509TrustManager[]{new X509TrustManager()
+  75:    {
+  76:        public java.security.cert.X509Certificate[] getAcceptedIssuers()
+  77:        {
+  78:            return new java.security.cert.X509Certificate[]{};
+  79:        }
+  80:
+  81:FLAGGED_LINE:        public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType)
+  82:        {
+  83:        }
+  84:
+  85:        public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType)
+  86:        {
+  87:        }
+  88:    }};
+  89:
+  90:    private static final Logger LOG = Log.getLogger(SslContextFactory.class);
+  91:
+  92:    public static final String DEFAULT_KEYMANAGERFACTORY_ALGORITHM =
+  93:        (Security.getProperty(""ssl.KeyManagerFactory.algorithm"") == null ?
+  94:                ""SunX509"" : Security.getProperty(""ssl.KeyManagerFactory.algorithm""));
+  95:    public static final String DEFAULT_TRUSTMANAGERFACTORY_ALGORITHM =
+  96:        (Security.getProperty(""ssl.TrustManagerFactory.algorithm"") == null ?",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.ssl.insecure-trust-manager.insecure-trust-manager,Semgrep:java.lang.security.audit.crypto.ssl.insecure-trust-manager.insecure-trust-manager,False
+161,jetty.project,jetty-util/src/main/java/org/eclipse/jetty/util/ssl/SslContextFactory.java,85,"Detected empty trust manager implementations. This is dangerous because it accepts any certificate, enabling man-in-the-middle attacks. Consider using a KeyStore and TrustManagerFactory instead. See https://stackoverflow.com/questions/2642777/trusting-all-certificates-using-httpclient-over-https for more information.","  70: * used by the SSL connectors.
+  71: */
+  72:public class SslContextFactory extends AbstractLifeCycle
+  73:{
+  74:    public final static TrustManager[] TRUST_ALL_CERTS = new X509TrustManager[]{new X509TrustManager()
+  75:    {
+  76:        public java.security.cert.X509Certificate[] getAcceptedIssuers()
+  77:        {
+  78:            return new java.security.cert.X509Certificate[]{};
+  79:        }
+  80:
+  81:        public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType)
+  82:        {
+  83:        }
+  84:
+  85:FLAGGED_LINE:        public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType)
+  86:        {
+  87:        }
+  88:    }};
+  89:
+  90:    private static final Logger LOG = Log.getLogger(SslContextFactory.class);
+  91:
+  92:    public static final String DEFAULT_KEYMANAGERFACTORY_ALGORITHM =
+  93:        (Security.getProperty(""ssl.KeyManagerFactory.algorithm"") == null ?
+  94:                ""SunX509"" : Security.getProperty(""ssl.KeyManagerFactory.algorithm""));
+  95:    public static final String DEFAULT_TRUSTMANAGERFACTORY_ALGORITHM =
+  96:        (Security.getProperty(""ssl.TrustManagerFactory.algorithm"") == null ?
+  97:                ""SunX509"" : Security.getProperty(""ssl.TrustManagerFactory.algorithm""));
+  98:
+  99:    /** Default value for the keystore location path. */
+ 100:    public static final String DEFAULT_KEYSTORE_PATH =",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.ssl.insecure-trust-manager.insecure-trust-manager,Semgrep:java.lang.security.audit.crypto.ssl.insecure-trust-manager.insecure-trust-manager,False
+162,jetty.project,jetty-websocket/src/main/java/org/eclipse/jetty/websocket/WebSocketClientFactory.java,366,"Detected use of the functions `Math.random()` or `java.util.Random()`. These are both not cryptographically strong random number generators (RNGs). If you are using these RNGs to create passwords or secret tokens, use `java.security.SecureRandom` instead."," 351:        private final AsyncEndPoint _endp;
+ 352:        private final WebSocketClient.WebSocketFuture _future;
+ 353:        private final String _key;
+ 354:        private final HttpParser _parser;
+ 355:        private String _accept;
+ 356:        private String _error;
+ 357:        private ByteArrayBuffer _handshake;
+ 358:
+ 359:        public HandshakeConnection(AsyncEndPoint endpoint, WebSocketClient.WebSocketFuture future)
+ 360:        {
+ 361:            super(endpoint, System.currentTimeMillis());
+ 362:            _endp = endpoint;
+ 363:            _future = future;
+ 364:
+ 365:            byte[] bytes = new byte[16];
+ 366:FLAGGED_LINE:            new Random().nextBytes(bytes);
+ 367:            _key = new String(B64Code.encode(bytes));
+ 368:
+ 369:            Buffers buffers = new SimpleBuffers(_buffers.getBuffer(), null);
+ 370:            _parser = new HttpParser(buffers, _endp, new HttpParser.EventHandler()
+ 371:            {
+ 372:                @Override
+ 373:                public void startResponse(Buffer version, int status, Buffer reason) throws IOException
+ 374:                {
+ 375:                    if (status != 101)
+ 376:                    {
+ 377:                        _error = ""Bad response status "" + status + "" "" + reason;
+ 378:                        _endp.close();
+ 379:                    }
+ 380:                }
+ 381:",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.weak-random.weak-random,Semgrep:java.lang.security.audit.crypto.weak-random.weak-random,False
+163,jetty.project,jetty-websocket/src/main/java/org/eclipse/jetty/websocket/WebSocketConnectionD00.java,338,Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use HMAC instead.," 323:        int spaces=0;
+ 324:        for (char c : key.toCharArray())
+ 325:        {
+ 326:            if (Character.isDigit(c))
+ 327:                number=number*10+(c-'0');
+ 328:            else if (c==' ')
+ 329:                spaces++;
+ 330:        }
+ 331:        return number/spaces;
+ 332:    }
+ 333:
+ 334:    public static byte[] doTheHixieHixieShake(long key1,long key2,byte[] key3)
+ 335:    {
+ 336:        try
+ 337:        {
+ 338:FLAGGED_LINE:            MessageDigest md = MessageDigest.getInstance(""MD5"");
+ 339:            byte [] fodder = new byte[16];
+ 340:
+ 341:            fodder[0]=(byte)(0xff&(key1>>24));
+ 342:            fodder[1]=(byte)(0xff&(key1>>16));
+ 343:            fodder[2]=(byte)(0xff&(key1>>8));
+ 344:            fodder[3]=(byte)(0xff&key1);
+ 345:            fodder[4]=(byte)(0xff&(key2>>24));
+ 346:            fodder[5]=(byte)(0xff&(key2>>16));
+ 347:            fodder[6]=(byte)(0xff&(key2>>8));
+ 348:            fodder[7]=(byte)(0xff&key2);
+ 349:            System.arraycopy(key3, 0, fodder, 8, 8);
+ 350:            md.update(fodder);
+ 351:            return md.digest();
+ 352:        }
+ 353:        catch (NoSuchAlgorithmException e)",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.use-of-md5.use-of-md5,Semgrep:java.lang.security.audit.crypto.use-of-md5.use-of-md5,False
+164,jetty.project,jetty-websocket/src/main/java/org/eclipse/jetty/websocket/WebSocketConnectionD06.java,734,"Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Instead, use PBKDF2 for password hashing or SHA256 or SHA512 for other hash function applications."," 719:            _connection.close(code,message);
+ 720:        }
+ 721:
+ 722:        @Override
+ 723:        public String toString()
+ 724:        {
+ 725:            return WebSocketConnectionD06.this.toString()+""FH"";
+ 726:        }
+ 727:    }
+ 728:
+ 729:    /* ------------------------------------------------------------ */
+ 730:    public static String hashKey(String key)
+ 731:    {
+ 732:        try
+ 733:        {
+ 734:FLAGGED_LINE:            MessageDigest md = MessageDigest.getInstance(""SHA1"");
+ 735:            md.update(key.getBytes(""UTF-8""));
+ 736:            md.update(MAGIC);
+ 737:            return new String(B64Code.encode(md.digest()));
+ 738:        }
+ 739:        catch (Exception e)
+ 740:        {
+ 741:            throw new RuntimeException(e);
+ 742:        }
+ 743:    }
+ 744:}",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.use-of-sha1.use-of-sha1,Semgrep:java.lang.security.audit.crypto.use-of-sha1.use-of-sha1,False
+165,jetty.project,jetty-websocket/src/main/java/org/eclipse/jetty/websocket/WebSocketConnectionD08.java,835,"Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Instead, use PBKDF2 for password hashing or SHA256 or SHA512 for other hash function applications."," 820:            _connection.close(code,message);
+ 821:        }
+ 822:
+ 823:        @Override
+ 824:        public String toString()
+ 825:        {
+ 826:            return WebSocketConnectionD08.this.toString()+""FH"";
+ 827:        }
+ 828:    }
+ 829:
+ 830:    /* ------------------------------------------------------------ */
+ 831:    public static String hashKey(String key)
+ 832:    {
+ 833:        try
+ 834:        {
+ 835:FLAGGED_LINE:            MessageDigest md = MessageDigest.getInstance(""SHA1"");
+ 836:            md.update(key.getBytes(""UTF-8""));
+ 837:            md.update(MAGIC);
+ 838:            return new String(B64Code.encode(md.digest()));
+ 839:        }
+ 840:        catch (Exception e)
+ 841:        {
+ 842:            throw new RuntimeException(e);
+ 843:        }
+ 844:    }
+ 845:
+ 846:    /* ------------------------------------------------------------ */
+ 847:    @Override
+ 848:    public String toString()
+ 849:    {
+ 850:        return String.format(""WS/D%d p=%s g=%s"", _draft, _parser, _generator);",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.use-of-sha1.use-of-sha1,Semgrep:java.lang.security.audit.crypto.use-of-sha1.use-of-sha1,False
+166,jetty.project,jetty-websocket/src/main/java/org/eclipse/jetty/websocket/WebSocketConnectionRFC6455.java,967,"Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Instead, use PBKDF2 for password hashing or SHA256 or SHA512 for other hash function applications."," 952:            _connection.close(code,message);
+ 953:        }
+ 954:
+ 955:        @Override
+ 956:        public String toString()
+ 957:        {
+ 958:            return WebSocketConnectionRFC6455.this.toString()+""FH"";
+ 959:        }
+ 960:    }
+ 961:
+ 962:    /* ------------------------------------------------------------ */
+ 963:    public static String hashKey(String key)
+ 964:    {
+ 965:        try
+ 966:        {
+ 967:FLAGGED_LINE:            MessageDigest md = MessageDigest.getInstance(""SHA1"");
+ 968:            md.update(key.getBytes(""UTF-8""));
+ 969:            md.update(MAGIC);
+ 970:            return new String(B64Code.encode(md.digest()));
+ 971:        }
+ 972:        catch (Exception e)
+ 973:        {
+ 974:            throw new RuntimeException(e);
+ 975:        }
+ 976:    }
+ 977:
+ 978:    /* ------------------------------------------------------------ */
+ 979:    @Override
+ 980:    public String toString()
+ 981:    {
+ 982:        return String.format(""%s p=%s g=%s"", getClass().getSimpleName(), _parser, _generator);",WARNING,,1,Semgrep,Semgrep,java.lang.security.audit.crypto.use-of-sha1.use-of-sha1,Semgrep:java.lang.security.audit.crypto.use-of-sha1.use-of-sha1,False

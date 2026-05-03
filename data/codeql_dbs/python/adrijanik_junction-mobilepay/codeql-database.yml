@@ -1,0 +1,12 @@
+---
+sourceLocationPrefix: /private/tmp/anon/repos/adrijanik_junction-mobilepay
+baselineLinesOfCode: 111
+unicodeNewlines: false
+columnKind: utf32
+primaryLanguage: python
+creationMetadata:
+  cliVersion: 2.23.3
+  creationTime: 2026-05-03T03:23:10.845741Z
+finalised: true
+overlayDatabase: false
+overlayBaseDatabase: false
